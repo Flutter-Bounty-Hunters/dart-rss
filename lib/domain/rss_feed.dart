@@ -1,11 +1,11 @@
 import 'dart:core';
 
-import 'package:webfeed/domain/dublin_core/dublin_core.dart';
-import 'package:webfeed/domain/rss_category.dart';
-import 'package:webfeed/domain/rss_cloud.dart';
-import 'package:webfeed/domain/rss_image.dart';
-import 'package:webfeed/domain/rss_item.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:dart_rss/domain/dublin_core/dublin_core.dart';
+import 'package:dart_rss/domain/rss_category.dart';
+import 'package:dart_rss/domain/rss_cloud.dart';
+import 'package:dart_rss/domain/rss_image.dart';
+import 'package:dart_rss/domain/rss_item.dart';
+import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 import 'rss_itunes.dart';

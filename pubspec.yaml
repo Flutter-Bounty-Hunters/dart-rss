@@ -1,12 +1,12 @@
-name: webfeed
-version: 0.4.2
-description: webfeed is a dart package for parsing RSS and Atom feeds. Media & DublinCore namespaces are also supported.
-author: Wito Chandra <wito.c.91@gmail.com>
-homepage: https://github.com/witochandra/webfeed
+name: dart_rss
+version: 1.0.1
+description: dart-rss is a rss parser for RSS1.0/RSS2.0/Atom. It also support Dublin-Core, Content, Syndication additional modules. This libary is forked from webfeed(https://github.com/witochandra/webfeed).
+homepage: https://github.com/sudame/dart-rss
 environment:
   sdk: ">=2.6.0 <3.0.0"
 dependencies:
-  xml: "^3.0.0"
+  xml: ^3.7.0
+  http: ^0.12.0+4
+  meta: ^1.1.8
 dev_dependencies:
   test: ^1.3.0
-  http: "^0.11.3+16"

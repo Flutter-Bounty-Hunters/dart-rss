@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
-import 'package:webfeed/domain/atom_feed.dart';
-import 'package:webfeed/domain/rss1_feed.dart';
-import 'package:webfeed/domain/rss_feed.dart';
+import 'package:dart_rss/domain/atom_feed.dart';
+import 'package:dart_rss/domain/rss1_feed.dart';
+import 'package:dart_rss/domain/rss_feed.dart';
 import 'package:xml/xml.dart' as xml;
 
 extension SafeParseDateTime on DateTime {

@@ -1,4 +1,4 @@
-import 'package:webfeed/util/helpers.dart';
+import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class DublinCore {

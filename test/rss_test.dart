@@ -2,10 +2,10 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:webfeed/webfeed.dart';
+import 'package:dart_rss/dart_rss.dart';
 
-import 'package:webfeed/domain/rss_itunes_type.dart';
-import 'package:webfeed/domain/rss_itunes_episode_type.dart';
+import 'package:dart_rss/domain/rss_itunes_type.dart';
+import 'package:dart_rss/domain/rss_itunes_episode_type.dart';
 
 void main() {
   test("parse Invalid.xml", () {

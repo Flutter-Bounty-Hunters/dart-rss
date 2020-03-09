@@ -1,10 +1,10 @@
-import 'package:webfeed/domain/dublin_core/dublin_core.dart';
-import 'package:webfeed/domain/media/media.dart';
-import 'package:webfeed/domain/rss_category.dart';
-import 'package:webfeed/domain/rss_content.dart';
-import 'package:webfeed/domain/rss_enclosure.dart';
-import 'package:webfeed/domain/rss_source.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:dart_rss/domain/dublin_core/dublin_core.dart';
+import 'package:dart_rss/domain/media/media.dart';
+import 'package:dart_rss/domain/rss_category.dart';
+import 'package:dart_rss/domain/rss_content.dart';
+import 'package:dart_rss/domain/rss_enclosure.dart';
+import 'package:dart_rss/domain/rss_source.dart';
+import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 import 'rss_item_itunes.dart';

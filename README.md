@@ -1,29 +1,29 @@
-# WebFeed
+# Dart RSS
 
 [![Build Status](https://travis-ci.org/witochandra/webfeed.svg?branch=master)](https://travis-ci.org/witochandra/webfeed)
 [![Pub](https://img.shields.io/pub/v/webfeed.svg)](https://pub.dartlang.org/packages/webfeed)
 
-A dart package for parsing RSS and Atom feed.
+A dart package for parsing RSS1.0 / RSS2.0 / Atom feed.
 
 ### Features
 
+- [x] RSS 1.0
 - [x] RSS 2.0
 - [x] Atom
 - [x] Namespaces
     - [x] Media RSS
     - [x] Dublin Core
-- [x] RSS 1.0
 
 ### Installing
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.4.2
+dart_rss: ^1.0.1
 ```
 
 Import the package into your dart code using:
 ```
-import 'package:webfeed/webfeed.dart';
+import 'package:dart_rss/dart_rss.dart';
 ```
 
 ### Example
@@ -129,4 +129,8 @@ item.content
 
 ## License
 
-WebFeed is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Dart RSS is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
+
+## Thanks
+
+This package is forked from [WebFeed](https://pub.dev/packages/webfeed).

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:webfeed/domain/webfeed.dart';
+import 'package:dart_rss/domain/dart_rss.dart';
 
 void main() {
   group('about WebFeed, ', () {
@@ -75,7 +75,7 @@ void main() {
     test('it can parse RSS2.0 feed.', () {
       // when
       final rss2Feed = WebFeed.fromXmlString(rss2XmlString);
-      
+
       // then
       expect(rss2Feed.title, 'News - Foo bar News');
       expect(
