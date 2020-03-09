@@ -1,4 +1,8 @@
 # Changelog
+## [1.0.2+1](https://pub.dev/packages/dart_rss/versions/1.0.2+1)
+### Fix
+- upgrade intl package.
+
 ## [1.0.2](https://pub.dev/packages/dart_rss/versions/1.0.2)
 ### Add
 - support American Style Format DateTime.
