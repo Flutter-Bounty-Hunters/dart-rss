@@ -19,13 +19,6 @@ class Rss1Item {
     this.content,
   });
 
-  static DateTime _dateTimeBuilder(String dateTimeStringOrNull) {
-    if (dateTimeStringOrNull == null) {
-      return null;
-    }
-    return DateTime.parse(dateTimeStringOrNull);
-  }
-
   factory Rss1Item.parse(XmlElement element) {
     return Rss1Item(
       title: findElementOrNull(element, "title")?.text,
