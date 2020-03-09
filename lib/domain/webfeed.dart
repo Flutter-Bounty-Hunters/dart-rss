@@ -5,6 +5,16 @@ import 'package:webfeed/domain/rss1_feed.dart';
 import 'package:webfeed/domain/rss_feed.dart';
 import 'package:xml/xml.dart' as xml;
 
+extension SafeParseDateTime on DateTime {
+  static DateTime safeParse(String str) {
+    try {
+      return DateTime.parse(str);
+    } catch (_) {
+      return null;
+    }
+  }
+}
+
 enum RssVersion {
   RSS1,
   RSS2,
@@ -25,9 +35,7 @@ class WebFeed {
   final List<String> links;
   final List<WebFeedItem> items;
 
-  static Future<WebFeed> fromUrl(String url) async {
-    final response = await http.get(url);
-    final xmlString = response.body;
+  static WebFeed fromXmlString(String xmlString) {
     final rssVersion = detectRssVersion(xmlString);
     switch (rssVersion) {
       case RssVersion.RSS1:
@@ -40,8 +48,8 @@ class WebFeed {
               .map(
                 (item) => WebFeedItem(
                   title: item.title,
-                  body: item.description,
-                  updated: DateTime.parse(item.dc.date),
+                  body: item.description ?? item.dc?.description,
+                  updated: SafeParseDateTime.safeParse(item.dc?.date),
                   links: [item.link],
                 ),
               )
@@ -58,8 +66,8 @@ class WebFeed {
               .map(
                 (item) => WebFeedItem(
                   title: item.title,
-                  body: item.description,
-                  updated: DateTime.parse(item.dc.date),
+                  body: item.description ?? item.dc?.description,
+                  updated: SafeParseDateTime.safeParse(item.dc?.date),
                 ),
               )
               .toList(),
@@ -70,14 +78,14 @@ class WebFeed {
         return WebFeed(
           title: atomFeed.title,
           description: atomFeed.subtitle,
-          links: atomFeed.links.map((atomLink) => atomLink.href),
+          links: atomFeed.links.map((atomLink) => atomLink.href).toList(),
           items: atomFeed.items
               .map(
                 (item) => WebFeedItem(
                   title: item.title,
                   body: item.summary,
-                  updated: DateTime.parse(item.updated),
-                  links: item.links.map((atomLink) => atomLink.href),
+                  updated: SafeParseDateTime.safeParse(item.updated),
+                  links: item.links.map((atomLink) => atomLink.href).toList(),
                 ),
               )
               .toList(),
@@ -92,6 +100,11 @@ class WebFeed {
     }
   }
 
+  static Future<WebFeed> fromUrl(String url) async {
+    final response = await http.get(url);
+    return fromXmlString(response.body);
+  }
+
   static RssVersion detectRssVersion(String xmlString) {
     final xmlDoc = xml.parse(xmlString);
     final rdfRefs = xmlDoc.findAllElements('rdf:RDF');
@@ -101,7 +114,7 @@ class WebFeed {
     if (rdfRefs.isNotEmpty) {
       return RssVersion.RSS1;
     } else if (rssRefs.isNotEmpty &&
-        rdfRefs.first.getAttribute('version').contains('2')) {
+        rssRefs.first.getAttribute('version').contains('2')) {
       return RssVersion.RSS2;
     } else if (feedRefs.isNotEmpty &&
         feedRefs.first.getAttribute('xmlns').toLowerCase().contains('atom')) {
