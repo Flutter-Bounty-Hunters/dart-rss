@@ -88,7 +88,7 @@ void main() {
     expect(item.content, "This is content 1");
     expect(item.rights, "This is rights 1");
   });
-  test("parse Atom-Media.xml", () {
+  test("parse Atom-Media.xml", (){
     var xmlString = new File("test/xml/Atom-Media.xml").readAsStringSync();
 
     var feed = new AtomFeed.parse(xmlString);
@@ -97,7 +97,7 @@ void main() {
     expect(feed.updated, "2018-04-06T13:02:46Z");
 
     expect(feed.items.length, 1);
-
+    
     var item = feed.items.first;
     expect(item.media.group.contents.length, 5);
     expect(item.media.group.credits.length, 2);
@@ -129,8 +129,7 @@ void main() {
     expect(mediaCredit.scheme, "urn:yvs");
     expect(mediaCredit.value, "copyright holder of the entity");
 
-    expect(item.media.category.scheme,
-        "http://search.yahoo.com/mrss/category_ schema");
+    expect(item.media.category.scheme, "http://search.yahoo.com/mrss/category_ schema");
     expect(item.media.category.label, "Music");
     expect(item.media.category.value, "music/artist/album/song");
 
@@ -141,11 +140,10 @@ void main() {
     expect(item.media.title.value, "The Judy's -- The Moo Song");
 
     expect(item.media.description.type, "plain");
-    expect(item.media.description.value,
-        "This was some really bizarre band I listened to as a young lad.");
-
+    expect(item.media.description.value, "This was some really bizarre band I listened to as a young lad.");
+    
     expect(item.media.keywords, "kitty, cat, big dog, yarn, fluffy");
-
+  
     expect(item.media.thumbnails.length, 2);
     var mediaThumbnail = item.media.thumbnails.first;
     expect(mediaThumbnail.url, "http://www.foo.com/keyframe1.jpg");
@@ -192,8 +190,7 @@ void main() {
     expect(item.media.embed.height, 323);
     expect(item.media.embed.params.length, 5);
     expect(item.media.embed.params.first.name, "type");
-    expect(
-        item.media.embed.params.first.value, "application/x-shockwave-flash");
+    expect(item.media.embed.params.first.value, "application/x-shockwave-flash");
 
     expect(item.media.responses.length, 2);
     expect(item.media.responses.first, "http://www.response1.com");
@@ -209,8 +206,7 @@ void main() {
     expect(item.media.prices.length, 2);
     expect(item.media.prices.first.price, 19.99);
     expect(item.media.prices.first.type, "rent");
-    expect(
-        item.media.prices.first.info, "http://www.dummy.jp/package_info.html");
+    expect(item.media.prices.first.info, "http://www.dummy.jp/package_info.html");
     expect(item.media.prices.first.currency, "EUR");
 
     expect(item.media.license.type, "text/html");
