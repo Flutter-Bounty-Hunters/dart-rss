@@ -6,7 +6,7 @@ environment:
   sdk: ">=2.6.0 <3.0.0"
 dependencies:
   xml: ^3.0.0
-  http: ^0.11.0
+  http: ^0.12.0+2
   meta: ^1.0.0
   intl: ^0.16.0
 
