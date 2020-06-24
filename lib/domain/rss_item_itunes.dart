@@ -46,8 +46,8 @@ class RssItemItunes {
 
     return RssItemItunes(
       title: findElementOrNull(element, "itunes:title")?.text?.trim(),
-      episode: episodeStr == null ? null : int.parse(episodeStr),
-      season: seasonStr == null ? null : int.parse(seasonStr),
+      episode: episodeStr == null ? null : int.tryParse(episodeStr),
+      season: seasonStr == null ? null : int.tryParse(seasonStr),
       duration: durationStr == null ? null : parseDuration(durationStr),
       episodeType: newRssItunesEpisodeType(findElementOrNull(element, "itunes:episodeType")),
       author: findElementOrNull(element, "itunes:author")?.text?.trim(),
@@ -69,12 +69,12 @@ Duration parseDuration(String s) {
   var seconds = 0;
   var parts = s.split(':');
   if (parts.length > 2) {
-    hours = int.parse(parts[parts.length - 3]);
+    hours = int.tryParse(parts[parts.length - 3]) ?? 0;
   }
   if (parts.length > 1) {
-    minutes = int.parse(parts[parts.length - 2]);
+    minutes = int.tryParse(parts[parts.length - 2]) ?? 0;
   }
-  seconds = int.parse(parts[parts.length - 1]);
+  seconds = int.tryParse(parts[parts.length - 1]) ?? 0;
   return Duration(
     hours: hours,
     minutes: minutes,
