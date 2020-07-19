@@ -32,7 +32,7 @@ To parse string into `RssFeed` object use:
 ```
 var rssFeed = new RssFeed.parse(xmlString); // for parsing RSS 2.0 feed
 var atomFeed = new AtomFeed.parse(xmlString); // for parsing Atom feed
-var rss1Feed = new RssFeed.parse(xmlString); // for parsing RSS 1.0 feed
+var rss1Feed = new Rss1Feed.parse(xmlString); // for parsing RSS 1.0 feed
 ```
 
 ### Preview
@@ -119,7 +119,7 @@ feed.updateFrequency
 feed.updateBase
 feed.dc
 
-RssItem item = feed.items.first;
+Rss1Item item = feed.items.first;
 item.title
 item.description
 item.link
