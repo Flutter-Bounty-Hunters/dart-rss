@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://pub.dev/packages/dart_rss/versions/1.1.1)
+### Update
+- dependent packages upgrade
+
+### Fix
+- do NOT use deprecated methods
+
 ## [1.1.0](https://pub.dev/packages/dart_rss/versions/1.1.0)
 ### Update
 - fault tolerant itunes item parsing (Thanks [gaodeng](https://github.com/gaodeng)!)
