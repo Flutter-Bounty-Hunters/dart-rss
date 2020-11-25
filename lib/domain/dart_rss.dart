@@ -132,7 +132,7 @@ class WebFeed {
   }
 
   static RssVersion detectRssVersion(String xmlString) {
-    final xmlDoc = xml.parse(xmlString);
+    final xmlDoc = xml.XmlDocument.parse(xmlString);
     final rdfRefs = xmlDoc.findAllElements('rdf:RDF');
     final rssRefs = xmlDoc.findAllElements('rss');
     final feedRefs = xmlDoc.findAllElements('feed');

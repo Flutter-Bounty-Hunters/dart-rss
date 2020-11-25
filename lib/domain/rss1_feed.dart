@@ -54,7 +54,7 @@ class Rss1Feed {
   }
 
   factory Rss1Feed.parse(String xmlString) {
-    var document = parse(xmlString);
+    var document = XmlDocument.parse(xmlString);
     XmlElement rdfElement;
     try {
       rdfElement = document.findAllElements("rdf:RDF").first;
