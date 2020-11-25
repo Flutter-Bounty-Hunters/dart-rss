@@ -1,6 +1,10 @@
 # Changelog
 
-## [1.1.0](https://pub.dev/packages/dart_rss/versions/1.1.1)
+## [1.1.1+1](https://pub.dev/packages/dart_rss/versions/1.1.1+1)
+### Fix
+- fix changelog :bow:
+
+## [1.1.1](https://pub.dev/packages/dart_rss/versions/1.1.1)
 ### Update
 - dependent packages upgrade
 
