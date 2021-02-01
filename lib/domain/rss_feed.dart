@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:dart_rss/domain/dublin_core/dublin_core.dart';
+import 'package:dart_rss/domain/podcast_index/rss_podcast_index.dart';
 import 'package:dart_rss/domain/rss_category.dart';
 import 'package:dart_rss/domain/rss_cloud.dart';
 import 'package:dart_rss/domain/rss_image.dart';
@@ -33,6 +34,7 @@ class RssFeed {
   final int ttl;
   final DublinCore dc;
   final RssItunes itunes;
+  final RssPodcastIndex podcastIndex;
 
   RssFeed({
     this.title,
@@ -56,6 +58,7 @@ class RssFeed {
     this.ttl,
     this.dc,
     this.itunes,
+    this.podcastIndex,
   });
 
   factory RssFeed.parse(String xmlString) {
@@ -80,15 +83,11 @@ class RssFeed {
       categories: channelElement.findElements("category").map((element) {
         return RssCategory.parse(element);
       }).toList(),
-      skipDays: findElementOrNull(channelElement, "skipDays")
-              ?.findAllElements("day")
-              ?.map((element) {
+      skipDays: findElementOrNull(channelElement, "skipDays")?.findAllElements("day")?.map((element) {
             return element.text;
           })?.toList() ??
           [],
-      skipHours: findElementOrNull(channelElement, "skipHours")
-              ?.findAllElements("hour")
-              ?.map((element) {
+      skipHours: findElementOrNull(channelElement, "skipHours")?.findAllElements("hour")?.map((element) {
             return int.tryParse(element.text ?? "0");
           })?.toList() ??
           [],
@@ -103,6 +102,7 @@ class RssFeed {
       ttl: int.tryParse(findElementOrNull(channelElement, "ttl")?.text ?? "0"),
       dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
+      podcastIndex: RssPodcastIndex.parse(channelElement),
     );
   }
 }

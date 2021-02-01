@@ -1,11 +1,10 @@
 import 'dart:core';
 import 'dart:io';
 
-import 'package:test/test.dart';
 import 'package:dart_rss/dart_rss.dart';
-
-import 'package:dart_rss/domain/rss_itunes_type.dart';
 import 'package:dart_rss/domain/rss_itunes_episode_type.dart';
+import 'package:dart_rss/domain/rss_itunes_type.dart';
+import 'package:test/test.dart';
 
 void main() {
   test("parse Invalid.xml", () {
@@ -22,8 +21,7 @@ void main() {
     var feed = new RssFeed.parse(xmlString);
 
     expect(feed.title, "News - Foo bar News");
-    expect(feed.description,
-        "Foo bar News and Updates feed provided by Foo bar, Inc.");
+    expect(feed.description, "Foo bar News and Updates feed provided by Foo bar, Inc.");
     expect(feed.link, "https://foo.bar.news/");
     expect(feed.author, "hello@world.net");
     expect(feed.language, "en-US");
@@ -66,10 +64,8 @@ void main() {
 
     expect(feed.items.length, 2);
 
-    expect(feed.items.first.title,
-        "The standard Lorem Ipsum passage, used since the 1500s");
-    expect(feed.items.first.description,
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit");
+    expect(feed.items.first.title, "The standard Lorem Ipsum passage, used since the 1500s");
+    expect(feed.items.first.description, "Lorem ipsum dolor sit amet, consectetur adipiscing elit");
     expect(feed.items.first.link, "https://foo.bar.news/1");
     expect(feed.items.first.guid, "https://foo.bar.news/1?guid");
     expect(feed.items.first.pubDate, "Mon, 26 Mar 2018 14:00:00 PDT");
@@ -79,23 +75,20 @@ void main() {
     expect(feed.items.first.source.url, "https://foo.bar.news/1?source");
     expect(feed.items.first.source.value, "Foo Bar");
     expect(feed.items.first.comments, "https://foo.bar.news/1/comments");
-    expect(feed.items.first.enclosure.url,
-        "http://www.scripting.com/mp3s/weatherReportSuite.mp3");
+    expect(feed.items.first.enclosure.url, "http://www.scripting.com/mp3s/weatherReportSuite.mp3");
     expect(feed.items.first.enclosure.length, 12216320);
     expect(feed.items.first.enclosure.type, "audio/mpeg");
 
     expect(feed.items.first.content.value,
         "<img width=\"1000\" height=\"690\" src=\"https://test.com/image_link\"/> Test content<br />");
-    expect(
-        feed.items.first.content.images.first, "https://test.com/image_link");
+    expect(feed.items.first.content.images.first, "https://test.com/image_link");
   });
   test("parse RSS-Media.xml", () {
     var xmlString = new File("test/xml/RSS-Media.xml").readAsStringSync();
 
     var feed = new RssFeed.parse(xmlString);
     expect(feed.title, "Song Site");
-    expect(
-        feed.description, "Media RSS example with new fields added in v1.5.0");
+    expect(feed.description, "Media RSS example with new fields added in v1.5.0");
 
     expect(feed.items.length, 1);
 
@@ -128,8 +121,7 @@ void main() {
     expect(mediaCredit.scheme, "urn:yvs");
     expect(mediaCredit.value, "copyright holder of the entity");
 
-    expect(item.media.category.scheme,
-        "http://search.yahoo.com/mrss/category_ schema");
+    expect(item.media.category.scheme, "http://search.yahoo.com/mrss/category_ schema");
     expect(item.media.category.label, "Music");
     expect(item.media.category.value, "music/artist/album/song");
 
@@ -140,8 +132,7 @@ void main() {
     expect(item.media.title.value, "The Judy's -- The Moo Song");
 
     expect(item.media.description.type, "plain");
-    expect(item.media.description.value,
-        "This was some really bizarre band I listened to as a young lad.");
+    expect(item.media.description.value, "This was some really bizarre band I listened to as a young lad.");
 
     expect(item.media.keywords, "kitty, cat, big dog, yarn, fluffy");
 
@@ -191,8 +182,7 @@ void main() {
     expect(item.media.embed.height, 323);
     expect(item.media.embed.params.length, 5);
     expect(item.media.embed.params.first.name, "type");
-    expect(
-        item.media.embed.params.first.value, "application/x-shockwave-flash");
+    expect(item.media.embed.params.first.value, "application/x-shockwave-flash");
 
     expect(item.media.responses.length, 2);
     expect(item.media.responses.first, "http://www.response1.com");
@@ -208,8 +198,7 @@ void main() {
     expect(item.media.prices.length, 2);
     expect(item.media.prices.first.price, 19.99);
     expect(item.media.prices.first.type, "rent");
-    expect(
-        item.media.prices.first.info, "http://www.dummy.jp/package_info.html");
+    expect(item.media.prices.first.info, "http://www.dummy.jp/package_info.html");
     expect(item.media.prices.first.currency, "EUR");
 
     expect(item.media.license.type, "text/html");
@@ -318,18 +307,11 @@ void main() {
     expect(feed.itunes.author, "Changelog Media");
     expect(feed.itunes.summary, "Foo");
     expect(feed.itunes.explicit, false);
-    expect(feed.itunes.image.href,
-        "https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357");
-    expect(feed.itunes.keywords,
-        "go,golang,open source,software,development".split(","));
+    expect(feed.itunes.image.href, "https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357");
+    expect(feed.itunes.keywords, "go,golang,open source,software,development".split(","));
     expect(feed.itunes.owner.name, "Changelog Media");
     expect(feed.itunes.owner.email, "editors@changelog.com");
-    expect(
-        Set.from([
-          feed.itunes.categories[0].category,
-          feed.itunes.categories[1].category
-        ]),
-        ["Technology", "Foo"]);
+    expect(Set.from([feed.itunes.categories[0].category, feed.itunes.categories[1].category]), ["Technology", "Foo"]);
     for (var category in feed.itunes.categories) {
       switch (category.category) {
         case "Foo":
@@ -350,18 +332,64 @@ void main() {
     expect(item.itunes.episodeType, RssItunesEpisodeType.full);
     expect(item.itunes.episode, 1);
     expect(item.itunes.season, 1);
-    expect(item.itunes.image.href,
-        "https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357");
+    expect(item.itunes.image.href, "https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357");
     expect(item.itunes.duration, Duration(minutes: 32, seconds: 30));
     expect(item.itunes.explicit, false);
-    expect(item.itunes.keywords,
-        "go,golang,open source,software,development".split(","));
+    expect(item.itunes.keywords, "go,golang,open source,software,development".split(","));
     expect(item.itunes.subtitle, "with Erik, Carlisia, and Brian");
     expect(item.itunes.summary, "Foo");
-    expect(item.itunes.author,
-        "Erik St. Martin, Carlisia Pinto, and Brian Ketelsen");
+    expect(item.itunes.author, "Erik St. Martin, Carlisia Pinto, and Brian Ketelsen");
     expect(item.itunes.explicit, false);
     expect(item.itunes.title, "awesome title");
     expect(item.itunes.block, false);
+  });
+  test("parse RSS-PodcastIndex-R1.xml", () {
+    var xmlString = new File("test/xml/RSS-PodcastIndex-R1.xml").readAsStringSync();
+
+    var feed = new RssFeed.parse(xmlString);
+
+    expect(feed.title, 'Podcasting 2.0 Namespace Example');
+    expect(
+        feed.description, 'This is a fake show that exists only as an example of the "podcast" namespace tag usage.');
+    expect(feed.link, 'http://example.com/podcast');
+    expect(feed.language, 'en-US');
+    expect(feed.lastBuildDate, 'Fri, 09 Oct 2020 04:30:38 GMT');
+    expect(feed.generator, 'Freedom Controller');
+    expect(feed.webMaster, 'support@example.com (Tech Support)');
+
+    expect(feed.podcastIndex.locked.locked, true);
+    expect(feed.podcastIndex.locked.owner, 'podcastowner@example.com');
+    expect(feed.podcastIndex.funding.url, 'https://example.com/donate');
+    expect(feed.podcastIndex.funding.value, 'Support the show!');
+
+    var item1 = feed.items[0];
+    var transcripts1 = item1.podcastIndex.transcripts;
+    var soundbite1 = item1.podcastIndex.soundbites;
+    var chapters1 = item1.podcastIndex.chapters;
+
+    expect(transcripts1.length, 1);
+    expect(transcripts1[0].url, 'https://example.com/ep3/transcript.txt');
+    expect(transcripts1[0].type, 'text/plain');
+    expect(chapters1.url, 'https://example.com/ep3_chapters.json');
+    expect(chapters1.type, 'application/json');
+
+    expect(soundbite1.length, 1);
+    expect(soundbite1[0].startTime, 33.833);
+    expect(soundbite1[0].duration, 60.0);
+
+    var item2 = feed.items[1];
+    var transcripts2 = item2.podcastIndex.transcripts;
+    var soundbite2 = item2.podcastIndex.soundbites;
+    var chapters2 = item2.podcastIndex.chapters;
+
+    expect(transcripts2.length, 1);
+    expect(transcripts2[0].url, 'https://example.com/ep2/transcript.txt');
+    expect(transcripts2[0].type, 'text/plain');
+    expect(chapters2.url, 'https://example.com/ep2_chapters.json');
+    expect(chapters2.type, 'application/json');
+
+    expect(soundbite2.length, 1);
+    expect(soundbite2[0].startTime, 45.4);
+    expect(soundbite2[0].duration, 56.0);
   });
 }
