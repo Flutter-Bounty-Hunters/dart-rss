@@ -2,13 +2,13 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class AtomSource {
-  final String id;
-  final String title;
-  final String updated;
+  final String? id;
+  final String? title;
+  final String? updated;
 
   AtomSource(this.id, this.title, this.updated);
 
-  factory AtomSource.parse(XmlElement element) {
+  static AtomSource? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

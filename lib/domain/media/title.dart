@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 
 class Title {
-  final String type;
-  final String value;
+  final String? type;
+  final String? value;
 
   Title({
     this.type,
     this.value,
   });
 
-  factory Title.parse(XmlElement element) {
+  static Title? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

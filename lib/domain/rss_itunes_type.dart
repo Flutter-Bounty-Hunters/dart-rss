@@ -2,7 +2,7 @@ import 'package:xml/xml.dart';
 
 enum RssItunesType { episodic, serial }
 
-RssItunesType newRssItunesType(XmlElement element) {
+RssItunesType? newRssItunesType(XmlElement? element) {
   // "episodic" is default type
   if (element == null) return RssItunesType.episodic;
 

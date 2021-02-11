@@ -2,22 +2,22 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class DublinCore {
-  final String title;
-  final String description;
-  final String creator;
-  final String subject;
-  final List<String> subjects;
-  final String publisher;
-  final String contributor;
-  final String date;
-  final String type;
-  final String format;
-  final String identifier;
-  final String source;
-  final String language;
-  final String relation;
-  final String coverage;
-  final String rights;
+  final String? title;
+  final String? description;
+  final String? creator;
+  final String? subject;
+  final List<String>? subjects;
+  final String? publisher;
+  final String? contributor;
+  final String? date;
+  final String? type;
+  final String? format;
+  final String? identifier;
+  final String? source;
+  final String? language;
+  final String? relation;
+  final String? coverage;
+  final String? rights;
 
   DublinCore({
     this.title,
@@ -39,17 +39,15 @@ class DublinCore {
   });
 
   factory DublinCore.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
+    final subjects = findAllDirectElementsOrNull(element, 'dc:subject');
     return DublinCore(
       title: findElementOrNull(element, "dc:title")?.text,
       description: findElementOrNull(element, "dc:description")?.text,
       creator: findElementOrNull(element, "dc:creator")?.text,
       subject: findElementOrNull(element, "dc:subject")?.text,
-      subjects: findAllDirectElementsOrNull(element, 'dc:subject')
-          .map((subjectElement) => subjectElement.text)
-          .toList(),
+      subjects: subjects == null
+          ? null
+          : subjects.map((subjectElement) => subjectElement.text).toList(),
       publisher: findElementOrNull(element, "dc:publisher")?.text,
       contributor: findElementOrNull(element, "dc:contributor")?.text,
       date: findElementOrNull(element, "dc:date")?.text,

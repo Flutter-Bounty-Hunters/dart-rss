@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 
 class Tags {
-  final String tags;
-  final int weight;
+  final String? tags;
+  final int? weight;
 
   Tags({
     this.tags,
     this.weight,
   });
 
-  factory Tags.parse(XmlElement element) {
+  static Tags? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

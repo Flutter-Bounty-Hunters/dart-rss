@@ -1,13 +1,13 @@
 import 'package:xml/xml.dart';
 
 class RssEnclosure {
-  final String url;
-  final String type;
-  final int length;
+  final String? url;
+  final String? type;
+  final int? length;
 
   RssEnclosure(this.url, this.type, this.length);
 
-  factory RssEnclosure.parse(XmlElement element) {
+  static RssEnclosure? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

@@ -5,11 +5,11 @@ import 'package:xml/xml.dart';
 import 'dublin_core/dublin_core.dart';
 
 class Rss1Item {
-  final String title;
-  final String description;
-  final String link;
-  final DublinCore dc;
-  final RssContent content;
+  final String? title;
+  final String? description;
+  final String? link;
+  final DublinCore? dc;
+  final RssContent? content;
 
   Rss1Item({
     this.title,

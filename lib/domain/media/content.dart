@@ -1,20 +1,20 @@
 import 'package:xml/xml.dart';
 
 class Content {
-  final String url;
-  final String type;
-  final int fileSize;
-  final String medium;
-  final bool isDefault;
-  final String expression;
-  final int bitrate;
-  final double framerate;
-  final double samplingrate;
-  final int channels;
-  final int duration;
-  final int height;
-  final int width;
-  final String lang;
+  final String? url;
+  final String? type;
+  final int? fileSize;
+  final String? medium;
+  final bool? isDefault;
+  final String? expression;
+  final int? bitrate;
+  final double? framerate;
+  final double? samplingrate;
+  final int? channels;
+  final int? duration;
+  final int? height;
+  final int? width;
+  final String? lang;
 
   Content({
     this.url,
@@ -43,9 +43,8 @@ class Content {
       expression: element.getAttribute("expression"),
       bitrate: int.tryParse(element.getAttribute("bitrate") ?? "0"),
       framerate: double.tryParse(element.getAttribute("framerate") ?? "0"),
-      samplingrate: double.tryParse(
-        element.getAttribute("samplingrate") ?? "0",
-      ),
+      samplingrate:
+          double.tryParse(element.getAttribute("samplingrate") ?? "0"),
       channels: int.tryParse(element.getAttribute("channels") ?? "0"),
       duration: int.tryParse(element.getAttribute("duration") ?? "0"),
       height: int.tryParse(element.getAttribute("height") ?? "0"),

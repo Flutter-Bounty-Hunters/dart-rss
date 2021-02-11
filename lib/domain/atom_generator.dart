@@ -1,13 +1,13 @@
 import 'package:xml/xml.dart';
 
 class AtomGenerator {
-  final String uri;
-  final String version;
-  final String value;
+  final String? uri;
+  final String? version;
+  final String? value;
 
   AtomGenerator(this.uri, this.version, this.value);
 
-  factory AtomGenerator.parse(XmlElement element) {
+  static AtomGenerator? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

@@ -16,14 +16,15 @@ class RssContent {
 
   RssContent(this.value, this.images);
 
-  factory RssContent.parse(XmlElement element) {
+  static RssContent? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
     final content = element.text;
     final images = <String>[];
     _imagesRegExp.allMatches(content).forEach((match) {
-      images.add(match.group(1));
+      final matchGroup = match.group(1);
+      if (matchGroup != null) images.add(matchGroup);
     });
     return RssContent(content, images);
   }

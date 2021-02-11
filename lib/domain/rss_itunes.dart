@@ -8,19 +8,19 @@ import 'rss_itunes_owner.dart';
 import 'rss_itunes_type.dart';
 
 class RssItunes {
-  final String author;
-  final String summary;
-  final bool explicit;
-  final String title;
-  final String subtitle;
-  final RssItunesOwner owner;
-  final List<String> keywords;
-  final RssItunesImage image;
-  final List<RssItunesCategory> categories;
-  final RssItunesType type;
-  final String newFeedUrl;
-  final bool block;
-  final bool complete;
+  final String? author;
+  final String? summary;
+  final bool? explicit;
+  final String? title;
+  final String? subtitle;
+  final RssItunesOwner? owner;
+  final List<String>? keywords;
+  final RssItunesImage? image;
+  final List<RssItunesCategory?>? categories;
+  final RssItunesType? type;
+  final String? newFeedUrl;
+  final bool? block;
+  final bool? complete;
 
   RssItunes({
     this.author,
@@ -39,9 +39,7 @@ class RssItunes {
   });
 
   factory RssItunes.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
+    final categories = findAllDirectElementsOrNull(element, "itunes:category");
     return RssItunes(
       author: findElementOrNull(element, "itunes:author")?.text?.trim(),
       summary: findElementOrNull(element, "itunes:summary")?.text?.trim(),
@@ -55,7 +53,7 @@ class RssItunes {
           ?.map((keyword) => keyword.trim())
           ?.toList(),
       image: RssItunesImage.parse(findElementOrNull(element, "itunes:image")),
-      categories: findAllDirectElementsOrNull(element, "itunes:category")
+      categories: categories == null ? null : categories
           .map((ele) => RssItunesCategory.parse(ele))
           .toList(),
       type: newRssItunesType(findElementOrNull(element, "itunes:type")),

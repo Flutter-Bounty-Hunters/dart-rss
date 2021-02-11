@@ -10,21 +10,21 @@ import 'package:xml/xml.dart';
 import 'rss_item_itunes.dart';
 
 class RssItem {
-  final String title;
-  final String description;
-  final String link;
+  final String? title;
+  final String? description;
+  final String? link;
 
-  final List<RssCategory> categories;
-  final String guid;
-  final String pubDate;
-  final String author;
-  final String comments;
-  final RssSource source;
-  final RssContent content;
-  final Media media;
-  final RssEnclosure enclosure;
-  final DublinCore dc;
-  final RssItemItunes itunes;
+  final List<RssCategory>? categories;
+  final String? guid;
+  final String? pubDate;
+  final String? author;
+  final String? comments;
+  final RssSource? source;
+  final RssContent? content;
+  final Media? media;
+  final RssEnclosure? enclosure;
+  final DublinCore? dc;
+  final RssItemItunes? itunes;
 
   RssItem({
     this.title,
@@ -48,9 +48,10 @@ class RssItem {
       title: findElementOrNull(element, "title")?.text,
       description: findElementOrNull(element, "description")?.text,
       link: findElementOrNull(element, "link")?.text,
-      categories: element.findElements("category").map((element) {
-        return RssCategory.parse(element);
-      }).toList(),
+      categories: element
+          .findElements("category")
+          .map((element) => RssCategory.parse(element))
+          .toList(),
       guid: findElementOrNull(element, "guid")?.text,
       pubDate: findElementOrNull(element, "pubDate")?.text,
       author: findElementOrNull(element, "author")?.text,

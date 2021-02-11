@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 
 class Rating {
-  final String scheme;
-  final String value;
+  final String? scheme;
+  final String? value;
 
   Rating({
     this.scheme,
     this.value,
   });
 
-  factory Rating.parse(XmlElement element) {
+  static Rating? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

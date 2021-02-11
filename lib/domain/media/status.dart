@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 
 class Status {
-  final String state;
-  final String reason;
+  final String? state;
+  final String? reason;
 
   Status({
     this.state,
     this.reason,
   });
 
-  factory Status.parse(XmlElement element) {
+  static Status? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
