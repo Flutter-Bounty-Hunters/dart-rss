@@ -12,7 +12,7 @@ void main() {
     };
 
     for (final title in testFeeds.keys) {
-      final url = testFeeds[title];
+      final url = testFeeds[title]!;
       test(title, () async {
         // given
         final feed = await WebFeed.fromUrl(url);
@@ -20,7 +20,7 @@ void main() {
         // then
         expect(feed.title.isNotEmpty, true);
         expect(feed.items.first.updated is DateTime, true);
-        expect(feed.items.first.links.isNotEmpty, true);
+        expect(feed.items.first.links!.isNotEmpty, true);
       });
     }
   });

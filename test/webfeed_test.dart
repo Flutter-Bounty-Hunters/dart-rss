@@ -9,9 +9,9 @@ void main() {
     final rss1XmlFile = File('test/xml/RSS1-with-dublin-core-module.xml');
     final rss2XmlFile = File('test/xml/RSS.xml');
 
-    String atomXmlString;
-    String rss1XmlString;
-    String rss2XmlString;
+    late String atomXmlString;
+    late String rss1XmlString;
+    late String rss2XmlString;
 
     setUpAll(() async {
       final loadFileFutures = [
