@@ -19,6 +19,7 @@
 
         <podcast:locked owner="podcastowner@example.com">yes</podcast:locked>
         <podcast:funding url="https://example.com/donate">Support the show!</podcast:funding>
+        <podcast:funding url="https://example.com/member">Become a member!</podcast:funding>
 
         <podcast:location name="Austin, TX" geo="geo:30.2672,97.7431" osmid="R113314" />
 

@@ -359,8 +359,10 @@ void main() {
 
     expect(feed.podcastIndex.locked.locked, true);
     expect(feed.podcastIndex.locked.owner, 'podcastowner@example.com');
-    expect(feed.podcastIndex.funding.url, 'https://example.com/donate');
-    expect(feed.podcastIndex.funding.value, 'Support the show!');
+    expect(feed.podcastIndex.funding[0].url, 'https://example.com/donate');
+    expect(feed.podcastIndex.funding[0].value, 'Support the show!');
+    expect(feed.podcastIndex.funding[1].url, 'https://example.com/member');
+    expect(feed.podcastIndex.funding[1].value, 'Become a member!');
 
     var item1 = feed.items[0];
     var transcripts1 = item1.podcastIndex.transcripts;
