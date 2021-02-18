@@ -14,24 +14,24 @@ class RssItunes {
   final String? title;
   final String? subtitle;
   final RssItunesOwner? owner;
-  final List<String>? keywords;
+  final List<String> keywords;
   final RssItunesImage? image;
-  final List<RssItunesCategory?>? categories;
+  final List<RssItunesCategory?> categories;
   final RssItunesType? type;
   final String? newFeedUrl;
   final bool? block;
   final bool? complete;
 
-  RssItunes({
+  const RssItunes({
     this.author,
     this.summary,
     this.explicit,
     this.title,
     this.subtitle,
     this.owner,
-    this.keywords,
+    this.keywords = const <String>[],
     this.image,
-    this.categories,
+    this.categories = const <RssItunesCategory?>[],
     this.type,
     this.newFeedUrl,
     this.block,
@@ -39,28 +39,29 @@ class RssItunes {
   });
 
   factory RssItunes.parse(XmlElement element) {
-    final categories = findAllDirectElementsOrNull(element, "itunes:category");
+    final categories = findAllDirectElementsOrNull(element, 'itunes:category');
     return RssItunes(
-      author: findElementOrNull(element, "itunes:author")?.text?.trim(),
-      summary: findElementOrNull(element, "itunes:summary")?.text?.trim(),
-      explicit: parseBoolLiteral(element, "itunes:explicit"),
-      title: findElementOrNull(element, "itunes:title")?.text?.trim(),
-      subtitle: findElementOrNull(element, "itunes:subtitle")?.text?.trim(),
-      owner: RssItunesOwner.parse(findElementOrNull(element, "itunes:owner")),
-      keywords: findElementOrNull(element, "itunes:keywords")
-          ?.text
-          ?.split(",")
-          ?.map((keyword) => keyword.trim())
-          ?.toList(),
-      image: RssItunesImage.parse(findElementOrNull(element, "itunes:image")),
-      categories: categories == null ? null : categories
-          .map((ele) => RssItunesCategory.parse(ele))
-          .toList(),
-      type: newRssItunesType(findElementOrNull(element, "itunes:type")),
+      author: findElementOrNull(element, 'itunes:author')?.text?.trim(),
+      summary: findElementOrNull(element, 'itunes:summary')?.text?.trim(),
+      explicit: parseBoolLiteral(element, 'itunes:explicit'),
+      title: findElementOrNull(element, 'itunes:title')?.text?.trim(),
+      subtitle: findElementOrNull(element, 'itunes:subtitle')?.text?.trim(),
+      owner: RssItunesOwner.parse(findElementOrNull(element, 'itunes:owner')),
+      keywords: findElementOrNull(element, 'itunes:keywords')
+              ?.text
+              ?.split(',')
+              ?.map((keyword) => keyword.trim())
+              ?.toList() ??
+          const <String>[],
+      image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
+      categories:
+          categories?.map((ele) => RssItunesCategory.parse(ele)).toList() ??
+              const <RssItunesCategory>[],
+      type: newRssItunesType(findElementOrNull(element, 'itunes:type')),
       newFeedUrl:
-          findElementOrNull(element, "itunes:new-feed-url")?.text?.trim(),
-      block: parseBoolLiteral(element, "itunes:block"),
-      complete: parseBoolLiteral(element, "itunes:complete"),
+          findElementOrNull(element, 'itunes:new-feed-url')?.text?.trim(),
+      block: parseBoolLiteral(element, 'itunes:block'),
+      complete: parseBoolLiteral(element, 'itunes:complete'),
     );
   }
 }

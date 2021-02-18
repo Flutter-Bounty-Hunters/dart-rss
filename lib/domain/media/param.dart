@@ -4,13 +4,13 @@ class Param {
   final String? name;
   final String? value;
 
-  Param({
+  const Param({
     this.name,
     this.value,
   });
 
   factory Param.parse(XmlElement element) {
-    return new Param(
+    return Param(
       name: element.getAttribute("name"),
       value: element.text,
     );

@@ -7,9 +7,9 @@ RssItunesType? newRssItunesType(XmlElement? element) {
   if (element == null) return RssItunesType.episodic;
 
   switch (element.text) {
-    case "episodic":
+    case 'episodic':
       return RssItunesType.episodic;
-    case "serial":
+    case 'serial':
       return RssItunesType.serial;
     default:
       return null;

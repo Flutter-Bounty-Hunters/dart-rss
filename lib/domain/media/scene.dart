@@ -7,7 +7,7 @@ class Scene {
   final String? startTime;
   final String? endTime;
 
-  Scene({
+  const Scene({
     this.title,
     this.description,
     this.startTime,
@@ -15,11 +15,11 @@ class Scene {
   });
 
   factory Scene.parse(XmlElement element) {
-    return new Scene(
-      title: findElementOrNull(element, "sceneTitle")?.text,
-      description: findElementOrNull(element, "sceneDescription")?.text,
-      startTime: findElementOrNull(element, "sceneStartTime")?.text,
-      endTime: findElementOrNull(element, "sceneEndTime")?.text,
+    return Scene(
+      title: findElementOrNull(element, 'sceneTitle')?.text,
+      description: findElementOrNull(element, 'sceneDescription')?.text,
+      startTime: findElementOrNull(element, 'sceneStartTime')?.text,
+      endTime: findElementOrNull(element, 'sceneEndTime')?.text,
     );
   }
 }

@@ -15,7 +15,7 @@ class RssItemItunes {
   final String? summary;
   final bool? explicit;
   final String? subtitle;
-  final List<String>? keywords;
+  final List<String> keywords;
   final RssItunesImage? image;
   final RssItunesCategory? category;
   final bool? block;
@@ -30,32 +30,38 @@ class RssItemItunes {
     this.summary,
     this.explicit,
     this.subtitle,
-    this.keywords,
+    this.keywords = const <String>[],
     this.image,
     this.category,
     this.block,
   });
 
   factory RssItemItunes.parse(XmlElement element) {
-    var episodeStr = findElementOrNull(element, "itunes:episode")?.text?.trim();
-    var seasonStr = findElementOrNull(element, "itunes:season")?.text?.trim();
-    var durationStr = findElementOrNull(element, "itunes:duration")?.text?.trim();
+    final episodeStr = findElementOrNull(element, 'itunes:episode')?.text?.trim();
+    final seasonStr = findElementOrNull(element, 'itunes:season')?.text?.trim();
+    final durationStr = findElementOrNull(element, 'itunes:duration')?.text?.trim();
 
     return RssItemItunes(
-      title: findElementOrNull(element, "itunes:title")?.text?.trim(),
+      title: findElementOrNull(element, 'itunes:title')?.text?.trim(),
       episode: episodeStr == null ? null : int.tryParse(episodeStr),
       season: seasonStr == null ? null : int.tryParse(seasonStr),
       duration: durationStr == null ? null : parseDuration(durationStr),
-      episodeType: newRssItunesEpisodeType(findElementOrNull(element, "itunes:episodeType")),
-      author: findElementOrNull(element, "itunes:author")?.text?.trim(),
-      summary: findElementOrNull(element, "itunes:summary")?.text?.trim(),
-      explicit: parseBoolLiteral(element, "itunes:explicit"),
-      subtitle: findElementOrNull(element, "itunes:subtitle")?.text?.trim(),
-      keywords: findElementOrNull(element, "itunes:keywords")?.text?.split(",")?.map((keyword) => keyword.trim())?.toList(),
-      image: RssItunesImage.parse(findElementOrNull(element, "itunes:image")),
+      episodeType: newRssItunesEpisodeType(
+          findElementOrNull(element, 'itunes:episodeType')),
+      author: findElementOrNull(element, 'itunes:author')?.text?.trim(),
+      summary: findElementOrNull(element, 'itunes:summary')?.text?.trim(),
+      explicit: parseBoolLiteral(element, 'itunes:explicit'),
+      subtitle: findElementOrNull(element, 'itunes:subtitle')?.text?.trim(),
+      keywords: findElementOrNull(element, 'itunes:keywords')
+              ?.text
+              ?.split(',')
+              ?.map((keyword) => keyword.trim())
+              ?.toList() ??
+          const <String>[],
+      image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
       category: RssItunesCategory.parse(
-          findElementOrNull(element, "itunes:category")),
-      block: parseBoolLiteral(element, "itunes:block"),
+          findElementOrNull(element, 'itunes:category')),
+      block: parseBoolLiteral(element, 'itunes:block'),
     );
   }
 }
@@ -64,7 +70,7 @@ Duration parseDuration(String s) {
   var hours = 0;
   var minutes = 0;
   var seconds = 0;
-  var parts = s.split(':');
+  final parts = s.split(':');
   if (parts.length > 2) {
     hours = int.tryParse(parts[parts.length - 3]) ?? 0;
   }

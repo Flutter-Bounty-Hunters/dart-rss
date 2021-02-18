@@ -4,7 +4,7 @@ class Hash {
   final String? algo;
   final String? value;
 
-  Hash({
+  const Hash({
     this.algo,
     this.value,
   });
@@ -13,8 +13,8 @@ class Hash {
     if (element == null) {
       return null;
     }
-    return new Hash(
-      algo: element.getAttribute("algo"),
+    return Hash(
+      algo: element.getAttribute('algo'),
       value: element.text,
     );
   }

@@ -5,15 +5,15 @@ class AtomGenerator {
   final String? version;
   final String? value;
 
-  AtomGenerator(this.uri, this.version, this.value);
+  const AtomGenerator(this.uri, this.version, this.value);
 
   static AtomGenerator? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
-    var uri = element.getAttribute("uri");
-    var version = element.getAttribute("version");
-    var value = element.text;
-    return new AtomGenerator(uri, version, value);
+    final uri = element.getAttribute('uri');
+    final version = element.getAttribute('version');
+    final value = element.text;
+    return AtomGenerator(uri, version, value);
   }
 }

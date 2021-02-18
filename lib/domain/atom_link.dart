@@ -8,7 +8,7 @@ class AtomLink {
   final String? title;
   final int length;
 
-  AtomLink(
+  const AtomLink(
     this.href,
     this.rel,
     this.type,
@@ -18,15 +18,15 @@ class AtomLink {
   );
 
   factory AtomLink.parse(XmlElement element) {
-    var href = element.getAttribute("href");
-    var rel = element.getAttribute("rel");
-    var type = element.getAttribute("type");
-    var title = element.getAttribute("title");
-    var hreflang = element.getAttribute("hreflang");
+    final href = element.getAttribute('href');
+    final rel = element.getAttribute('rel');
+    final type = element.getAttribute('type');
+    final title = element.getAttribute('title');
+    final hreflang = element.getAttribute('hreflang');
     var length = 0;
-    final lengthElement = element.getAttribute("length");
+    final lengthElement = element.getAttribute('length');
     if (lengthElement != null) {
-      length = int.parse(lengthElement);
+      length = int.tryParse(lengthElement) ?? 0;
     }
     return AtomLink(href, rel, type, hreflang, title, length);
   }

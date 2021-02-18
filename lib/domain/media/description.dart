@@ -4,7 +4,7 @@ class Description {
   final String? type;
   final String? value;
 
-  Description({
+  const Description({
     this.type,
     this.value,
   });
@@ -13,8 +13,8 @@ class Description {
     if (element == null) {
       return null;
     }
-    return new Description(
-      type: element.getAttribute("type"),
+    return Description(
+      type: element.getAttribute('type'),
       value: element.text,
     );
   }

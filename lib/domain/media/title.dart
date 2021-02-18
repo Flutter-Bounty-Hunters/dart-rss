@@ -4,7 +4,7 @@ class Title {
   final String? type;
   final String? value;
 
-  Title({
+  const Title({
     this.type,
     this.value,
   });
@@ -13,8 +13,8 @@ class Title {
     if (element == null) {
       return null;
     }
-    return new Title(
-      type: element.getAttribute("type"),
+    return Title(
+      type: element.getAttribute('type'),
       value: element.text,
     );
   }

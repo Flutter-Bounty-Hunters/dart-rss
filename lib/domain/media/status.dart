@@ -4,7 +4,7 @@ class Status {
   final String? state;
   final String? reason;
 
-  Status({
+  const Status({
     this.state,
     this.reason,
   });
@@ -13,9 +13,9 @@ class Status {
     if (element == null) {
       return null;
     }
-    return new Status(
-      state: element.getAttribute("state"),
-      reason: element.getAttribute("reason"),
+    return Status(
+      state: element.getAttribute('state'),
+      reason: element.getAttribute('reason'),
     );
   }
 }

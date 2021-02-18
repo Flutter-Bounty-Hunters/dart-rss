@@ -5,7 +5,7 @@ class Restriction {
   final String? type;
   final String? value;
 
-  Restriction({
+  const Restriction({
     this.relationship,
     this.type,
     this.value,
@@ -15,9 +15,9 @@ class Restriction {
     if (element == null) {
       return null;
     }
-    return new Restriction(
-      relationship: element.getAttribute("relationship"),
-      type: element.getAttribute("type"),
+    return Restriction(
+      relationship: element.getAttribute('relationship'),
+      type: element.getAttribute('type'),
       value: element.text,
     );
   }

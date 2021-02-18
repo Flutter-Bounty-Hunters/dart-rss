@@ -21,17 +21,17 @@ List<XmlElement>? findAllDirectElementsOrNull(XmlElement element, String name,
 }
 
 bool? parseBoolLiteral(XmlElement element, String tagName) {
-  var v = findElementOrNull(element, tagName)?.text?.toLowerCase()?.trim();
+  final v = findElementOrNull(element, tagName)?.text?.toLowerCase()?.trim();
   if (v == null) return null;
   return ["yes", "true"].contains(v);
 }
 
 DateTime? parseDateTime(String? dateTimeString) {
   if (dateTimeString == null) return null;
-  return DateTime.parse(dateTimeString);
+  return DateTime.tryParse(dateTimeString);
 }
 
 int? parseInt(String? intString) {
   if (intString == null) return null;
-  return int.parse(intString);
+  return int.tryParse(intString);
 }

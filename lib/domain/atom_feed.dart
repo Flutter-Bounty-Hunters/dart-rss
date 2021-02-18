@@ -10,27 +10,27 @@ class AtomFeed {
   final String? id;
   final String? title;
   final String? updated;
-  final List<AtomItem>? items;
+  final List<AtomItem> items;
 
-  final List<AtomLink>? links;
-  final List<AtomPerson>? authors;
-  final List<AtomPerson>? contributors;
-  final List<AtomCategory>? categories;
+  final List<AtomLink> links;
+  final List<AtomPerson> authors;
+  final List<AtomPerson> contributors;
+  final List<AtomCategory> categories;
   final AtomGenerator? generator;
   final String? icon;
   final String? logo;
   final String? rights;
   final String? subtitle;
 
-  AtomFeed({
+  const AtomFeed({
     this.id,
     this.title,
     this.updated,
-    this.items,
-    this.links,
-    this.authors,
-    this.contributors,
-    this.categories,
+    this.items = const <AtomItem>[],
+    this.links = const <AtomLink>[],
+    this.authors = const <AtomPerson>[],
+    this.contributors = const <AtomPerson>[],
+    this.categories = const <AtomCategory>[],
     this.generator,
     this.icon,
     this.logo,
@@ -39,44 +39,44 @@ class AtomFeed {
   });
 
   factory AtomFeed.parse(String xmlString) {
-    var document = XmlDocument.parse(xmlString);
+    final document = XmlDocument.parse(xmlString);
     XmlElement feedElement;
     try {
-      feedElement = document.findElements("feed").first;
+      feedElement = document.findElements('feed').first;
     } on StateError {
-      throw new ArgumentError("feed not found");
+      throw ArgumentError('feed not found');
     }
 
     return AtomFeed(
-      id: findElementOrNull(feedElement, "id")?.text,
-      title: findElementOrNull(feedElement, "title")?.text,
-      updated: findElementOrNull(feedElement, "updated")?.text,
+      id: findElementOrNull(feedElement, 'id')?.text,
+      title: findElementOrNull(feedElement, 'title')?.text,
+      updated: findElementOrNull(feedElement, 'updated')?.text,
       items: feedElement
-          .findElements("entry")
+          .findElements('entry')
           .map((element) => AtomItem.parse(element))
           .toList(),
       links: feedElement
-          .findElements("link")
+          .findElements('link')
           .map((element) => AtomLink.parse(element))
           .toList(),
       authors: feedElement
-          .findElements("author")
+          .findElements('author')
           .map((element) => AtomPerson.parse(element))
           .toList(),
       contributors: feedElement
-          .findElements("contributor")
+          .findElements('contributor')
           .map((element) => AtomPerson.parse(element))
           .toList(),
       categories: feedElement
-          .findElements("category")
+          .findElements('category')
           .map((element) => AtomCategory.parse(element))
           .toList(),
       generator:
-          AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
-      icon: findElementOrNull(feedElement, "icon")?.text,
-      logo: findElementOrNull(feedElement, "logo")?.text,
-      rights: findElementOrNull(feedElement, "rights")?.text,
-      subtitle: findElementOrNull(feedElement, "subtitle")?.text,
+          AtomGenerator.parse(findElementOrNull(feedElement, 'generator')),
+      icon: findElementOrNull(feedElement, 'icon')?.text,
+      logo: findElementOrNull(feedElement, 'logo')?.text,
+      rights: findElementOrNull(feedElement, 'rights')?.text,
+      subtitle: findElementOrNull(feedElement, 'subtitle')?.text,
     );
   }
 }

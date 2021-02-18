@@ -5,19 +5,19 @@ class Category {
   final String? label;
   final String? value;
 
-  Category({
+  const Category({
     this.scheme,
     this.label,
     this.value,
   });
 
-  static Category? parse (XmlElement? element) {
+  static Category? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
-    return new Category(
-      scheme: element.getAttribute("scheme"),
-      label: element.getAttribute("label"),
+    return Category(
+      scheme: element.getAttribute('scheme'),
+      label: element.getAttribute('label'),
       value: element.text,
     );
   }

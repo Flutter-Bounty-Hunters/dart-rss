@@ -9,7 +9,7 @@ class Community {
   final Statistics? statistics;
   final Tags? tags;
 
-  Community({
+  const Community({
     this.starRating,
     this.statistics,
     this.tags,
@@ -19,12 +19,12 @@ class Community {
     if (element == null) {
       return null;
     }
-    return new Community(
+    return Community(
       starRating:
-          StarRating.parse(findElementOrNull(element, "media:starRating")),
+          StarRating.parse(findElementOrNull(element, 'media:starRating')),
       statistics:
-          Statistics.parse(findElementOrNull(element, "media:statistics")),
-      tags: Tags.parse(findElementOrNull(element, "media:tags")),
+          Statistics.parse(findElementOrNull(element, 'media:statistics')),
+      tags: Tags.parse(findElementOrNull(element, 'media:tags')),
     );
   }
 }

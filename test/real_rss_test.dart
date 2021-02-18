@@ -20,7 +20,7 @@ void main() {
         // then
         expect(feed.title.isNotEmpty, true);
         expect(feed.items.first.updated is DateTime, true);
-        expect(feed.items.first.links!.isNotEmpty, true);
+        expect(feed.items.first.links.isNotEmpty, true);
       });
     }
   });

@@ -6,12 +6,12 @@ class AtomPerson {
   final String? uri;
   final String? email;
 
-  AtomPerson(this.name, this.uri, this.email);
+  const AtomPerson(this.name, this.uri, this.email);
 
   factory AtomPerson.parse(XmlElement element) {
-    var name = findElementOrNull(element, "name")?.text;
-    var uri = findElementOrNull(element, "uri")?.text;
-    var email = findElementOrNull(element, "email")?.text;
+    final name = findElementOrNull(element, 'name')?.text;
+    final uri = findElementOrNull(element, 'uri')?.text;
+    final email = findElementOrNull(element, 'email')?.text;
     return AtomPerson(name, uri, email);
   }
 }

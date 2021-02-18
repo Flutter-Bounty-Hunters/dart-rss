@@ -3,7 +3,7 @@ import 'package:xml/xml.dart';
 class Rights {
   final String? status;
 
-  Rights({
+  const Rights({
     this.status,
   });
 
@@ -11,8 +11,8 @@ class Rights {
     if (element == null) {
       return null;
     }
-    return new Rights(
-      status: element.getAttribute("status"),
+    return Rights(
+      status: element.getAttribute('status'),
     );
   }
 }

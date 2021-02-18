@@ -6,14 +6,14 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class Group {
-  final List<Content>? contents;
-  final List<Credit>? credits;
+  final List<Content> contents;
+  final List<Credit> credits;
   final Category? category;
   final Rating? rating;
 
-  Group({
-    this.contents,
-    this.credits,
+  const Group({
+    this.contents = const <Content>[],
+    this.credits = const <Credit>[],
     this.category,
     this.rating,
   });
@@ -22,17 +22,17 @@ class Group {
     if (element == null) {
       return null;
     }
-    return new Group(
+    return Group(
       contents: element
-          .findElements("media:content")
-          .map((e) => new Content.parse(e))
+          .findElements('media:content')
+          .map((e) => Content.parse(e))
           .toList(),
       credits: element
-          .findElements("media:credit")
-          .map((e) => new Credit.parse(e))
+          .findElements('media:credit')
+          .map((e) => Credit.parse(e))
           .toList(),
-      category: Category.parse(findElementOrNull(element, "media:category")),
-      rating: Rating.parse(findElementOrNull(element, "media:rating")),
+      category: Category.parse(findElementOrNull(element, 'media:category')),
+      rating: Rating.parse(findElementOrNull(element, 'media:rating')),
     );
   }
 }

@@ -4,7 +4,7 @@ class Rating {
   final String? scheme;
   final String? value;
 
-  Rating({
+  const Rating({
     this.scheme,
     this.value,
   });
@@ -13,8 +13,8 @@ class Rating {
     if (element == null) {
       return null;
     }
-    return new Rating(
-      scheme: element.getAttribute("scheme"),
+    return Rating(
+      scheme: element.getAttribute('scheme'),
       value: element.text,
     );
   }
