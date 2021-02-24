@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0-nullsafety.0](https://pub.dev/packages/dart_rss/versions/2.0.0-nullsafety.0)
+## [2.0.0](https://pub.dev/packages/dart_rss/versions/2.0.0)
 ### Update
 - migrate to null safety
 
