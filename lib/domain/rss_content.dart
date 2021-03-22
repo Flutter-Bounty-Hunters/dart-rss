@@ -1,6 +1,6 @@
 import 'package:xml/xml.dart';
 
-final _imagesRegExp = new RegExp(
+final _imagesRegExp = RegExp(
   "<img\\s.*?src=(?:'|\")([^'\">]+)(?:'|\")",
   multiLine: true,
   caseSensitive: false,
@@ -11,19 +11,20 @@ final _imagesRegExp = new RegExp(
 /// - `xmlns:content="http://purl.org/rss/1.0/modules/content/"`
 ///
 class RssContent {
-  String value;
-  Iterable<String> images;
+  final String value;
+  final Iterable<String> images;
 
-  RssContent(this.value, this.images);
+  const RssContent(this.value, this.images);
 
-  factory RssContent.parse(XmlElement element) {
+  static RssContent? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
     final content = element.text;
     final images = <String>[];
     _imagesRegExp.allMatches(content).forEach((match) {
-      images.add(match.group(1));
+      final matchGroup = match.group(1);
+      if (matchGroup != null) images.add(matchGroup);
     });
     return RssContent(content, images);
   }

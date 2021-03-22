@@ -14,21 +14,21 @@ enum UpdatePeriod {
 }
 
 class Rss1Feed {
-  final String title;
-  final String description;
-  final String link;
-  final String image;
+  final String? title;
+  final String? description;
+  final String? link;
+  final String? image;
   final List<Rss1Item> items;
-  final UpdatePeriod updatePeriod;
-  final int updateFrequency;
-  final DateTime updateBase;
-  final DublinCore dc;
+  final UpdatePeriod? updatePeriod;
+  final int? updateFrequency;
+  final DateTime? updateBase;
+  final DublinCore? dc;
 
   Rss1Feed({
     this.title,
     this.description,
     this.link,
-    this.items,
+    this.items = const <Rss1Item>[],
     this.image,
     this.updatePeriod,
     this.updateFrequency,
@@ -36,7 +36,7 @@ class Rss1Feed {
     this.dc,
   });
 
-  static UpdatePeriod _parseUpdatePeriod(String updatePeriodString) {
+  static UpdatePeriod? _parseUpdatePeriod(String? updatePeriodString) {
     switch (updatePeriodString) {
       case 'hourly':
         return UpdatePeriod.Hourly;
@@ -54,21 +54,23 @@ class Rss1Feed {
   }
 
   factory Rss1Feed.parse(String xmlString) {
-    var document = XmlDocument.parse(xmlString);
+    final document = XmlDocument.parse(xmlString);
     XmlElement rdfElement;
     try {
-      rdfElement = document.findAllElements("rdf:RDF").first;
+      rdfElement = document.findAllElements('rdf:RDF').first;
     } on StateError {
-      throw ArgumentError("channel not found");
+      throw ArgumentError('channel not found');
     }
 
+    final channel = rdfElement.findElements('channel');
     return Rss1Feed(
-      title: findElementOrNull(rdfElement, "title")?.text,
-      link: findElementOrNull(rdfElement, "link")?.text,
-      description: findElementOrNull(rdfElement, "description")?.text,
-      items: rdfElement.findElements("item").map((element) {
-        return Rss1Item.parse(element);
-      }).toList(),
+      title: findElementOrNull(rdfElement, 'title')?.text,
+      link: findElementOrNull(rdfElement, 'link')?.text,
+      description: findElementOrNull(rdfElement, 'description')?.text,
+      items: rdfElement
+          .findElements('item')
+          .map((element) => Rss1Item.parse(element))
+          .toList(),
       image:
           findElementOrNull(rdfElement, 'image')?.getAttribute('rdf:resource'),
       updatePeriod: _parseUpdatePeriod(
@@ -77,7 +79,7 @@ class Rss1Feed {
           parseInt(findElementOrNull(rdfElement, 'sy:updateFrequency')?.text),
       updateBase:
           parseDateTime(findElementOrNull(rdfElement, 'sy:updateBase')?.text),
-      dc: DublinCore.parse(rdfElement.findElements('channel').first),
+      dc: channel.isEmpty ? null : DublinCore.parse(rdfElement.findElements('channel').first),
     );
   }
 }

@@ -12,7 +12,7 @@ void main() {
     };
 
     for (final title in testFeeds.keys) {
-      final url = testFeeds[title];
+      final url = testFeeds[title]!;
       test(title, () async {
         // given
         final feed = await WebFeed.fromUrl(url);
