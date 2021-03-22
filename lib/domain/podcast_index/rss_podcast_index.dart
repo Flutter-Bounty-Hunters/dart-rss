@@ -4,23 +4,24 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class RssPodcastIndex {
-  final List<RssPodcastIndexFunding> funding;
-  final RssPodcastIndexLocked locked;
+  final List<RssPodcastIndexFunding?>? funding;
+  final RssPodcastIndexLocked? locked;
 
   RssPodcastIndex({
     this.funding,
     this.locked,
   });
 
-  factory RssPodcastIndex.parse(XmlElement element) {
+  static RssPodcastIndex? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
+
     return RssPodcastIndex(
-      funding: element.findElements("podcast:funding").map((e) {
+      funding: element.findElements('podcast:funding').map((e) {
         return RssPodcastIndexFunding.parse(e);
       }).toList(),
-      locked: RssPodcastIndexLocked.parse(findElementOrNull(element, "podcast:locked")),
+      locked: RssPodcastIndexLocked.parse(findElementOrNull(element, 'podcast:locked')),
     );
   }
 }

@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 
 class RssPodcastIndexLocked {
-  final String owner;
-  final bool locked;
+  final String? owner;
+  final bool? locked;
 
   RssPodcastIndexLocked({
     this.owner,
     this.locked,
   });
 
-  factory RssPodcastIndexLocked.parse(XmlElement element) {
+  static RssPodcastIndexLocked? parse(XmlElement? element) {
     if (element == null) return null;
 
     return RssPodcastIndexLocked(

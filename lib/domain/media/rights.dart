@@ -1,18 +1,18 @@
 import 'package:xml/xml.dart';
 
 class Rights {
-  final String status;
+  final String? status;
 
-  Rights({
+  const Rights({
     this.status,
   });
 
-  factory Rights.parse(XmlElement element) {
+  static Rights? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
-    return new Rights(
-      status: element.getAttribute("status"),
+    return Rights(
+      status: element.getAttribute('status'),
     );
   }
 }

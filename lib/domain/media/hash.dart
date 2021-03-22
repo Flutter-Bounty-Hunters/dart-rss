@@ -1,20 +1,20 @@
 import 'package:xml/xml.dart';
 
 class Hash {
-  final String algo;
-  final String value;
+  final String? algo;
+  final String? value;
 
-  Hash({
+  const Hash({
     this.algo,
     this.value,
   });
 
-  factory Hash.parse(XmlElement element) {
+  static Hash? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
-    return new Hash(
-      algo: element.getAttribute("algo"),
+    return Hash(
+      algo: element.getAttribute('algo'),
       value: element.text,
     );
   }

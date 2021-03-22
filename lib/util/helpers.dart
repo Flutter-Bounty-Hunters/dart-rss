@@ -2,8 +2,8 @@ import 'dart:core';
 
 import 'package:xml/xml.dart';
 
-XmlElement findElementOrNull(XmlElement element, String name,
-    {String namespace}) {
+XmlElement? findElementOrNull(XmlElement element, String name,
+    {String? namespace}) {
   try {
     return element.findAllElements(name, namespace: namespace).first;
   } on StateError {
@@ -11,8 +11,8 @@ XmlElement findElementOrNull(XmlElement element, String name,
   }
 }
 
-List<XmlElement> findAllDirectElementsOrNull(XmlElement element, String name,
-    {String namespace}) {
+List<XmlElement>? findAllDirectElementsOrNull(XmlElement element, String name,
+    {String? namespace}) {
   try {
     return element.findElements(name, namespace: namespace).toList();
   } on StateError {
@@ -20,18 +20,18 @@ List<XmlElement> findAllDirectElementsOrNull(XmlElement element, String name,
   }
 }
 
-bool parseBoolLiteral(XmlElement element, String tagName) {
-  var v = findElementOrNull(element, tagName)?.text?.toLowerCase()?.trim();
+bool? parseBoolLiteral(XmlElement element, String tagName) {
+  final v = findElementOrNull(element, tagName)?.text?.toLowerCase()?.trim();
   if (v == null) return null;
-  return ["yes", "true"].contains(v);
+  return ['yes', 'true'].contains(v);
 }
 
-DateTime parseDateTime(String dateTimeString) {
+DateTime? parseDateTime(String? dateTimeString) {
   if (dateTimeString == null) return null;
-  return DateTime.parse(dateTimeString);
+  return DateTime.tryParse(dateTimeString);
 }
 
-int parseInt(String intString) {
+int? parseInt(String? intString) {
   if (intString == null) return null;
-  return int.parse(intString);
+  return int.tryParse(intString);
 }

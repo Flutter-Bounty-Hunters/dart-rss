@@ -1,13 +1,13 @@
 import 'package:xml/xml.dart';
 
 class RssCloud {
-  final String domain;
-  final String port;
-  final String path;
-  final String registerProcedure;
-  final String protocol;
+  final String? domain;
+  final String? port;
+  final String? path;
+  final String? registerProcedure;
+  final String? protocol;
 
-  RssCloud(
+  const RssCloud(
     this.domain,
     this.port,
     this.path,
@@ -15,15 +15,15 @@ class RssCloud {
     this.protocol,
   );
 
-  factory RssCloud.parse(XmlElement node) {
+  static RssCloud? parse(XmlElement? node) {
     if (node == null) {
       return null;
     }
-    var domain = node.getAttribute("domain");
-    var port = node.getAttribute("port");
-    var path = node.getAttribute("path");
-    var registerProcedure = node.getAttribute("registerProcedure");
-    var protocol = node.getAttribute("protocol");
+    final domain = node.getAttribute('domain');
+    final port = node.getAttribute('port');
+    final path = node.getAttribute('path');
+    final registerProcedure = node.getAttribute('registerProcedure');
+    final protocol = node.getAttribute('protocol');
     return RssCloud(domain, port, path, registerProcedure, protocol);
   }
 }

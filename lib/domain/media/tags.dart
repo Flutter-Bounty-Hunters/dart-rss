@@ -1,21 +1,21 @@
 import 'package:xml/xml.dart';
 
 class Tags {
-  final String tags;
+  final String? tags;
   final int weight;
 
-  Tags({
+  const Tags({
     this.tags,
-    this.weight,
+    this.weight = 1,
   });
 
-  factory Tags.parse(XmlElement element) {
+  static Tags? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
-    return new Tags(
+    return Tags(
       tags: element.text,
-      weight: int.tryParse(element.getAttribute("weight") ?? "1"),
+      weight: int.tryParse(element.getAttribute('weight') ?? '1') ?? 1,
     );
   }
 }

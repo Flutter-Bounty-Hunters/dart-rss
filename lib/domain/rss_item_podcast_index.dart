@@ -5,28 +5,24 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class RssItemPodcastIndex {
-  final RssPodcastIndexChapters chapters;
-  final List<RssPodcastIndexTranscript> transcripts;
-  final List<RssPodcastIndexSoundbite> soundbites;
+  final RssPodcastIndexChapters? chapters;
+  final List<RssPodcastIndexTranscript?> transcripts;
+  final List<RssPodcastIndexSoundbite?> soundbites;
 
   RssItemPodcastIndex({
     this.chapters,
-    this.transcripts,
-    this.soundbites,
+    this.transcripts = const <RssPodcastIndexTranscript>[],
+    this.soundbites = const <RssPodcastIndexSoundbite>[],
   });
 
   factory RssItemPodcastIndex.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-
     return RssItemPodcastIndex(
-      chapters: RssPodcastIndexChapters.parse(findElementOrNull(element, "podcast:chapters")),
-      transcripts: element.findElements("podcast:transcript").map((e) {
-        return new RssPodcastIndexTranscript.parse(e);
+      chapters: RssPodcastIndexChapters.parse(findElementOrNull(element, 'podcast:chapters')),
+      transcripts: element.findElements('podcast:transcript').map((e) {
+        return RssPodcastIndexTranscript.parse(e);
       }).toList(),
-      soundbites: element.findElements("podcast:soundbite").map((e) {
-        return new RssPodcastIndexSoundbite.parse(e);
+      soundbites: element.findElements('podcast:soundbite').map((e) {
+        return RssPodcastIndexSoundbite.parse(e);
       }).toList(),
     );
   }

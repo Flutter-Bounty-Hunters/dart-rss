@@ -1,12 +1,12 @@
 import 'package:xml/xml.dart';
 
 class Thumbnail {
-  final String url;
-  final String width;
-  final String height;
-  final String time;
+  final String? url;
+  final String? width;
+  final String? height;
+  final String? time;
 
-  Thumbnail({
+  const Thumbnail({
     this.url,
     this.width,
     this.height,
@@ -14,11 +14,11 @@ class Thumbnail {
   });
 
   factory Thumbnail.parse(XmlElement element) {
-    return new Thumbnail(
-      url: element.getAttribute("url"),
-      width: element.getAttribute("width"),
-      height: element.getAttribute("height"),
-      time: element.getAttribute("time"),
+    return Thumbnail(
+      url: element.getAttribute('url'),
+      width: element.getAttribute('width'),
+      height: element.getAttribute('height'),
+      time: element.getAttribute('time'),
     );
   }
 }
