@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:dart_rss/domain/dublin_core/dublin_core.dart';
+import 'package:dart_rss/domain/podcast_index/rss_podcast_index.dart';
 import 'package:dart_rss/domain/rss_category.dart';
 import 'package:dart_rss/domain/rss_cloud.dart';
 import 'package:dart_rss/domain/rss_image.dart';
@@ -33,6 +34,7 @@ class RssFeed {
   final int ttl;
   final DublinCore? dc;
   final RssItunes? itunes;
+  final RssPodcastIndex? podcastIndex;
 
   const RssFeed({
     this.title,
@@ -56,6 +58,7 @@ class RssFeed {
     this.ttl = 0,
     this.dc,
     this.itunes,
+    this.podcastIndex,
   });
 
   factory RssFeed.parse(String xmlString) {
@@ -72,16 +75,10 @@ class RssFeed {
       author: findElementOrNull(channelElement, 'author')?.text,
       description: findElementOrNull(channelElement, 'description')?.text,
       link: findElementOrNull(channelElement, 'link')?.text,
-      items: channelElement
-          .findElements('item')
-          .map((element) => RssItem.parse(element))
-          .toList(),
+      items: channelElement.findElements('item').map((element) => RssItem.parse(element)).toList(),
       image: RssImage.parse(findElementOrNull(channelElement, 'image')),
       cloud: RssCloud.parse(findElementOrNull(channelElement, 'cloud')),
-      categories: channelElement
-          .findElements('category')
-          .map((element) => RssCategory.parse(element))
-          .toList(),
+      categories: channelElement.findElements('category').map((element) => RssCategory.parse(element)).toList(),
       skipDays: findElementOrNull(channelElement, 'skipDays')
               ?.findAllElements('day')
               .map((element) => element.text)
@@ -100,11 +97,10 @@ class RssFeed {
       managingEditor: findElementOrNull(channelElement, 'managingEditor')?.text,
       rating: findElementOrNull(channelElement, 'rating')?.text,
       webMaster: findElementOrNull(channelElement, 'webMaster')?.text,
-      ttl:
-          int.tryParse(findElementOrNull(channelElement, 'ttl')?.text ?? '0') ??
-              0,
+      ttl: int.tryParse(findElementOrNull(channelElement, 'ttl')?.text ?? '0') ?? 0,
       dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
+      podcastIndex: RssPodcastIndex.parse(channelElement),
     );
   }
 }
