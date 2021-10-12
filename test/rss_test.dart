@@ -370,11 +370,30 @@ void main() {
     expect(feed.podcastIndex!.funding![0]!.value, 'Support the show!');
     expect(feed.podcastIndex!.funding![1]!.url, 'https://example.com/member');
     expect(feed.podcastIndex!.funding![1]!.value, 'Become a member!');
+    expect(feed.podcastIndex!.value!.type, 'lightning');
+    expect(feed.podcastIndex!.value!.method, 'keysend');
+    expect(feed.podcastIndex!.value!.suggested, '0.00000005000');
+    expect(feed.podcastIndex!.value!.recipients.length, 2);
+    expect(feed.podcastIndex!.value!.recipients[0]!.name, 'podcaster');
+    expect(feed.podcastIndex!.value!.recipients[0]!.type, 'node');
+    expect(feed.podcastIndex!.value!.recipients[0]!.address, '036557ea56b3b86f08be31bcd2557cae8021b0e3a9413f0c0e52625c6696972e57');
+    expect(feed.podcastIndex!.value!.recipients[0]!.customKey, null);
+    expect(feed.podcastIndex!.value!.recipients[0]!.customValue, null);
+    expect(feed.podcastIndex!.value!.recipients[0]!.split, '99');
+    expect(feed.podcastIndex!.value!.recipients[0]!.fee, null);
+    expect(feed.podcastIndex!.value!.recipients[1]!.name, 'hosting company');
+    expect(feed.podcastIndex!.value!.recipients[1]!.type, 'node');
+    expect(feed.podcastIndex!.value!.recipients[1]!.address, '036557ea56b3b86f08be31bcd2557cae8021b0e3a9413f0c0e52625c6696972e57');
+    expect(feed.podcastIndex!.value!.recipients[1]!.customKey, null);
+    expect(feed.podcastIndex!.value!.recipients[1]!.customValue, null);
+    expect(feed.podcastIndex!.value!.recipients[1]!.split, '1');
+    expect(feed.podcastIndex!.value!.recipients[1]!.fee, null);
 
     var item1 = feed.items[0];
     var transcripts1 = item1.podcastIndex!.transcripts;
     var soundbite1 = item1.podcastIndex!.soundbites;
     var chapters1 = item1.podcastIndex!.chapters;
+    var value1 = item1.podcastIndex!.value;
 
     expect(transcripts1.length, 1);
     expect(transcripts1[0]!.url, 'https://example.com/ep3/transcript.txt');
@@ -386,10 +405,13 @@ void main() {
     expect(soundbite1[0]!.startTime, 33.833);
     expect(soundbite1[0]!.duration, 60.0);
 
+    expect(value1, null);
+
     var item2 = feed.items[1];
     var transcripts2 = item2.podcastIndex!.transcripts;
     var soundbite2 = item2.podcastIndex!.soundbites;
     var chapters2 = item2.podcastIndex!.chapters;
+    var value2 = item2.podcastIndex!.value;
 
     expect(transcripts2.length, 1);
     expect(transcripts2[0]!.url, 'https://example.com/ep2/transcript.txt');
@@ -400,5 +422,24 @@ void main() {
     expect(soundbite2.length, 1);
     expect(soundbite2[0]!.startTime, 45.4);
     expect(soundbite2[0]!.duration, 56.0);
+
+    expect(value2!.type, 'lightning');
+    expect(value2!.method, 'keysend');
+    expect(value2!.suggested, '0.00000005000');
+    expect(value2!.recipients.length, 2);
+    expect(value2!.recipients[0]!.name, 'podcaster');
+    expect(value2!.recipients[0]!.type, 'node');
+    expect(value2!.recipients[0]!.address, '036557ea56b3b86f08be31bcd2557cae8021b0e3a9413f0c0e52625c6696972e57');
+    expect(value2!.recipients[0]!.customKey, null);
+    expect(value2!.recipients[0]!.customValue, null);
+    expect(value2!.recipients[0]!.split, '50');
+    expect(value2!.recipients[0]!.fee, null);
+    expect(value2!.recipients[1]!.name, 'hosting company');
+    expect(value2!.recipients[1]!.type, 'node');
+    expect(value2!.recipients[1]!.address, '036557ea56b3b86f08be31bcd2557cae8021b0e3a9413f0c0e52625c6696972e57');
+    expect(value2!.recipients[1]!.customKey, null);
+    expect(value2!.recipients[1]!.customValue, null);
+    expect(value2!.recipients[1]!.split, '50');
+    expect(value2!.recipients[1]!.fee, null);
   });
 }

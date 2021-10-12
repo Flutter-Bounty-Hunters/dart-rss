@@ -106,6 +106,10 @@
             <enclosure url="https://mp3s.nashownotes.com/PC20-16-2020-12-18-Final.mp3" length="67080717" type="audio/mpeg"/>
             <podcast:alternateEnclosure type="audio/x-m4a" length="1540076" bitrate="80" title="Audio - low bitrate">https://example.com/podcast/audio/ep0002-low.mp3</podcast:alternateEnclosure>
             <podcast:alternateEnclosure type="audio/mpeg" length="2534548" bitrate="160" title="Audio - high bitrate">https://example.com/podcast/audio/ep0002-high.mp3</podcast:alternateEnclosure>
+            <podcast:value type="lightning" method="keysend" suggested="0.00000005000">
+                <podcast:valueRecipient name="podcaster" type="node" address="036557ea56b3b86f08be31bcd2557cae8021b0e3a9413f0c0e52625c6696972e57" split="50" />
+                <podcast:valueRecipient name="hosting company" type="node" address="036557ea56b3b86f08be31bcd2557cae8021b0e3a9413f0c0e52625c6696972e57" split="50" />
+            </podcast:value>
         </item>
 
         <item>
