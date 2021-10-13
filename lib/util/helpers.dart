@@ -11,6 +11,15 @@ XmlElement? findElementOrNull(XmlElement element, String name,
   }
 }
 
+XmlElement? findDirectElementOrNull(XmlElement element, String name,
+    {String? namespace}) {
+  try {
+    return element.findElements(name, namespace: namespace).first;
+  } on StateError {
+    return null;
+  }
+}
+
 List<XmlElement>? findAllDirectElementsOrNull(XmlElement element, String name,
     {String? namespace}) {
   try {
