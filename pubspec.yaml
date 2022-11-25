@@ -5,8 +5,8 @@ homepage: https://github.com/sudame/dart-rss
 environment:
   sdk: ">=2.12.0-259.9.beta <3.0.0"
 dependencies:
-  xml: ^5.0.2
-  http: ^0.13.0
+  xml: ^6.2.2
+  http: ^0.13.5
   intl: ^0.17.0
 
 dev_dependencies:
