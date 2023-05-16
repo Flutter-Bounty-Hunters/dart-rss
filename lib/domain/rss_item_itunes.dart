@@ -37,26 +37,29 @@ class RssItemItunes {
   });
 
   factory RssItemItunes.parse(XmlElement element) {
-    final episodeStr = findElementOrNull(element, 'itunes:episode')?.text?.trim();
-    final seasonStr = findElementOrNull(element, 'itunes:season')?.text?.trim();
-    final durationStr = findElementOrNull(element, 'itunes:duration')?.text?.trim();
+    final episodeStr =
+        findElementOrNull(element, 'itunes:episode')?.value?.trim();
+    final seasonStr =
+        findElementOrNull(element, 'itunes:season')?.value?.trim();
+    final durationStr =
+        findElementOrNull(element, 'itunes:duration')?.value?.trim();
 
     return RssItemItunes(
-      title: findElementOrNull(element, 'itunes:title')?.text?.trim(),
+      title: findElementOrNull(element, 'itunes:title')?.value?.trim(),
       episode: episodeStr == null ? null : int.tryParse(episodeStr),
       season: seasonStr == null ? null : int.tryParse(seasonStr),
       duration: durationStr == null ? null : parseDuration(durationStr),
       episodeType: newRssItunesEpisodeType(
           findElementOrNull(element, 'itunes:episodeType')),
-      author: findElementOrNull(element, 'itunes:author')?.text?.trim(),
-      summary: findElementOrNull(element, 'itunes:summary')?.text?.trim(),
+      author: findElementOrNull(element, 'itunes:author')?.value?.trim(),
+      summary: findElementOrNull(element, 'itunes:summary')?.value?.trim(),
       explicit: parseBoolLiteral(element, 'itunes:explicit'),
-      subtitle: findElementOrNull(element, 'itunes:subtitle')?.text?.trim(),
+      subtitle: findElementOrNull(element, 'itunes:subtitle')?.value?.trim(),
       keywords: findElementOrNull(element, 'itunes:keywords')
-              ?.text
+              ?.value
               ?.split(',')
-              ?.map((keyword) => keyword.trim())
-              ?.toList() ??
+              .map((keyword) => keyword.trim())
+              .toList() ??
           const <String>[],
       image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
       category: RssItunesCategory.parse(

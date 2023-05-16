@@ -41,17 +41,17 @@ class RssItunes {
   factory RssItunes.parse(XmlElement element) {
     final categories = findAllDirectElementsOrNull(element, 'itunes:category');
     return RssItunes(
-      author: findElementOrNull(element, 'itunes:author')?.text?.trim(),
-      summary: findElementOrNull(element, 'itunes:summary')?.text?.trim(),
+      author: findElementOrNull(element, 'itunes:author')?.value?.trim(),
+      summary: findElementOrNull(element, 'itunes:summary')?.value?.trim(),
       explicit: parseBoolLiteral(element, 'itunes:explicit'),
-      title: findElementOrNull(element, 'itunes:title')?.text?.trim(),
-      subtitle: findElementOrNull(element, 'itunes:subtitle')?.text?.trim(),
+      title: findElementOrNull(element, 'itunes:title')?.value?.trim(),
+      subtitle: findElementOrNull(element, 'itunes:subtitle')?.value?.trim(),
       owner: RssItunesOwner.parse(findElementOrNull(element, 'itunes:owner')),
       keywords: findElementOrNull(element, 'itunes:keywords')
-              ?.text
+              ?.value
               ?.split(',')
-              ?.map((keyword) => keyword.trim())
-              ?.toList() ??
+              .map((keyword) => keyword.trim())
+              .toList() ??
           const <String>[],
       image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
       categories:
@@ -59,10 +59,9 @@ class RssItunes {
               const <RssItunesCategory>[],
       type: newRssItunesType(findElementOrNull(element, 'itunes:type')),
       newFeedUrl:
-          findElementOrNull(element, 'itunes:new-feed-url')?.text?.trim(),
+          findElementOrNull(element, 'itunes:new-feed-url')?.value?.trim(),
       block: parseBoolLiteral(element, 'itunes:block'),
       complete: parseBoolLiteral(element, 'itunes:complete'),
     );
   }
 }
-

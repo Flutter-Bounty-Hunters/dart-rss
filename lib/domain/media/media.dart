@@ -93,7 +93,7 @@ class Media {
       title: Title.parse(findElementOrNull(element, 'media:title')),
       description:
           Description.parse(findElementOrNull(element, 'media:description')),
-      keywords: findElementOrNull(element, 'media:keywords')?.text,
+      keywords: findElementOrNull(element, 'media:keywords')?.value,
       thumbnails: element
           .findElements('media:thumbnail')
           .map((e) => Thumbnail.parse(e))
@@ -107,19 +107,21 @@ class Media {
       community: Community.parse(findElementOrNull(element, 'media:community')),
       comments: findElementOrNull(element, 'media:comments')
               ?.findElements('media:comment')
-              ?.map((e) => e.text)
-              ?.toList() ??
+              .map((e) => e.value!)
+              .toList() ??
           <String>[],
       embed: Embed.parse(findElementOrNull(element, 'media:embed')),
       responses: findElementOrNull(element, 'media:responses')
               ?.findElements('media:response')
-              ?.map((e) => e.text)
-              ?.toList() ??
+              .where((e) => e.value != null)
+              .map((e) => e.value!)
+              .toList() ??
           <String>[],
       backLinks: findElementOrNull(element, 'media:backLinks')
               ?.findElements('media:backLink')
-              ?.map((e) => e.text)
-              ?.toList() ??
+              .where((e) => e.value != null)
+              .map((e) => e.value!)
+              .toList() ??
           <String>[],
       status: Status.parse(findElementOrNull(element, 'media:status')),
       prices: element
@@ -131,8 +133,8 @@ class Media {
       rights: Rights.parse(findElementOrNull(element, 'media:rights')),
       scenes: findElementOrNull(element, 'media:scenes')
               ?.findElements('media:scene')
-              ?.map((e) => Scene.parse(e))
-              ?.toList() ??
+              .map((e) => Scene.parse(e))
+              .toList() ??
           <Scene>[],
     );
   }

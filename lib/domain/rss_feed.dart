@@ -71,33 +71,44 @@ class RssFeed {
     }
 
     return RssFeed(
-      title: findElementOrNull(channelElement, 'title')?.text,
-      author: findElementOrNull(channelElement, 'author')?.text,
-      description: findElementOrNull(channelElement, 'description')?.text,
-      link: findElementOrNull(channelElement, 'link')?.text,
-      items: channelElement.findElements('item').map((element) => RssItem.parse(element)).toList(),
+      title: findElementOrNull(channelElement, 'title')?.value,
+      author: findElementOrNull(channelElement, 'author')?.value,
+      description: findElementOrNull(channelElement, 'description')?.value,
+      link: findElementOrNull(channelElement, 'link')?.value,
+      items: channelElement
+          .findElements('item')
+          .map((element) => RssItem.parse(element))
+          .toList(),
       image: RssImage.parse(findElementOrNull(channelElement, 'image')),
       cloud: RssCloud.parse(findElementOrNull(channelElement, 'cloud')),
-      categories: channelElement.findElements('category').map((element) => RssCategory.parse(element)).toList(),
+      categories: channelElement
+          .findElements('category')
+          .map((element) => RssCategory.parse(element))
+          .toList(),
       skipDays: findElementOrNull(channelElement, 'skipDays')
               ?.findAllElements('day')
-              .map((element) => element.text)
+              .where((element) => element.value != null)
+              .map((element) => element.value!)
               .toList() ??
           <String>[],
       skipHours: findElementOrNull(channelElement, 'skipHours')
               ?.findAllElements('hour')
-              .map((element) => int.tryParse(element.text) ?? 0)
+              .where((element) => element.value != null)
+              .map((element) => int.tryParse(element.value!) ?? 0)
               .toList() ??
           <int>[],
-      lastBuildDate: findElementOrNull(channelElement, 'lastBuildDate')?.text,
-      language: findElementOrNull(channelElement, 'language')?.text,
-      generator: findElementOrNull(channelElement, 'generator')?.text,
-      copyright: findElementOrNull(channelElement, 'copyright')?.text,
-      docs: findElementOrNull(channelElement, 'docs')?.text,
-      managingEditor: findElementOrNull(channelElement, 'managingEditor')?.text,
-      rating: findElementOrNull(channelElement, 'rating')?.text,
-      webMaster: findElementOrNull(channelElement, 'webMaster')?.text,
-      ttl: int.tryParse(findElementOrNull(channelElement, 'ttl')?.text ?? '0') ?? 0,
+      lastBuildDate: findElementOrNull(channelElement, 'lastBuildDate')?.value,
+      language: findElementOrNull(channelElement, 'language')?.value,
+      generator: findElementOrNull(channelElement, 'generator')?.value,
+      copyright: findElementOrNull(channelElement, 'copyright')?.value,
+      docs: findElementOrNull(channelElement, 'docs')?.value,
+      managingEditor:
+          findElementOrNull(channelElement, 'managingEditor')?.value,
+      rating: findElementOrNull(channelElement, 'rating')?.value,
+      webMaster: findElementOrNull(channelElement, 'webMaster')?.value,
+      ttl: int.tryParse(
+              findElementOrNull(channelElement, 'ttl')?.value ?? '0') ??
+          0,
       dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
       podcastIndex: RssPodcastIndex.parse(channelElement),

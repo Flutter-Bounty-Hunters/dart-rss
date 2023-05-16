@@ -1,12 +1,12 @@
 import 'package:xml/xml.dart';
 
-enum RssItunesEpisodeType {full, trailer, bonus}
+enum RssItunesEpisodeType { full, trailer, bonus }
 
 RssItunesEpisodeType? newRssItunesEpisodeType(XmlElement? element) {
   // "full" is default type
   if (element == null) return RssItunesEpisodeType.full;
 
-  switch (element.text) {
+  switch (element.value) {
     case 'full':
       return RssItunesEpisodeType.full;
     case 'trailer':

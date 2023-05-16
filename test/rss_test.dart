@@ -350,10 +350,10 @@ void main() {
     expect(item.itunes!.title, 'awesome title');
     expect(item.itunes!.block, false);
   });
-  test("parse RSS-PodcastIndex-R1.xml", () {
-    var xmlString = new File("test/xml/RSS-PodcastIndex-R1.xml").readAsStringSync();
+  test('parse RSS-PodcastIndex-R1.xml', () {
+    var xmlString = File('test/xml/RSS-PodcastIndex-R1.xml').readAsStringSync();
 
-    var feed = new RssFeed.parse(xmlString);
+    var feed = RssFeed.parse(xmlString);
 
     expect(feed.title, 'Podcasting 2.0 Namespace Example');
     expect(

@@ -7,12 +7,12 @@ class RssSource {
   const RssSource(this.url, this.value);
 
   static RssSource? parse(XmlElement? element) {
-    if (element == null) {
+    if (element == null || element.value == null) {
       return null;
     }
     final url = element.getAttribute('url');
-    final value = element.text;
+    final value = element.value;
 
-    return RssSource(url, value);
+    return RssSource(url, value!);
   }
 }

@@ -20,13 +20,17 @@ class RssContent {
     if (element == null) {
       return null;
     }
-    final content = element.text;
+    final content = element.value;
     final images = <String>[];
-    _imagesRegExp.allMatches(content).forEach((match) {
-      final matchGroup = match.group(1);
-      if (matchGroup != null) images.add(matchGroup);
-    });
-    return RssContent(content, images);
+    if (content != null) {
+      _imagesRegExp.allMatches(content).forEach((match) {
+        final matchGroup = match.group(1);
+        if (matchGroup != null) images.add(matchGroup);
+      });
+      return RssContent(content, images);
+    } else {
+      return null;
+    }
   }
 
   @override

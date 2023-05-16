@@ -9,9 +9,9 @@ class AtomPerson {
   const AtomPerson(this.name, this.uri, this.email);
 
   factory AtomPerson.parse(XmlElement element) {
-    final name = findElementOrNull(element, 'name')?.text;
-    final uri = findElementOrNull(element, 'uri')?.text;
-    final email = findElementOrNull(element, 'email')?.text;
+    final name = findElementOrNull(element, 'name')?.value;
+    final uri = findElementOrNull(element, 'uri')?.value;
+    final email = findElementOrNull(element, 'email')?.value;
     return AtomPerson(name, uri, email);
   }
 }

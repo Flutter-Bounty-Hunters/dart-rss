@@ -64,9 +64,9 @@ class Rss1Feed {
 
     final channel = rdfElement.findElements('channel');
     return Rss1Feed(
-      title: findElementOrNull(rdfElement, 'title')?.text,
-      link: findElementOrNull(rdfElement, 'link')?.text,
-      description: findElementOrNull(rdfElement, 'description')?.text,
+      title: findElementOrNull(rdfElement, 'title')?.value,
+      link: findElementOrNull(rdfElement, 'link')?.value,
+      description: findElementOrNull(rdfElement, 'description')?.value,
       items: rdfElement
           .findElements('item')
           .map((element) => Rss1Item.parse(element))
@@ -74,12 +74,14 @@ class Rss1Feed {
       image:
           findElementOrNull(rdfElement, 'image')?.getAttribute('rdf:resource'),
       updatePeriod: _parseUpdatePeriod(
-          findElementOrNull(rdfElement, 'sy:updatePeriod')?.text),
+          findElementOrNull(rdfElement, 'sy:updatePeriod')?.value),
       updateFrequency:
-          parseInt(findElementOrNull(rdfElement, 'sy:updateFrequency')?.text),
+          parseInt(findElementOrNull(rdfElement, 'sy:updateFrequency')?.value),
       updateBase:
-          parseDateTime(findElementOrNull(rdfElement, 'sy:updateBase')?.text),
-      dc: channel.isEmpty ? null : DublinCore.parse(rdfElement.findElements('channel').first),
+          parseDateTime(findElementOrNull(rdfElement, 'sy:updateBase')?.value),
+      dc: channel.isEmpty
+          ? null
+          : DublinCore.parse(rdfElement.findElements('channel').first),
     );
   }
 }

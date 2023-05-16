@@ -14,7 +14,7 @@ class Tags {
       return null;
     }
     return Tags(
-      tags: element.text,
+      tags: element.value,
       weight: int.tryParse(element.getAttribute('weight') ?? '1') ?? 1,
     );
   }
