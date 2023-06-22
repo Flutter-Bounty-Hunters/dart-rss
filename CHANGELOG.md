@@ -1,4 +1,10 @@
 # Changelog
+## [3.0.0](https://pub.dev/packages/dart_rss/versions/3.0.0)
+## Breaking Changes
+- This project now uses Dart 3 instead of Dart 2
+
+## Refactoring
+- We resolved all warnings noted by the Dart analyzer.
 
 ## [2.0.0](https://pub.dev/packages/dart_rss/versions/2.0.0)
 ### Update
