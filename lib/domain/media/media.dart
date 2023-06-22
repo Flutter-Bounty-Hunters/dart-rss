@@ -107,19 +107,19 @@ class Media {
       community: Community.parse(findElementOrNull(element, 'media:community')),
       comments: findElementOrNull(element, 'media:comments')
               ?.findElements('media:comment')
-              ?.map((e) => e.text)
-              ?.toList() ??
+              .map((e) => e.text)
+              .toList() ??
           <String>[],
       embed: Embed.parse(findElementOrNull(element, 'media:embed')),
       responses: findElementOrNull(element, 'media:responses')
               ?.findElements('media:response')
-              ?.map((e) => e.text)
-              ?.toList() ??
+              .map((e) => e.text)
+              .toList() ??
           <String>[],
       backLinks: findElementOrNull(element, 'media:backLinks')
               ?.findElements('media:backLink')
-              ?.map((e) => e.text)
-              ?.toList() ??
+              .map((e) => e.text)
+              .toList() ??
           <String>[],
       status: Status.parse(findElementOrNull(element, 'media:status')),
       prices: element
@@ -131,8 +131,8 @@ class Media {
       rights: Rights.parse(findElementOrNull(element, 'media:rights')),
       scenes: findElementOrNull(element, 'media:scenes')
               ?.findElements('media:scene')
-              ?.map((e) => Scene.parse(e))
-              ?.toList() ??
+              .map((e) => Scene.parse(e))
+              .toList() ??
           <Scene>[],
     );
   }

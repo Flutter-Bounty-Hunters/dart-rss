@@ -22,7 +22,7 @@ class RssItunesCategory {
       category: element.getAttribute('text')?.trim(),
       subCategories: subCategories
               ?.map((ele) => ele.getAttribute('text')?.trim())
-              ?.toList() ??
+              .toList() ??
           <String>[],
     );
   }
