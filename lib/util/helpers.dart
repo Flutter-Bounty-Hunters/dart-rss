@@ -21,7 +21,7 @@ List<XmlElement>? findAllDirectElementsOrNull(XmlElement element, String name,
 }
 
 bool? parseBoolLiteral(XmlElement element, String tagName) {
-  final v = findElementOrNull(element, tagName)?.text?.toLowerCase()?.trim();
+  final v = findElementOrNull(element, tagName)?.text.toLowerCase().trim();
   if (v == null) return null;
   return ['yes', 'true'].contains(v);
 }
