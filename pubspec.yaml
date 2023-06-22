@@ -1,9 +1,12 @@
 name: dart_rss
 version: 3.0.0
-description: dart-rss is a rss parser for RSS1.0/RSS2.0/Atom. It also support Dublin-Core, Content, Syndication additional modules. This libary is forked from webfeed(https://github.com/witochandra/webfeed).
-homepage: https://github.com/sudame/dart-rss
+description: Dart parser for RSS1.0, RSS2.0, Atom feeds.
+homepage: https://github.com/Flutter-Bounty-Hunters/dart-rss
+repository: https://github.com/Flutter-Bounty-Hunters/dart-rss
+
 environment:
   sdk: ">=3.0.0 <4.0.0"
+
 dependencies:
   xml: ^5.0.2
   http: ^0.13.0
