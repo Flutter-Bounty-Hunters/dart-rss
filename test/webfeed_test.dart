@@ -27,17 +27,17 @@ void main() {
 
     test('it can detect Atom feed.', () {
       final version = WebFeed.detectRssVersion(atomXmlString);
-      expect(version, RssVersion.Atom);
+      expect(version, RssVersion.atom);
     });
 
     test('it can detect RSS1.0 feed.', () {
       final version = WebFeed.detectRssVersion(rss1XmlString);
-      expect(version, RssVersion.RSS1);
+      expect(version, RssVersion.rss1);
     });
 
     test('it can detect RSS2.0 feed.', () {
       final version = WebFeed.detectRssVersion(rss2XmlString);
-      expect(version, RssVersion.RSS2);
+      expect(version, RssVersion.rss2);
     });
 
     test('it can parse Atom feed.', () {
@@ -91,8 +91,7 @@ void main() {
         rss2Feed.items.first.body,
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       );
-      expect(rss2Feed.items.first.updated,
-          DateTime.parse('2018-03-26 14:00:00.000'));
+      expect(rss2Feed.items.first.updated, DateTime.parse('2018-03-26 14:00:00.000'));
     });
   });
 }

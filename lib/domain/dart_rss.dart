@@ -27,10 +27,10 @@ extension SafeParseDateTime on DateTime {
 }
 
 enum RssVersion {
-  RSS1,
-  RSS2,
-  Atom,
-  Unknown,
+  rss1,
+  rss2,
+  atom,
+  unknown,
 }
 
 class WebFeed {
@@ -49,18 +49,17 @@ class WebFeed {
   static WebFeed fromXmlString(String xmlString) {
     final rssVersion = detectRssVersion(xmlString);
     switch (rssVersion) {
-      case RssVersion.RSS1:
+      case RssVersion.rss1:
         final rss1Feed = Rss1Feed.parse(xmlString);
         return WebFeed.fromRss1(rss1Feed);
-      case RssVersion.RSS2:
+      case RssVersion.rss2:
         final rss2Feed = RssFeed.parse(xmlString);
         return WebFeed.fromRss2(rss2Feed);
-      case RssVersion.Atom:
+      case RssVersion.atom:
         final atomFeed = AtomFeed.parse(xmlString);
         return WebFeed.fromAtom(atomFeed);
-      case RssVersion.Unknown:
-        throw Error.safeToString(
-            'Invalid XML String? We cannot detect RSS/Atom version.');
+      case RssVersion.unknown:
+        throw Error.safeToString('Invalid XML String? We cannot detect RSS/Atom version.');
       default:
         throw Exception('Some error has occured.');
     }
@@ -94,8 +93,7 @@ class WebFeed {
             (item) => WebFeedItem(
               title: item.title ?? item.dc?.title ?? '',
               body: item.description ?? item.dc?.description ?? '',
-              updated: SafeParseDateTime.safeParse(item.pubDate) ??
-                  SafeParseDateTime.safeParse(item.dc?.date),
+              updated: SafeParseDateTime.safeParse(item.pubDate) ?? SafeParseDateTime.safeParse(item.dc?.date),
               links: [item.link],
             ),
           )
@@ -113,8 +111,7 @@ class WebFeed {
             (item) => WebFeedItem(
               title: item.title ?? '',
               body: item.summary ?? item.content ?? '',
-              updated: SafeParseDateTime.safeParse(item.updated) ??
-                  SafeParseDateTime.safeParse(item.published),
+              updated: SafeParseDateTime.safeParse(item.updated) ?? SafeParseDateTime.safeParse(item.published),
               links: item.links.map((atomLink) => atomLink.href).toList(),
             ),
           )
@@ -135,21 +132,17 @@ class WebFeed {
 
     bool? ver = false;
     bool? xmlns = false;
-    ver = rssRefs.isEmpty
-        ? false
-        : rssRefs.first.getAttribute('version')?.contains('2');
-    xmlns = feedRefs.isEmpty
-        ? false
-        : feedRefs.first.getAttribute('xmlns')?.toLowerCase().contains('atom');
+    ver = rssRefs.isEmpty ? false : rssRefs.first.getAttribute('version')?.contains('2');
+    xmlns = feedRefs.isEmpty ? false : feedRefs.first.getAttribute('xmlns')?.toLowerCase().contains('atom');
 
     if (rdfRefs.isNotEmpty) {
-      return RssVersion.RSS1;
+      return RssVersion.rss1;
     } else if (rssRefs.isNotEmpty && ver != null && ver) {
-      return RssVersion.RSS2;
+      return RssVersion.rss2;
     } else if (feedRefs.isNotEmpty && xmlns != null && xmlns) {
-      return RssVersion.Atom;
+      return RssVersion.atom;
     }
-    return RssVersion.Unknown;
+    return RssVersion.unknown;
   }
 }
 

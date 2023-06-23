@@ -84,7 +84,7 @@ void main() {
     expect(feed.items.first.enclosure!.type, 'audio/mpeg');
 
     expect(feed.items.first.content!.value,
-        '<img width=\"1000\" height=\"690\" src=\"https://test.com/image_link\"/> Test content<br />');
+        '<img width="1000" height="690" src="https://test.com/image_link"/> Test content<br />');
     expect(feed.items.first.content!.images.first, 'https://test.com/image_link');
   });
   test('parse RSS-Media.xml', () {
