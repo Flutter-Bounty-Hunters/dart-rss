@@ -1,0 +1,23 @@
+name: Test project in a PR
+on: [pull_request]
+jobs:
+  test_linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      # Checkout the PR branch
+      - uses: actions/checkout@v3
+
+      # Setup Dart environment
+      - uses: dart-lang/setup-dart@v1
+
+      # Download all the packages that the app uses
+      - run: dart pub get
+
+      # Make sure the lint checks pass
+      - run: dart analyze
+
+      # Run all tests
+      - run: dart test
