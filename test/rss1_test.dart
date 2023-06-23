@@ -27,22 +27,20 @@ void main() {
   });
 
   test('parse RSS1 with syndication module', () {
-    final xmlString =
-    File('test/xml/RSS1-with-syndication-module.xml').readAsStringSync();
+    final xmlString = File('test/xml/RSS1-with-syndication-module.xml').readAsStringSync();
     final feed = Rss1Feed.parse(xmlString);
 
     expect(feed.title, 'Meerkat');
     expect(feed.link, 'http://meerkat.oreillynet.com');
     expect(feed.description, 'Meerkat: An Open Wire Service');
 
-    expect(feed.updatePeriod, UpdatePeriod.Hourly);
+    expect(feed.updatePeriod, UpdatePeriod.hourly);
     expect(feed.updateFrequency, 2);
     expect(feed.updateBase, DateTime.parse('2000-01-01T12:00+00:00'));
   });
 
   test('parse RSS1 with dublin core module', () {
-    final xmlString =
-    File('test/xml/RSS1-with-dublin-core-module.xml').readAsStringSync();
+    final xmlString = File('test/xml/RSS1-with-dublin-core-module.xml').readAsStringSync();
     final feed = Rss1Feed.parse(xmlString);
 
     expect(feed.title, 'Meerkat');
@@ -65,14 +63,12 @@ void main() {
       firstItem.dc!.creator,
       'Simon St.Laurent (mailto:simonstl@simonstl.com)',
     );
-    expect(
-        firstItem.dc!.rights, 'Copyright © 2000 O\'Reilly & Associates, Inc.');
+    expect(firstItem.dc!.rights, 'Copyright © 2000 O\'Reilly & Associates, Inc.');
     expect(firstItem.dc!.subject, 'XML');
   });
 
   test('parse RSS1 with content module', () {
-    final xmlString =
-    File('test/xml/RSS1-with-content-module.xml').readAsStringSync();
+    final xmlString = File('test/xml/RSS1-with-content-module.xml').readAsStringSync();
     final feed = Rss1Feed.parse(xmlString);
 
     expect(feed.title, 'Example Feed');
@@ -94,8 +90,7 @@ void main() {
   // Japanese Social Bookmark Service "Hatena Bookmark" is still using RSS1.0!
   // As I don't know english service using RSS 1.0, I use Japanese service for test case.
   test('parse production RSS1.0', () {
-    final xmlString =
-        File('test/xml/RSS1-production_hatena.xml').readAsStringSync();
+    final xmlString = File('test/xml/RSS1-production_hatena.xml').readAsStringSync();
 
     final feed = Rss1Feed.parse(xmlString);
 
