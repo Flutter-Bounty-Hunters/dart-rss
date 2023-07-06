@@ -1,7 +1,11 @@
 import 'package:xml/xml.dart';
 
 class RssPodcastIndexLocked {
+  /// The owner attribute is an email address that can be used to verify
+  /// ownership of this feed during move and import operations.
   final String? owner;
+
+  /// Are we locked?
   final bool? locked;
 
   RssPodcastIndexLocked({
