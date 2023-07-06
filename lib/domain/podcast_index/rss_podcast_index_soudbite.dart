@@ -19,7 +19,7 @@ class RssPodcastIndexSoundbite {
     return RssPodcastIndexSoundbite(
       startTime: double.parse(element.getAttribute('startTime') ?? '0.0'),
       duration: double.parse(element.getAttribute('duration') ?? '0.0'),
-      value: element.text.trim(),
+      value: element.innerText.trim(),
     );
   }
 }

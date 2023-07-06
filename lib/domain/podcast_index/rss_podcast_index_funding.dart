@@ -14,7 +14,7 @@ class RssPodcastIndexFunding {
 
     return RssPodcastIndexFunding(
       url: element.getAttribute('url'),
-      value: element.text.trim(),
+      value: element.innerText.trim(),
     );
   }
 }

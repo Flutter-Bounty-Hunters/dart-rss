@@ -15,7 +15,7 @@ class Title {
     }
     return Title(
       type: element.getAttribute('type'),
-      value: element.text,
+      value: element.innerText,
     );
   }
 }

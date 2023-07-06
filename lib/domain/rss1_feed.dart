@@ -64,14 +64,14 @@ class Rss1Feed {
 
     final channel = rdfElement.findElements('channel');
     return Rss1Feed(
-      title: findElementOrNull(rdfElement, 'title')?.text,
-      link: findElementOrNull(rdfElement, 'link')?.text,
-      description: findElementOrNull(rdfElement, 'description')?.text,
+      title: findElementOrNull(rdfElement, 'title')?.innerText,
+      link: findElementOrNull(rdfElement, 'link')?.innerText,
+      description: findElementOrNull(rdfElement, 'description')?.innerText,
       items: rdfElement.findElements('item').map((element) => Rss1Item.parse(element)).toList(),
       image: findElementOrNull(rdfElement, 'image')?.getAttribute('rdf:resource'),
-      updatePeriod: _parseUpdatePeriod(findElementOrNull(rdfElement, 'sy:updatePeriod')?.text),
-      updateFrequency: parseInt(findElementOrNull(rdfElement, 'sy:updateFrequency')?.text),
-      updateBase: parseDateTime(findElementOrNull(rdfElement, 'sy:updateBase')?.text),
+      updatePeriod: _parseUpdatePeriod(findElementOrNull(rdfElement, 'sy:updatePeriod')?.innerText,),
+      updateFrequency: parseInt(findElementOrNull(rdfElement, 'sy:updateFrequency')?.innerText,),
+      updateBase: parseDateTime(findElementOrNull(rdfElement, 'sy:updateBase')?.innerText,),
       dc: channel.isEmpty ? null : DublinCore.parse(rdfElement.findElements('channel').first),
     );
   }

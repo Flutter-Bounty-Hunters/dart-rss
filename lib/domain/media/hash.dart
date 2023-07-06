@@ -15,7 +15,7 @@ class Hash {
     }
     return Hash(
       algo: element.getAttribute('algo'),
-      value: element.text,
+      value: element.innerText,
     );
   }
 }

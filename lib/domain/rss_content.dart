@@ -20,7 +20,7 @@ class RssContent {
     if (element == null) {
       return null;
     }
-    final content = element.text;
+    final content = element.innerText;
     final images = <String>[];
     _imagesRegExp.allMatches(content).forEach((match) {
       final matchGroup = match.group(1);

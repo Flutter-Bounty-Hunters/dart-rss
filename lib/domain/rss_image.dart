@@ -12,9 +12,9 @@ class RssImage {
     if (element == null) {
       return null;
     }
-    final title = findElementOrNull(element, 'title')?.text;
-    final url = findElementOrNull(element, 'url')?.text;
-    final link = findElementOrNull(element, 'link')?.text;
+    final title = findElementOrNull(element, 'title')?.innerText;
+    final url = findElementOrNull(element, 'url')?.innerText;
+    final link = findElementOrNull(element, 'link')?.innerText;
 
     return RssImage(title, url, link);
   }
