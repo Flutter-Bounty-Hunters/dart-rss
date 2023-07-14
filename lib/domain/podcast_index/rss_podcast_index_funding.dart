@@ -1,7 +1,10 @@
 import 'package:xml/xml.dart';
 
-/// This class represents a funding link which consists of a URL and displayable value. Funding
-/// tags allow podcasters to point end users to a page where they can support their show.
+/// This class represents a funding link which consists of a URL and displayable
+/// value.
+///
+/// Funding tags allow podcasters to point end users to a page where they can
+/// support their show.
 class RssPodcastIndexFunding {
   /// The URL of the page where a user can support the show.
   final String? url;

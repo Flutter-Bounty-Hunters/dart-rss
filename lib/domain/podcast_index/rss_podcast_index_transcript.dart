@@ -1,7 +1,8 @@
 import 'package:xml/xml.dart';
 
-/// This class represents a link to a transcript or closed captions file. Multiple
-/// tags can be present for multiple transcript formats.
+/// This class represents a link to a transcript or closed captions file.
+///
+/// Multiple tags can be present for multiple transcript formats.
 class RssPodcastIndexTranscript {
   /// URL of the podcast transcript.
   final String? url;

@@ -1,8 +1,11 @@
 import 'package:xml/xml.dart';
 
-/// This class represents a person that is linked to a podcast or individual episode. Persons
-/// can be defined at the podcast and episode level. If a person is defined at the episode level,
-/// this overrides all and any persons defined at the [RssItem] level.
+/// This class represents a person that is linked to a podcast or individual
+/// episode.
+///
+/// Persons can be defined at the podcast and episode level. If a person is
+/// defined at the episode level, this overrides all and any persons defined at
+/// the [RssItem] level.
 class RssPodcastIndexPerson {
   /// The person's name.
   String name;

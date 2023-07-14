@@ -1,8 +1,9 @@
 import 'package:xml/xml.dart';
 
-/// Points to one or more soundbites within a podcast episode. The intended use
-/// includes episodes previews, discoverability, audiogram generation, episode
-/// highlights, etc.
+/// Points to one or more soundbites within a podcast episode.
+///
+/// The intended use includes episodes previews, discoverability, audiogram
+/// generation, episode highlights, etc.
 class RssPodcastIndexSoundbite {
   /// The time where the soundbite begins.
   final double? startTime;

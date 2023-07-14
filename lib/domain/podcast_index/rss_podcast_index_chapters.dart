@@ -2,8 +2,9 @@ import 'package:xml/xml.dart';
 
 /// Episodes that support the Podcasting 2.0 namespace can have a list of
 /// (chapters)[https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters].
+///
 /// This class represents a link to a chapters file. Chapters are stored separately
-/// to the RSS feed to
+/// to the RSS feed.
 class RssPodcastIndexChapters {
   /// The URL pointing to a chapters file.
   final String? url;
