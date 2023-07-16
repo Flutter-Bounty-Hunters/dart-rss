@@ -6,7 +6,7 @@ RssItunesEpisodeType? newRssItunesEpisodeType(XmlElement? element) {
   // "full" is default type
   if (element == null) return RssItunesEpisodeType.full;
 
-  switch (element.text) {
+  switch (element.innerText) {
     case 'full':
       return RssItunesEpisodeType.full;
     case 'trailer':

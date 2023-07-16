@@ -356,6 +356,7 @@ void main() {
     var xmlString = File('test/xml/RSS-PodcastIndex-R1.xml').readAsStringSync();
 
     var feed = RssFeed.parse(xmlString);
+    var podcastPersons = feed.podcastIndex!.persons;
 
     expect(feed.title, 'Podcasting 2.0 Namespace Example');
     expect(
@@ -365,6 +366,9 @@ void main() {
     expect(feed.lastBuildDate, 'Fri, 09 Oct 2020 04:30:38 GMT');
     expect(feed.generator, 'Freedom Controller');
     expect(feed.webMaster, 'support@example.com (Tech Support)');
+    expect(podcastPersons?.length, 2);
+    expect(podcastPersons![0]?.name, 'Host 1 Podcast');
+    expect(podcastPersons[1]?.name, 'Host 2 Podcast');
 
     expect(feed.podcastIndex!.locked!.locked, true);
     expect(feed.podcastIndex!.locked!.owner, 'podcastowner@example.com');
@@ -377,12 +381,16 @@ void main() {
     var transcripts1 = item1.podcastIndex!.transcripts;
     var soundbite1 = item1.podcastIndex!.soundbites;
     var chapters1 = item1.podcastIndex!.chapters;
+    var itemsPersons = item1.podcastIndex!.persons;
 
     expect(transcripts1.length, 1);
     expect(transcripts1[0]!.url, 'https://example.com/ep3/transcript.txt');
     expect(transcripts1[0]!.type, 'text/plain');
     expect(chapters1?.url, 'https://example.com/ep3_chapters.json');
     expect(chapters1?.type, 'application/json');
+    expect(itemsPersons.length, 2);
+    expect(itemsPersons[0]?.name, 'Host 1 Item');
+    expect(itemsPersons[1]?.name, 'Host 2 Item');
 
     expect(soundbite1.length, 1);
     expect(soundbite1[0]!.startTime, 33.833);

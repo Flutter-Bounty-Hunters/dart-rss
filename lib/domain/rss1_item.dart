@@ -21,9 +21,9 @@ class Rss1Item {
 
   factory Rss1Item.parse(XmlElement element) {
     return Rss1Item(
-      title: findElementOrNull(element, 'title')?.text,
-      description: findElementOrNull(element, 'description')?.text,
-      link: findElementOrNull(element, 'link')?.text,
+      title: findElementOrNull(element, 'title')?.innerText,
+      description: findElementOrNull(element, 'description')?.innerText,
+      link: findElementOrNull(element, 'link')?.innerText,
       dc: DublinCore.parse(element),
       content: RssContent.parse(findElementOrNull(element, 'content:encoded')),
     );

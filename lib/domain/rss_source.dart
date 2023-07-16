@@ -11,7 +11,7 @@ class RssSource {
       return null;
     }
     final url = element.getAttribute('url');
-    final value = element.text;
+    final value = element.innerText;
 
     return RssSource(url, value);
   }

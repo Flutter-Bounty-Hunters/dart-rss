@@ -39,6 +39,9 @@
         <podcast:category>Commentary</podcast:category>
         <podcast:category>Technology</podcast:category>
 
+        <podcast:person href="https://www.host1.org" img="https://feeds.example.com/host1.png" group="cast" role="host">Host 1 Podcast</podcast:person>
+        <podcast:person href="https://www.host1.org" img="https://feeds.example.com/host1.png" group="cast" role="host">Host 2 Podcast</podcast:person>
+
         <podcast:contact type="feedback" method="link">https://example.com/feedback</podcast:contact>
         <podcast:contact type="advertising" method="email">adbuy@example.com</podcast:contact>
         <podcast:contact type="abuse" method="email">abuse@example.com</podcast:contact>
@@ -76,11 +79,11 @@
             <podcast:chapters url="https://example.com/ep3_chapters.json" type="application/json"/>
             <podcast:soundbite startTime="33.833" duration="60.0" />
             <podcast:transcript url="https://example.com/ep3/transcript.txt" type="text/plain" />
-            <podcast:person name="Adam Curry" href="https://www.podchaser.com/creators/adam-curry-107ZzmWE5f" img="http://example.com/images/adamcurry.jpg" />
-            <podcast:person role="guest" name="Dave Jones" href="https://github.com/daveajones/" img="http://example.com/images/davejones.jpg" />
             <enclosure url="https://mp3s.nashownotes.com/PC20-17-2020-12-25-Final.mp3" length="76606111" type="audio/mpeg"/>
             <podcast:alternateEnclosure type="audio/x-m4a" length="1540076" bitrate="80" title="Audio - low bitrate">https://example.com/podcast/audio/ep0003-low.mp3</podcast:alternateEnclosure>
             <podcast:alternateEnclosure type="audio/mpeg" length="2534548" bitrate="160" title="Audio - high bitrate">https://example.com/podcast/audio/ep0003-high.mp3</podcast:alternateEnclosure>
+            <podcast:person href="https://www.host1.org" img="https://feeds.example.com/host1.png" group="cast" role="host">Host 1 Item</podcast:person>
+            <podcast:person href="https://www.host1.org" img="https://feeds.example.com/host1.png" group="cast" role="host">Host 2 Item</podcast:person>
         </item>
 
         <item>

@@ -8,7 +8,7 @@ class RssCategory {
 
   factory RssCategory.parse(XmlElement element) {
     final domain = element.getAttribute('domain');
-    final value = element.text;
+    final value = element.innerText;
     return RssCategory(domain, value);
   }
 }
