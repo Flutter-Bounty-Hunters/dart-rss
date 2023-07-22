@@ -1,4 +1,9 @@
 # Changelog
+## [3.0.1] - July, 2023
+ * Upgrade `xml` dependency to `6.3.0`
+ * Upgrade `intl` dependency to `0.18.0`
+ * Added Podcasting 2.0 `person` tag
+
 ## [3.0.0](https://pub.dev/packages/dart_rss/versions/3.0.0)
 ## Breaking Changes
 - This project now uses Dart 3 instead of Dart 2
