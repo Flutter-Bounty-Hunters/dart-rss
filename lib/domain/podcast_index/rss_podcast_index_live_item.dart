@@ -4,6 +4,7 @@ import 'package:dart_rss/domain/podcast_index/rss_podcast_index_guid.dart';
 import 'package:dart_rss/domain/podcast_index/rss_podcast_index_person.dart';
 import 'package:dart_rss/domain/podcast_index/rss_podcast_live_item_images.dart';
 import 'package:dart_rss/domain/rss_enclosure.dart';
+import 'package:dart_rss/domain/rss_itunes_image.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
@@ -19,6 +20,7 @@ class RssPodcastIndexLiveItem {
 
   final RssPodcastIndexGuid? guid;
   final RssPodcastIndexLiveItemImages? images;
+  final RssItunesImage? itunesImage;
   final RssPodcastIndexAlternateEnclosure? alternateEnclosure;
   final List<RssPodcastIndexPerson>? persons;
   final RssEnclosure? enclosure;
@@ -34,6 +36,7 @@ class RssPodcastIndexLiveItem {
       this.end,
       this.guid,
       this.images,
+      this.itunesImage,
       this.alternateEnclosure,
       this.persons,
       this.enclosure,
@@ -59,6 +62,8 @@ class RssPodcastIndexLiveItem {
       images: RssPodcastIndexLiveItemImages.parse(
           findElementOrNull(element, "podcast:images")),
 
+      itunesImage:
+          RssItunesImage.parse(findElementOrNull(element, "itunes:image")),
       alternateEnclosure: RssPodcastIndexAlternateEnclosure.parse(
           findElementOrNull(element, "podcast:alternateEnclosure")),
 
