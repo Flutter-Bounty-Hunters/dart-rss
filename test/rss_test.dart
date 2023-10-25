@@ -345,7 +345,7 @@ void main() {
     expect(item.itunes!.episode, 1);
     expect(item.itunes!.season, 1);
     expect(item.itunes!.image!.href, 'https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357');
-    expect(item.itunes!.duration, Duration(minutes: 32, seconds: 30));
+    expect(item.itunes!.duration, const Duration(minutes: 32, seconds: 30));
     expect(item.itunes!.explicit, false);
     expect(item.itunes!.keywords, 'go,golang,open source,software,development'.split(','));
     expect(item.itunes!.subtitle, 'with Erik, Carlisia, and Brian');

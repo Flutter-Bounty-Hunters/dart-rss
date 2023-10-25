@@ -83,7 +83,7 @@ void main() {
     );
     expect(
       firstItem.content!.images,
-      Iterable.empty(),
+      const Iterable.empty(),
     );
   });
 

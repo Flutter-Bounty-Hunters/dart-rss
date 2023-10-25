@@ -1,4 +1,5 @@
 import 'package:dart_rss/domain/podcast_index/rss_podcast_index_funding.dart';
+import 'package:dart_rss/domain/podcast_index/rss_podcast_index_live_item.dart';
 import 'package:dart_rss/domain/podcast_index/rss_podcast_index_locked.dart';
 import 'package:dart_rss/domain/podcast_index/rss_podcast_index_person.dart';
 import 'package:dart_rss/util/helpers.dart';
@@ -21,6 +22,9 @@ class RssPodcastIndex {
       locked: RssPodcastIndexLocked.parse(
         findElementOrNull(element, 'podcast:locked'),
       ),
+      liveItem: RssPodcastIndexLiveItem.parse(
+        findElementOrNull(element, "podcast:liveItem"),
+      ),
     );
   }
 
@@ -28,6 +32,7 @@ class RssPodcastIndex {
     this.funding,
     this.persons,
     this.locked,
+    this.liveItem,
   });
 
   /// List of funding tags.
@@ -38,4 +43,6 @@ class RssPodcastIndex {
 
   /// The purpose is to tell other podcast hosting platforms whether they are allowed to import this feed.
   final RssPodcastIndexLocked? locked;
+
+  final RssPodcastIndexLiveItem? liveItem;
 }
