@@ -26,6 +26,11 @@ bool? parseBoolLiteral(XmlElement element, String tagName) {
   return ['yes', 'true'].contains(v);
 }
 
+bool? parseBool(String? v) {
+  if (v == null) return null;
+  return ['yes', 'true'].contains(v);
+}
+
 DateTime? parseDateTime(String? dateTimeString) {
   if (dateTimeString == null) return null;
   return DateTime.tryParse(dateTimeString);
