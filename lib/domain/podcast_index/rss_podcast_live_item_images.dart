@@ -15,7 +15,7 @@ class RssPodcastIndexLiveItemImages {
     if (imagesElement == null) return RssPodcastIndexLiveItemImages(urls: null);
     final urls = imagesElement
         .split(",")
-        .map((e) => RegExp(r"^[s]+").firstMatch(e).toString())
+        .map((e) => RegExp(r"^[^s]+").firstMatch(e).toString())
         .toList();
     return RssPodcastIndexLiveItemImages(urls: urls);
   }
