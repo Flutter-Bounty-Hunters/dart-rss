@@ -9,16 +9,19 @@ extension SafeParseDateTime on DateTime {
     if (str == null) {
       return null;
     }
+
     const dateFormatPatterns = [
       'EEE, d MMM yyyy HH:mm:ss Z',
     ];
+
+    final trimmedDate = str.trim();
     try {
-      return DateTime.parse(str);
+      return DateTime.parse(trimmedDate);
     } catch (_) {
       for (final pattern in dateFormatPatterns) {
         try {
           final format = DateFormat(pattern);
-          return format.parse(str);
+          return format.parse(trimmedDate);
         } catch (_) {}
       }
     }

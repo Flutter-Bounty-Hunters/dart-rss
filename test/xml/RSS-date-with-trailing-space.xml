@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom"
+  version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title><![CDATA[Flutter Awesome]]></title>
+    <description><![CDATA[An awesome list that curates the best Flutter libraries and tools.]]></description>
+    <link>https://flutterawesome.com/</link>
+    <image>
+      <url>https://flutterawesome.com/favicon.png</url>
+      <title>Flutter Awesome</title>
+      <link>https://flutterawesome.com/</link>
+    </image>
+    <generator>Ghost 1.26</generator>
+    <lastBuildDate>Mon, 08 Jan 2024 14:14:53 GMT</lastBuildDate>
+    <atom:link href="https://flutterawesome.com/rss/" rel="self" type="application/rss+xml" />
+    <ttl>60</ttl>
+    <item>
+      <title><![CDATA[An engaging entertainment application built using Flutter]]></title>
+      <description><![CDATA[An engaging entertainment application built using Flutter]]></description>
+      <link>https://flutterawesome.com/an-engaging-entertainment-application-built-using-flutter/</link>
+      <guid isPermaLink="false">6598b61f593a0507108677dc</guid>
+      <category><![CDATA[Movie]]></category>
+      <dc:creator><![CDATA[Flutter Awesome]]></dc:creator>
+      <pubDate>2024-01-08T00:19:00Z </pubDate>
+      <media:content
+        url="https://flutterawesome.com/content/images/2024/01/Code_2024-01_10-13-59.jpg"
+        medium="image" />
+      <content:encoded><![CDATA[<h1>Nepflix</h1>
+<img src="https://flutterawesome.com/content/images/2024/01/Code_2024-01_10-13-59.jpg" alt="An engaging entertainment application built using Flutter"><p>NepFlix is an engaging entertainment application built using Flutter, offering a delightful experience for users to explore and discover a diverse collection of movies and TV shows. With an intuitive interface and powerful features, NepFlix brings the world of entertainment right to your fingertips.</p>
+
+<h2>Getting Started</h2>
+<ol start="2">
+<li>Navigate to the project directory:
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cd Nepflix">
+<pre><span class="pl-c1">cd</span> Nepflix</pre>
+</div>
+</li>
+<li>Install dependencies:
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="flutter pub get">
+<pre>flutter pub get</pre>
+</div>
+</li>
+</ol>
+<h2>Running the App</h2>
+<p>Ensure you have a device connected or an emulator running.</p>
+<ul>
+<li>Run the app using the following commands:
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content=" flutter run">
+<pre> flutter run</pre>
+</div>
+</li>
+</ul>
+<h3>Usage</h3>
+<ul>
+<li>Launch the app.</li>
+<li>Add a new task by pressing the &#8220;+&#8221; button.</li>
+<li>Edit a task by pressing the edit button.</li>
+<li>Delete a task by pressing the delete button.</li>
+</ul>
+<h3>Features</h3>
+<ol>
+<li>
+<p>Trending Movies
+Stay up-to-date with the latest movie trends. NepFlix showcases the hottest and most popular movies currently making waves in the entertainment industry.</p>
+<ul>
+<li>Stay up-to-date with the latest movie trends. NepFlix showcases the hottest and most popular movies currently making waves in the entertainment industry.</li>
+</ul>
+</li>
+<li>
+<p>Top Rated Movies
+Discover critically acclaimed movies that have received high ratings from both audiences and critics. Explore a curated list of top-rated films for an exceptional cinematic experience.</p>
+<ul>
+<li>Discover critically acclaimed movies that have received high ratings from both audiences and critics. Explore a curated list of top-rated films for an exceptional cinematic experience.</li>
+</ul>
+</li>
+<li>
+<p>Popular TV Shows
+Explore the world of television with NepFlix&#8217;s collection of popular TV shows. From thrilling dramas to hilarious comedies, there&#8217;s something for every TV enthusiast.</p>
+<ul>
+<li>Explore the world of television with NepFlix&#8217;s collection of popular TV shows. From thrilling dramas to hilarious comedies, there&#8217;s something for every TV enthusiast.</li>
+</ul>
+</li>
+<li>
+<p>Upcoming Movies
+Get a sneak peek into the future of cinema. NepFlix provides information about upcoming movie releases, allowing users to plan their entertainment schedule in advance.</p>
+<ul>
+<li>Get a sneak peek into the future of cinema. NepFlix provides information about upcoming movie releases, allowing users to plan their entertainment schedule in advance.</li>
+</ul>
+</li>
+<li>
+<p>Movie and TV Show Descriptions
+Detailed descriptions for each movie and TV show provide users with essential information, including plot summaries, cast details, and genre categorization. Make informed decisions about what to watch next.</p>
+<ul>
+<li>Detailed descriptions for each movie and TV show provide users with essential information, including plot summaries, cast details, and genre categorization. Make informed decisions about what to watch next.</li>
+</ul>
+</li>
+</ol>
+<h2>Screenshots</h2>
+<p><img src="https://camo.githubusercontent.com/f097ab511d56d3826565b0e5c92956f1e86281d80f9a2223bd47433e57f45573/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313033363132303839313835373330353636312f313139313733353032373231343539343034382f53637265656e73686f745f313730343230313932342e706e673f65783d36356136383462622669733d363539343066626226686d3d30663661633639643364313663303637633031313236643539626261616366333732353838626530656332343362646464613736336535643732343263303332263d26666f726d61743d77656270267175616c6974793d6c6f73736c6573732677696474683d333335266865696768743d363639" alt="An engaging entertainment application built using Flutter" data-canonical-src="https://media.discordapp.net/attachments/1036120891857305661/1191735027214594048/Screenshot_1704201924.png?ex=65a684bb&amp;is=65940fbb&amp;hm=0f6ac69d3d16c067c01126d59bbaacf372588be0ec243bddda763e5d7242c032&amp;=&amp;format=webp&amp;quality=lossless&amp;width=335&amp;height=669" style="max-width: 100%">
+<img src="https://camo.githubusercontent.com/fcf7eef235d35680f62494eba47685ca14181c6dd7426f122858512bc6264ebf/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313033363132303839313835373330353636312f313139313733343736303437333633363934352f53637265656e73686f745f313730343230313933302e706e673f65783d36356136383437632669733d363539343066376326686d3d61336333363865643432616431643932666561306361613531393634633733316335386264363139616539316434646538386631343435653064336238346365263d26666f726d61743d77656270267175616c6974793d6c6f73736c6573732677696474683d333335266865696768743d363639" alt="An engaging entertainment application built using Flutter" data-canonical-src="https://media.discordapp.net/attachments/1036120891857305661/1191734760473636945/Screenshot_1704201930.png?ex=65a6847c&amp;is=65940f7c&amp;hm=a3c368ed42ad1d92fea0caa51964c731c58bd619ae91d4de88f1445e0d3b84ce&amp;=&amp;format=webp&amp;quality=lossless&amp;width=335&amp;height=669" style="max-width: 100%">
+<img src="https://camo.githubusercontent.com/6adcd40ab6e2a556907d6582b6025760fd1190259f613f3d4e9c30c0b20d7a31/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f313033363132303839313835373330353636312f313139313733343235383730303636393030382f53637265656e73686f745f313730343230313934372e706e673f65783d36356136383430342669733d363539343066303426686d3d35386135663932616562303132343535396530353364383063636533366335363166636263633164636630383039396161613766323333643533383861323962263d26666f726d61743d77656270267175616c6974793d6c6f73736c6573732677696474683d333335266865696768743d363639" alt="An engaging entertainment application built using Flutter" data-canonical-src="https://media.discordapp.net/attachments/1036120891857305661/1191734258700669008/Screenshot_1704201947.png?ex=65a68404&amp;is=65940f04&amp;hm=58a5f92aeb0124559e053d80cce36c561fcbcc1dcf08099aaa7f233d5388a29b&amp;=&amp;format=webp&amp;quality=lossless&amp;width=335&amp;height=669" style="max-width: 100%"></p>
+<h2>GitHub</h2>
+<p><a class="github-view" href="https://github.com/GambhirPoudel/Nepflix?ref=flutterawesome.com" target="_blank" rel="nofollow noopener">View Github</a></p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

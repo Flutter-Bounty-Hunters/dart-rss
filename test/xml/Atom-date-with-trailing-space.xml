@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https:&#47;&#47;pub.dev&#47;feed.atom</id>
+  <title>Pub Packages for Dart</title>
+  <updated>2024-01-08T14:47:52.967556Z</updated>
+  <author>
+    <name>Dart Team</name>
+  </author>
+  <link href="https://pub.dev/" rel="alternate" />
+  <link href="https://pub.dev/feed.atom" rel="self" />
+  <generator version="0.1.0">Pub Feed Generator</generator>
+  <subtitle>Last Updated Packages</subtitle>
+  <entry>
+    <id>urn:uuid:1cb86c05-4157-48c3-ad83-ea5e6163161a</id>
+    <title>v0.1.0 of poeditor_cli</title>
+    <updated>2024-01-08T14:46:43.240493Z </updated>
+    <content>A CLI for downloading and updating terms&#47;localizations in a POEDitor project.</content>
+    <link href="https://pub.dev/packages/poeditor_cli" rel="alternate" title="poeditor_cli" />
+  </entry>
+</feed>

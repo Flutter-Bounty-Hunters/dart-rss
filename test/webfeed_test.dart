@@ -94,4 +94,24 @@ void main() {
       expect(rss2Feed.items.first.updated, DateTime.parse('2018-03-26 14:00:00.000'));
     });
   });
+
+  test('WebFeed parses RSS feed with trailing spaces on pubDate', () {
+    // Parse a RSS containing a date with a trailing whitespace: "2024-01-08T00:19:00Z ".
+    final xmlString = File('test/xml/RSS-date-with-trailing-space.xml').readAsStringSync();
+
+    final feed = WebFeed.fromXmlString(xmlString);
+
+    // Ensure the date was parsed.
+    expect(feed.items.first.updated, DateTime.utc(2024, 1, 8, 0, 19, 0));
+  });
+
+  test('WebFeed parses Atom feed with trailing spaces on updated date', () {
+    // Parse an Atom feed containing a date with a trailing whitespace: "2024-01-08T14:46:43.240493Z ".
+    final xmlString = File('test/xml/Atom-date-with-trailing-space.xml').readAsStringSync();
+
+    final feed = WebFeed.fromXmlString(xmlString);
+
+    // Ensure the date was parsed.
+    expect(feed.items.first.updated, DateTime.utc(2024, 1, 8, 14, 46, 43, 0, 240493));
+  });
 }
