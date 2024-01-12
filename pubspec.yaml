@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   xml: ^6.3.0
-  http: ^0.13.0
+  http: ^1.1.2
   intl: ^0.18.0
 
 dev_dependencies:
