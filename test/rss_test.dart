@@ -384,8 +384,8 @@ void main() {
     expect(feed.podcastIndex!.liveItems, isNotNull);
     expect(feed.podcastIndex!.liveItems!.length, 3);
     _verifyLiveItem0(feed.podcastIndex!.liveItems![0]!);
-    _verifyLiveItem0(feed.podcastIndex!.liveItems![1]!);
-    _verifyLiveItem0(feed.podcastIndex!.liveItems![2]!);
+    _verifyLiveItem1(feed.podcastIndex!.liveItems![1]!);
+    _verifyLiveItem2(feed.podcastIndex!.liveItems![2]!);
 
     var item1 = feed.items[0];
     var transcripts1 = item1.podcastIndex!.transcripts;
