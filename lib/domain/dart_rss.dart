@@ -14,6 +14,8 @@ extension SafeParseDateTime on DateTime {
       'EEE, d MMM yyyy HH:mm:ss Z',
     ];
 
+    // DateTime.parse returns null if the input has
+    // trailing spaces. Remove the spaces to avoid that.
     final trimmedDate = str.trim();
     try {
       return DateTime.parse(trimmedDate);
