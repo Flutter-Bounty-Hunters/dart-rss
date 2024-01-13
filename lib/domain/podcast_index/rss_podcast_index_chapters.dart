@@ -6,17 +6,6 @@ import 'package:xml/xml.dart';
 /// This class represents a link to a chapters file. Chapters are stored separately
 /// to the RSS feed.
 class RssPodcastIndexChapters {
-  /// The URL pointing to a chapters file.
-  final String? url;
-
-  /// The mime type of the file. Typically, this is json.
-  final String? type;
-
-  RssPodcastIndexChapters({
-    this.url,
-    this.type,
-  });
-
   static RssPodcastIndexChapters? parse(XmlElement? element) {
     if (element == null) {
       return null;
@@ -27,4 +16,15 @@ class RssPodcastIndexChapters {
       type: element.getAttribute('type'),
     );
   }
+
+  const RssPodcastIndexChapters({
+    this.url,
+    this.type,
+  });
+
+  /// The URL pointing to a chapters file.
+  final String? url;
+
+  /// The mime type of the file. Typically, this is json.
+  final String? type;
 }

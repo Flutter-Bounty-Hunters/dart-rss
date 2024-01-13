@@ -1,9 +1,17 @@
 import 'package:xml/xml.dart';
 
 class Category {
-  final String? scheme;
-  final String? label;
-  final String? value;
+  static Category? parse(XmlElement? element) {
+    if (element == null) {
+      return null;
+    }
+
+    return Category(
+      scheme: element.getAttribute('scheme'),
+      label: element.getAttribute('label'),
+      value: element.innerText,
+    );
+  }
 
   const Category({
     this.scheme,
@@ -11,14 +19,7 @@ class Category {
     this.value,
   });
 
-  static Category? parse(XmlElement? element) {
-    if (element == null) {
-      return null;
-    }
-    return Category(
-      scheme: element.getAttribute('scheme'),
-      label: element.getAttribute('label'),
-      value: element.innerText,
-    );
-  }
+  final String? scheme;
+  final String? label;
+  final String? value;
 }

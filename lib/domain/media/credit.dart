@@ -1,16 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Credit {
-  final String? role;
-  final String? scheme;
-  final String? value;
-
-  const Credit({
-    this.role,
-    this.scheme,
-    this.value,
-  });
-
   factory Credit.parse(XmlElement element) {
     return Credit(
       role: element.getAttribute('role'),
@@ -18,4 +8,14 @@ class Credit {
       value: element.innerText,
     );
   }
+
+  const Credit({
+    this.role,
+    this.scheme,
+    this.value,
+  });
+
+  final String? role;
+  final String? scheme;
+  final String? value;
 }

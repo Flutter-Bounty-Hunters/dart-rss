@@ -17,6 +17,7 @@ void main() {
       // do nothing
     }
   });
+
   test('parse RSS.xml', () {
     final xmlString = File('test/xml/RSS.xml').readAsStringSync();
 
@@ -87,6 +88,7 @@ void main() {
         '<img width="1000" height="690" src="https://test.com/image_link"/> Test content<br />');
     expect(feed.items.first.content!.images.first, 'https://test.com/image_link');
   });
+
   test('parse RSS-Media.xml', () {
     final xmlString = File('test/xml/RSS-Media.xml').readAsStringSync();
 
@@ -223,6 +225,7 @@ void main() {
     expect(item.media!.scenes.first.startTime, '00:15');
     expect(item.media!.scenes.first.endTime, '00:45');
   });
+
   test('parse RSS-DC.xml', () {
     final xmlString = File('test/xml/RSS-DC.xml').readAsStringSync();
 
@@ -352,6 +355,7 @@ void main() {
     expect(item.itunes!.title, 'awesome title');
     expect(item.itunes!.block, false);
   });
+
   test('parse RSS-PodcastIndex-R1.xml', () {
     var xmlString = File('test/xml/RSS-PodcastIndex-R1.xml').readAsStringSync();
 

@@ -9,58 +9,9 @@ import 'package:dart_rss/domain/rss_item.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-import 'rss_itunes.dart';
+import 'package:dart_rss/domain/rss_itunes.dart';
 
 class RssFeed {
-  final String? title;
-  final String? author;
-  final String? description;
-  final String? link;
-  final List<RssItem> items;
-
-  final RssImage? image;
-  final RssCloud? cloud;
-  final List<RssCategory> categories;
-  final List<String> skipDays;
-  final List<int> skipHours;
-  final String? lastBuildDate;
-  final String? language;
-  final String? generator;
-  final String? copyright;
-  final String? docs;
-  final String? managingEditor;
-  final String? rating;
-  final String? webMaster;
-  final int ttl;
-  final DublinCore? dc;
-  final RssItunes? itunes;
-  final RssPodcastIndex? podcastIndex;
-
-  const RssFeed({
-    this.title,
-    this.author,
-    this.description,
-    this.link,
-    this.items = const <RssItem>[],
-    this.image,
-    this.cloud,
-    this.categories = const <RssCategory>[],
-    this.skipDays = const <String>[],
-    this.skipHours = const <int>[],
-    this.lastBuildDate,
-    this.language,
-    this.generator,
-    this.copyright,
-    this.docs,
-    this.managingEditor,
-    this.rating,
-    this.webMaster,
-    this.ttl = 0,
-    this.dc,
-    this.itunes,
-    this.podcastIndex,
-  });
-
   factory RssFeed.parse(String xmlString) {
     final document = XmlDocument.parse(xmlString);
     XmlElement channelElement;
@@ -97,10 +48,62 @@ class RssFeed {
       managingEditor: findElementOrNull(channelElement, 'managingEditor')?.innerText,
       rating: findElementOrNull(channelElement, 'rating')?.innerText,
       webMaster: findElementOrNull(channelElement, 'webMaster')?.innerText,
-      ttl: int.tryParse(findElementOrNull(channelElement, 'ttl')?.innerText ?? '0',) ?? 0,
+      ttl: int.tryParse(
+            findElementOrNull(channelElement, 'ttl')?.innerText ?? '0',
+          ) ??
+          0,
       dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
       podcastIndex: RssPodcastIndex.parse(channelElement),
     );
   }
+
+  const RssFeed({
+    this.title,
+    this.author,
+    this.description,
+    this.link,
+    this.items = const <RssItem>[],
+    this.image,
+    this.cloud,
+    this.categories = const <RssCategory>[],
+    this.skipDays = const <String>[],
+    this.skipHours = const <int>[],
+    this.lastBuildDate,
+    this.language,
+    this.generator,
+    this.copyright,
+    this.docs,
+    this.managingEditor,
+    this.rating,
+    this.webMaster,
+    this.ttl = 0,
+    this.dc,
+    this.itunes,
+    this.podcastIndex,
+  });
+
+  final String? title;
+  final String? author;
+  final String? description;
+  final String? link;
+  final List<RssItem> items;
+
+  final RssImage? image;
+  final RssCloud? cloud;
+  final List<RssCategory> categories;
+  final List<String> skipDays;
+  final List<int> skipHours;
+  final String? lastBuildDate;
+  final String? language;
+  final String? generator;
+  final String? copyright;
+  final String? docs;
+  final String? managingEditor;
+  final String? rating;
+  final String? webMaster;
+  final int ttl;
+  final DublinCore? dc;
+  final RssItunes? itunes;
+  final RssPodcastIndex? podcastIndex;
 }

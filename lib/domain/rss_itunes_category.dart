@@ -1,16 +1,10 @@
 import 'package:xml/xml.dart';
 
 class RssItunesCategory {
-  final String? category;
-  final List<String?> subCategories;
-
-  const RssItunesCategory({
-    this.category,
-    this.subCategories = const <String>[],
-  });
-
   static RssItunesCategory? parse(XmlElement? element) {
-    if (element == null) return null;
+    if (element == null) {
+      return null;
+    }
 
     Iterable<XmlElement>? subCategories;
     try {
@@ -20,10 +14,15 @@ class RssItunesCategory {
     }
     return RssItunesCategory(
       category: element.getAttribute('text')?.trim(),
-      subCategories: subCategories
-              ?.map((ele) => ele.getAttribute('text')?.trim())
-              .toList() ??
-          <String>[],
+      subCategories: subCategories?.map((ele) => ele.getAttribute('text')?.trim()).toList() ?? <String>[],
     );
   }
+
+  const RssItunesCategory({
+    this.category,
+    this.subCategories = const <String>[],
+  });
+
+  final String? category;
+  final List<String?> subCategories;
 }
