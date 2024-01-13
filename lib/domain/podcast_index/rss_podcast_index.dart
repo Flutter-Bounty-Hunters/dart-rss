@@ -22,9 +22,9 @@ class RssPodcastIndex {
       locked: RssPodcastIndexLocked.parse(
         findElementOrNull(element, 'podcast:locked'),
       ),
-      liveItem: RssPodcastIndexLiveItem.parse(
-        findElementOrNull(element, "podcast:liveItem"),
-      ),
+      liveItems: element.findElements('podcast:liveItem').map((e) {
+        return RssPodcastIndexLiveItem.parse(e);
+      }).toList(),
     );
   }
 
@@ -32,7 +32,7 @@ class RssPodcastIndex {
     this.funding,
     this.persons,
     this.locked,
-    this.liveItem,
+    this.liveItems,
   });
 
   /// List of funding tags.
@@ -44,5 +44,5 @@ class RssPodcastIndex {
   /// The purpose is to tell other podcast hosting platforms whether they are allowed to import this feed.
   final RssPodcastIndexLocked? locked;
 
-  final RssPodcastIndexLiveItem? liveItem;
+  final List<RssPodcastIndexLiveItem?>? liveItems;
 }

@@ -1,6 +1,10 @@
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
+// TODO: Complete the definition for the "alternativeEnclosure" tag (
+/// The `alternativeEnclosure` XML element.
+///
+/// https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#alternate-enclosure
 class RssPodcastIndexAlternateEnclosure {
   static RssPodcastIndexAlternateEnclosure? parse(XmlElement? element) {
     if (element == null) {

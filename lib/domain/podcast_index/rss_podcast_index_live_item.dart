@@ -8,6 +8,9 @@ import 'package:dart_rss/domain/rss_itunes_image.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
+/// The `liveItem` XML element.
+///
+/// https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#live-item
 class RssPodcastIndexLiveItem {
   static RssPodcastIndexLiveItem? parse(XmlElement? element) {
     if (element == null) {

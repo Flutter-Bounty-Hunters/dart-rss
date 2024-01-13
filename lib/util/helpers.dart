@@ -21,12 +21,16 @@ List<XmlElement>? findAllDirectElementsOrNull(XmlElement element, String name, {
 
 bool? parseBoolLiteral(XmlElement element, String tagName) {
   final v = findElementOrNull(element, tagName)?.innerText.toLowerCase().trim();
-  if (v == null) return null;
+  if (v == null) {
+    return null;
+  }
   return ['yes', 'true'].contains(v);
 }
 
 bool? parseBool(String? v) {
-  if (v == null) return null;
+  if (v == null) {
+    return null;
+  }
   return ['yes', 'true'].contains(v);
 }
 
@@ -58,11 +62,15 @@ extension SafeParseDateTime on DateTime {
 }
 
 DateTime? parseDateTime(String? dateTimeString) {
-  if (dateTimeString == null) return null;
+  if (dateTimeString == null) {
+    return null;
+  }
   return DateTime.tryParse(dateTimeString);
 }
 
 int? parseInt(String? intString) {
-  if (intString == null) return null;
+  if (intString == null) {
+    return null;
+  }
   return int.tryParse(intString);
 }

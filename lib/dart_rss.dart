@@ -12,3 +12,17 @@ export 'domain/rss_feed.dart';
 export 'domain/rss_image.dart';
 export 'domain/rss_item.dart';
 export 'domain/rss_source.dart';
+
+// Podcasts
+export 'domain/podcast_index/rss_podcast_index.dart';
+export 'domain/podcast_index/rss_podcast_index_alternate_enclosure.dart';
+export 'domain/podcast_index/rss_podcast_index_chapters.dart';
+export 'domain/podcast_index/rss_podcast_index_content_link.dart';
+export 'domain/podcast_index/rss_podcast_index_funding.dart';
+export 'domain/podcast_index/rss_podcast_index_guid.dart';
+export 'domain/podcast_index/rss_podcast_index_live_item.dart';
+export 'domain/podcast_index/rss_podcast_index_locked.dart';
+export 'domain/podcast_index/rss_podcast_index_person.dart';
+export 'domain/podcast_index/rss_podcast_index_soudbite.dart';
+export 'domain/podcast_index/rss_podcast_index_transcript.dart';
+export 'domain/podcast_index/rss_podcast_live_item_images.dart';

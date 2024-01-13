@@ -8,7 +8,7 @@ class RssPodcastIndexGuid {
     }
 
     return RssPodcastIndexGuid(
-      isPermalink: parseBool(element.getAttribute("isPermalink")),
+      isPermalink: parseBool(element.getAttribute("isPermaLink")),
       value: element.innerText,
     );
   }

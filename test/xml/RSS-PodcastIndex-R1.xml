@@ -61,6 +61,84 @@
             <podcast:valueRecipient name="hosting company" type="node" address="036557ea56b3b86f08be31bcd2557cae8021b0e3a9413f0c0e52625c6696972e57" split="1" />
         </podcast:value>
 
+        <podcast:liveItem status="pending" start="2025-05-14T13:00:00.000-0800">
+            <title>A Future Show</title>
+            <description>This entry represents a show that will happen in the future.</description>
+            <link>https://example.com/podcast/live</link>
+            <guid isPermaLink="true">https://example.com/live</guid>
+            <author>John Doe (john@example.com)</author>
+            <podcast:images srcset="https://example.com/images/live/pci_avatar-massive.jpg 1500w,
+                https://example.com/images/live/pci_avatar-middle.jpg 600w,
+                https://example.com/images/live/pci_avatar-small.jpg 300w,
+                https://example.com/images/live/pci_avatar-tiny.jpg 150w"
+                />
+            <podcast:person href="https://www.podchaser.com/creators/adam-curry-107ZzmWE5f"
+                img="https://example.com/images/adamcurry.jpg">Adam Curry</podcast:person>
+            <podcast:person role="guest" href="https://github.com/daveajones/"
+                img="https://example.com/images/davejones.jpg">Dave Jones</podcast:person>
+            <podcast:person group="visuals" role="cover art designer"
+                href="https://example.com/artist/beckysmith">Becky Smith</podcast:person>
+            <podcast:alternateEnclosure type="audio/mpeg" length="312" default="true">
+                <podcast:source uri="https://example.com/pc20/livestream" />
+            </podcast:alternateEnclosure>
+            <enclosure url="https://example.com/pc20/livestream?format=.mp3" type="audio/mpeg" length="312" />
+            <podcast:contentLink href="https://youtube.com/pc20/livestream">YouTube!</podcast:contentLink>
+            <podcast:contentLink href="https://twitch.com/pc20/livestream">Twitch!</podcast:contentLink>
+            <podcast:contentLink href="https://example.com/html/livestream">Listen Live!</podcast:contentLink>
+        </podcast:liveItem>
+
+        <podcast:liveItem status="live" start="2023-01-13T13:00:00.000-0800">
+            <title>An In-Progress Show</title>
+            <description>This entry represents a show that's happening right now.</description>
+            <link>https://example.com/podcast/live</link>
+            <guid isPermaLink="true">https://example.com/live</guid>
+            <author>John Doe (john@example.com)</author>
+            <podcast:images srcset="https://example.com/images/live/pci_avatar-massive.jpg 1500w,
+                https://example.com/images/live/pci_avatar-middle.jpg 600w,
+                https://example.com/images/live/pci_avatar-small.jpg 300w,
+                https://example.com/images/live/pci_avatar-tiny.jpg 150w"
+                />
+            <podcast:person href="https://www.podchaser.com/creators/adam-curry-107ZzmWE5f"
+                img="https://example.com/images/adamcurry.jpg">Adam Curry</podcast:person>
+            <podcast:person role="guest" href="https://github.com/daveajones/"
+                img="https://example.com/images/davejones.jpg">Dave Jones</podcast:person>
+            <podcast:person group="visuals" role="cover art designer"
+                href="https://example.com/artist/beckysmith">Becky Smith</podcast:person>
+            <podcast:alternateEnclosure type="audio/mpeg" length="312" default="true">
+                <podcast:source uri="https://example.com/pc20/livestream" />
+            </podcast:alternateEnclosure>
+            <enclosure url="https://example.com/pc20/livestream?format=.mp3" type="audio/mpeg" length="312" />
+            <podcast:contentLink href="https://youtube.com/pc20/livestream">YouTube!</podcast:contentLink>
+            <podcast:contentLink href="https://twitch.com/pc20/livestream">Twitch!</podcast:contentLink>
+            <podcast:contentLink href="https://example.com/html/livestream">Listen Live!</podcast:contentLink>
+        </podcast:liveItem>
+
+        <podcast:liveItem status="ended" start="2020-08-26T13:00:00.000-0800" end="2020-08-26T15:00:00.000-0800">
+            <title>A Completed Show</title>
+            <description>This entry represents a show that was recorded in the past.</description>
+            <link>https://example.com/podcast/live</link>
+            <guid isPermaLink="true">https://example.com/live</guid>
+            <author>John Doe (john@example.com)</author>
+            <podcast:images srcset="https://example.com/images/live/pci_avatar-massive.jpg 1500w,
+                https://example.com/images/live/pci_avatar-middle.jpg 600w,
+                https://example.com/images/live/pci_avatar-small.jpg 300w,
+                https://example.com/images/live/pci_avatar-tiny.jpg 150w"
+                />
+            <podcast:person href="https://www.podchaser.com/creators/adam-curry-107ZzmWE5f"
+                img="https://example.com/images/adamcurry.jpg">Adam Curry</podcast:person>
+            <podcast:person role="guest" href="https://github.com/daveajones/"
+                img="https://example.com/images/davejones.jpg">Dave Jones</podcast:person>
+            <podcast:person group="visuals" role="cover art designer"
+                href="https://example.com/artist/beckysmith">Becky Smith</podcast:person>
+            <podcast:alternateEnclosure type="audio/mpeg" length="312" default="true">
+                <podcast:source uri="https://example.com/pc20/livestream" />
+            </podcast:alternateEnclosure>
+            <enclosure url="https://example.com/pc20/livestream?format=.mp3" type="audio/mpeg" length="312" />
+            <podcast:contentLink href="https://youtube.com/pc20/livestream">YouTube!</podcast:contentLink>
+            <podcast:contentLink href="https://twitch.com/pc20/livestream">Twitch!</podcast:contentLink>
+            <podcast:contentLink href="https://example.com/html/livestream">Listen Live!</podcast:contentLink>
+        </podcast:liveItem>
+
         <item>
             <title>Episode 3 - The Future</title>
             <description>&lt;p&gt;A look into the future of podcasting and how we get to Podcasting 2.0!&lt;/p&gt;</description>
