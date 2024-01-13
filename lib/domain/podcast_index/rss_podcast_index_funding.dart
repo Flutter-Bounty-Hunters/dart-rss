@@ -6,23 +6,25 @@ import 'package:xml/xml.dart';
 /// Funding tags allow podcasters to point end users to a page where they can
 /// support their show.
 class RssPodcastIndexFunding {
-  /// The URL of the page where a user can support the show.
-  final String? url;
-
-  /// The value to display.
-  final String? value;
-
-  RssPodcastIndexFunding({
-    this.url,
-    this.value,
-  });
-
   static RssPodcastIndexFunding? parse(XmlElement? element) {
-    if (element == null) return null;
+    if (element == null) {
+      return null;
+    }
 
     return RssPodcastIndexFunding(
       url: element.getAttribute('url'),
       value: element.innerText.trim(),
     );
   }
+
+  const RssPodcastIndexFunding({
+    this.url,
+    this.value,
+  });
+
+  /// The URL of the page where a user can support the show.
+  final String? url;
+
+  /// The value to display.
+  final String? value;
 }

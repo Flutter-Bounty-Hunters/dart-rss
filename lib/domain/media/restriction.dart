@@ -1,9 +1,17 @@
 import 'package:xml/xml.dart';
 
 class Restriction {
-  final String? relationship;
-  final String? type;
-  final String? value;
+  static Restriction? parse(XmlElement? element) {
+    if (element == null) {
+      return null;
+    }
+
+    return Restriction(
+      relationship: element.getAttribute('relationship'),
+      type: element.getAttribute('type'),
+      value: element.innerText,
+    );
+  }
 
   const Restriction({
     this.relationship,
@@ -11,14 +19,7 @@ class Restriction {
     this.value,
   });
 
-  static Restriction? parse(XmlElement? element) {
-    if (element == null) {
-      return null;
-    }
-    return Restriction(
-      relationship: element.getAttribute('relationship'),
-      type: element.getAttribute('type'),
-      value: element.innerText,
-    );
-  }
+  final String? relationship;
+  final String? type;
+  final String? value;
 }

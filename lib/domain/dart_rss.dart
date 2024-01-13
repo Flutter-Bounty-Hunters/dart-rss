@@ -1,56 +1,10 @@
 import 'package:dart_rss/dart_rss.dart';
-import 'package:http/http.dart' as http;
 import 'package:dart_rss/domain/rss1_feed.dart';
+import 'package:dart_rss/util/helpers.dart';
+import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
-import 'package:intl/intl.dart';
-
-extension SafeParseDateTime on DateTime {
-  static DateTime? safeParse(String? str) {
-    if (str == null) {
-      return null;
-    }
-
-    const dateFormatPatterns = [
-      'EEE, d MMM yyyy HH:mm:ss Z',
-    ];
-
-    // DateTime.parse returns null if the input has
-    // trailing spaces. Remove the spaces to avoid that.
-    final trimmedDate = str.trim();
-    try {
-      return DateTime.parse(trimmedDate);
-    } catch (_) {
-      for (final pattern in dateFormatPatterns) {
-        try {
-          final format = DateFormat(pattern);
-          return format.parse(trimmedDate);
-        } catch (_) {}
-      }
-    }
-    return null;
-  }
-}
-
-enum RssVersion {
-  rss1,
-  rss2,
-  atom,
-  unknown,
-}
 
 class WebFeed {
-  const WebFeed({
-    required this.title,
-    required this.description,
-    required this.links,
-    required this.items,
-  });
-
-  final String title;
-  final String description;
-  final List<String?> links;
-  final List<WebFeedItem> items;
-
   static WebFeed fromXmlString(String xmlString) {
     final rssVersion = detectRssVersion(xmlString);
     switch (rssVersion) {
@@ -149,6 +103,18 @@ class WebFeed {
     }
     return RssVersion.unknown;
   }
+
+  const WebFeed({
+    required this.title,
+    required this.description,
+    required this.links,
+    required this.items,
+  });
+
+  final String title;
+  final String description;
+  final List<String?> links;
+  final List<WebFeedItem> items;
 }
 
 class WebFeedItem {
@@ -163,4 +129,11 @@ class WebFeedItem {
   final String body;
   final List<String?> links;
   final DateTime? updated;
+}
+
+enum RssVersion {
+  rss1,
+  rss2,
+  atom,
+  unknown,
 }

@@ -7,31 +7,6 @@ import 'package:xml/xml.dart';
 /// defined at the episode level, this overrides all and any persons defined at
 /// the [RssItem] level.
 class RssPodcastIndexPerson {
-  /// The person's name.
-  String name;
-
-  /// Their role within the podcast or individual episode.
-  String? role;
-
-  /// This should be a reference to an official group within the Podcast Taxonomy Project list.
-  /// If group is not present, then "cast" is assumed.
-  String? group;
-
-  /// The person's avatar/image.
-  String? image;
-
-  /// The url to a relevant resource of information about the person, such as a homepage or
-  /// third-party profile platform.
-  String? link;
-
-  RssPodcastIndexPerson({
-    required this.name,
-    this.role,
-    this.group,
-    this.image,
-    this.link,
-  });
-
   factory RssPodcastIndexPerson.parse(XmlElement element) {
     final role = element.getAttribute('role');
     final group = element.getAttribute('group');
@@ -47,4 +22,29 @@ class RssPodcastIndexPerson {
       link: link,
     );
   }
+
+  const RssPodcastIndexPerson({
+    required this.name,
+    this.role,
+    this.group,
+    this.image,
+    this.link,
+  });
+
+  /// The person's name.
+  final String name;
+
+  /// Their role within the podcast or individual episode.
+  final String? role;
+
+  /// This should be a reference to an official group within the Podcast Taxonomy Project list.
+  /// If group is not present, then "cast" is assumed.
+  final String? group;
+
+  /// The person's avatar/image.
+  final String? image;
+
+  /// The url to a relevant resource of information about the person, such as a homepage or
+  /// third-party profile platform.
+  final String? link;
 }

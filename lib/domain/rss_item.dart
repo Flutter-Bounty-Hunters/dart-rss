@@ -8,44 +8,9 @@ import 'package:dart_rss/domain/rss_source.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-import 'rss_item_itunes.dart';
+import 'package:dart_rss/domain/rss_item_itunes.dart';
 
 class RssItem {
-  final String? title;
-  final String? description;
-  final String? link;
-
-  final List<RssCategory> categories;
-  final String? guid;
-  final String? pubDate;
-  final String? author;
-  final String? comments;
-  final RssSource? source;
-  final RssContent? content;
-  final Media? media;
-  final RssEnclosure? enclosure;
-  final DublinCore? dc;
-  final RssItemItunes? itunes;
-  final RssItemPodcastIndex? podcastIndex;
-
-  const RssItem({
-    this.title,
-    this.description,
-    this.link,
-    this.categories = const <RssCategory>[],
-    this.guid,
-    this.pubDate,
-    this.author,
-    this.comments,
-    this.source,
-    this.content,
-    this.media,
-    this.enclosure,
-    this.dc,
-    this.itunes,
-    this.podcastIndex,
-  });
-
   factory RssItem.parse(XmlElement element) {
     return RssItem(
       title: findElementOrNull(element, 'title')?.innerText,
@@ -65,4 +30,39 @@ class RssItem {
       podcastIndex: RssItemPodcastIndex.parse(element),
     );
   }
+
+  const RssItem({
+    this.title,
+    this.description,
+    this.link,
+    this.categories = const <RssCategory>[],
+    this.guid,
+    this.pubDate,
+    this.author,
+    this.comments,
+    this.source,
+    this.content,
+    this.media,
+    this.enclosure,
+    this.dc,
+    this.itunes,
+    this.podcastIndex,
+  });
+
+  final String? title;
+  final String? description;
+  final String? link;
+
+  final List<RssCategory> categories;
+  final String? guid;
+  final String? pubDate;
+  final String? author;
+  final String? comments;
+  final RssSource? source;
+  final RssContent? content;
+  final Media? media;
+  final RssEnclosure? enclosure;
+  final DublinCore? dc;
+  final RssItemItunes? itunes;
+  final RssItemPodcastIndex? podcastIndex;
 }
