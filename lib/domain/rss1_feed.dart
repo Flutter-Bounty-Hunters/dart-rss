@@ -73,6 +73,40 @@ class Rss1Feed {
   final int? updateFrequency;
   final DateTime? updateBase;
   final DublinCore? dc;
+
+  XmlDocument toXmlDocument() {
+    final builder = XmlBuilder();
+    builder
+      ..processing("xml", 'version="1.0"')
+      ..element("rdf:RDF", attributes: {
+        "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "xmlns": "http://purl.org/rss/1.0/",
+      }, nest: () {
+        builder.element("channel", nest: () {
+          if (title != null) {
+            builder.element("title", nest: title!);
+          }
+
+          if (description != null) {
+            builder.element("description", nest: description!);
+          }
+
+          if (link != null) {
+            builder.element("link", nest: link!);
+          }
+        });
+
+        image?.buildXml(builder);
+
+        for (final item in items) {
+          item.buildXml(builder);
+        }
+
+        // TODO: "textinput" element
+      });
+
+    return builder.buildDocument();
+  }
 }
 
 enum UpdatePeriod {

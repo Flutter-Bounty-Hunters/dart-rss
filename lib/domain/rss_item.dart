@@ -65,4 +65,22 @@ class RssItem {
   final DublinCore? dc;
   final RssItemItunes? itunes;
   final RssItemPodcastIndex? podcastIndex;
+
+  void buildXml(XmlBuilder builder) {
+    builder.element("item", attributes: {
+      "rdf:about": "http://xml.com/pub/2000/08/09/xslt/xslt.html",
+    }, nest: () {
+      if (title != null) {
+        builder.element("title", nest: title!);
+      }
+
+      if (link != null) {
+        builder.element("link", nest: link!);
+      }
+
+      if (description != null) {
+        builder.element("description", nest: description!);
+      }
+    });
+  }
 }

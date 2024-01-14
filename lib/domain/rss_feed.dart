@@ -87,8 +87,6 @@ class RssFeed {
   final String? author;
   final String? description;
   final String? link;
-  final List<RssItem> items;
-
   final RssImage? image;
   final RssCloud? cloud;
   final List<RssCategory> categories;
@@ -103,6 +101,9 @@ class RssFeed {
   final String? rating;
   final String? webMaster;
   final int ttl;
+
+  final List<RssItem> items;
+
   final DublinCore? dc;
   final RssItunes? itunes;
 

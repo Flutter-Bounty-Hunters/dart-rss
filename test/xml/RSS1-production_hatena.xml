@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:admin="http://webns.net/mvcb/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:hatena="http://www.hatena.ne.jp/info/xmlns#" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/">
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:hatena="http://www.hatena.ne.jp/info/xmlns#"
+    xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/">
 
     <channel rdf:about="https://b.hatena.ne.jp/sample/bookmark">
         <title>sampleのはてなブックマーク</title>
