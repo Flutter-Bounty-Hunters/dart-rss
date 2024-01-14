@@ -345,7 +345,7 @@ void main() {
     expect(item.itunes!.episode, 1);
     expect(item.itunes!.season, 1);
     expect(item.itunes!.image!.href, 'https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357');
-    expect(item.itunes!.duration, Duration(minutes: 32, seconds: 30));
+    expect(item.itunes!.duration, const Duration(minutes: 32, seconds: 30));
     expect(item.itunes!.explicit, false);
     expect(item.itunes!.keywords, 'go,golang,open source,software,development'.split(','));
     expect(item.itunes!.subtitle, 'with Erik, Carlisia, and Brian');
@@ -381,6 +381,12 @@ void main() {
     expect(feed.podcastIndex!.funding![1]!.url, 'https://example.com/member');
     expect(feed.podcastIndex!.funding![1]!.value, 'Become a member!');
 
+    expect(feed.podcastIndex!.liveItems, isNotNull);
+    expect(feed.podcastIndex!.liveItems!.length, 3);
+    _verifyLiveItem0(feed.podcastIndex!.liveItems![0]!);
+    _verifyLiveItem1(feed.podcastIndex!.liveItems![1]!);
+    _verifyLiveItem2(feed.podcastIndex!.liveItems![2]!);
+
     var item1 = feed.items[0];
     var transcripts1 = item1.podcastIndex!.transcripts;
     var soundbite1 = item1.podcastIndex!.soundbites;
@@ -415,4 +421,178 @@ void main() {
     expect(soundbite2[0]!.startTime, 45.4);
     expect(soundbite2[0]!.duration, 56.0);
   });
+}
+
+void _verifyLiveItem0(RssPodcastIndexLiveItem liveItem) {
+  expect(liveItem.status, "pending");
+  expect(liveItem.start, "2025-05-14T13:00:00.000-0800");
+  expect(liveItem.end, isNull);
+  expect(liveItem.title, "A Future Show");
+  expect(liveItem.description, "This entry represents a show that will happen in the future.");
+  expect(liveItem.link, "https://example.com/podcast/live");
+  expect(liveItem.guid!.isPermalink, true);
+  expect(liveItem.guid!.value, "https://example.com/live");
+  expect(liveItem.author, "John Doe (john@example.com)");
+  expect(liveItem.images, isNotNull);
+  // TODO: check image parsing and find out why it doesn't support our situation
+  // expect(
+  //   liveItem.images!.urls,
+  //   "https://example.com/images/live/pci_avatar-massive.jpg 1500w, https://example.com/images/live/pci_avatar-middle.jpg 600w, https://example.com/images/live/pci_avatar-small.jpg 300w, https://example.com/images/live/pci_avatar-tiny.jpg 150w",
+  // );
+
+  // <podcast:images srcset="https://example.com/images/live/pci_avatar-massive.jpg 1500w,
+  // https://example.com/images/live/pci_avatar-middle.jpg 600w,
+  // https://example.com/images/live/pci_avatar-small.jpg 300w,
+  // https://example.com/images/live/pci_avatar-tiny.jpg 150w"
+  // />
+  expect(liveItem.persons!.length, 3);
+  expect(liveItem.persons![0].name, "Adam Curry");
+  expect(liveItem.persons![0].link, "https://www.podchaser.com/creators/adam-curry-107ZzmWE5f");
+  expect(liveItem.persons![0].image, "https://example.com/images/adamcurry.jpg");
+
+  expect(liveItem.persons![1].name, "Dave Jones");
+  expect(liveItem.persons![1].link, "https://github.com/daveajones/");
+  expect(liveItem.persons![1].image, "https://example.com/images/davejones.jpg");
+  expect(liveItem.persons![1].role, "guest");
+
+  expect(liveItem.persons![2].name, "Becky Smith");
+  expect(liveItem.persons![2].link, "https://example.com/artist/beckysmith");
+  expect(liveItem.persons![2].group, "visuals");
+  expect(liveItem.persons![2].role, "cover art designer");
+
+  expect(liveItem.alternateEnclosure, isNotNull);
+  expect(liveItem.alternateEnclosure!.type, "audio/mpeg");
+  expect(liveItem.alternateEnclosure!.length, 312);
+  expect(liveItem.alternateEnclosure!.isDefault, true);
+  // TODO: test the rest of the alernativeEnclosure when we finish modeling it (#43)
+
+  expect(liveItem.enclosure, isNotNull);
+  expect(liveItem.enclosure!.url, "https://example.com/pc20/livestream?format=.mp3");
+  expect(liveItem.enclosure!.type, "audio/mpeg");
+  expect(liveItem.enclosure!.length, 312);
+
+  expect(liveItem.contentLinks, isNotNull);
+  expect(liveItem.contentLinks!.length, 3);
+  expect(liveItem.contentLinks![0].href, "https://youtube.com/pc20/livestream");
+  expect(liveItem.contentLinks![0].value, "YouTube!");
+  expect(liveItem.contentLinks![1].href, "https://twitch.com/pc20/livestream");
+  expect(liveItem.contentLinks![1].value, "Twitch!");
+  expect(liveItem.contentLinks![2].href, "https://example.com/html/livestream");
+  expect(liveItem.contentLinks![2].value, "Listen Live!");
+}
+
+void _verifyLiveItem1(RssPodcastIndexLiveItem liveItem) {
+  expect(liveItem.status, "live");
+  expect(liveItem.start, "2023-01-13T13:00:00.000-0800");
+  expect(liveItem.end, isNull);
+  expect(liveItem.title, "An In-Progress Show");
+  expect(liveItem.description, "This entry represents a show that's happening right now.");
+  expect(liveItem.link, "https://example.com/podcast/live");
+  expect(liveItem.guid!.isPermalink, true);
+  expect(liveItem.guid!.value, "https://example.com/live");
+  expect(liveItem.author, "John Doe (john@example.com)");
+  expect(liveItem.images, isNotNull);
+  // TODO: check image parsing and find out why it doesn't support our situation
+  // expect(
+  //   liveItem.images!.urls,
+  //   "https://example.com/images/live/pci_avatar-massive.jpg 1500w, https://example.com/images/live/pci_avatar-middle.jpg 600w, https://example.com/images/live/pci_avatar-small.jpg 300w, https://example.com/images/live/pci_avatar-tiny.jpg 150w",
+  // );
+
+  // <podcast:images srcset="https://example.com/images/live/pci_avatar-massive.jpg 1500w,
+  // https://example.com/images/live/pci_avatar-middle.jpg 600w,
+  // https://example.com/images/live/pci_avatar-small.jpg 300w,
+  // https://example.com/images/live/pci_avatar-tiny.jpg 150w"
+  // />
+  expect(liveItem.persons!.length, 3);
+  expect(liveItem.persons![0].name, "Adam Curry");
+  expect(liveItem.persons![0].link, "https://www.podchaser.com/creators/adam-curry-107ZzmWE5f");
+  expect(liveItem.persons![0].image, "https://example.com/images/adamcurry.jpg");
+
+  expect(liveItem.persons![1].name, "Dave Jones");
+  expect(liveItem.persons![1].link, "https://github.com/daveajones/");
+  expect(liveItem.persons![1].image, "https://example.com/images/davejones.jpg");
+  expect(liveItem.persons![1].role, "guest");
+
+  expect(liveItem.persons![2].name, "Becky Smith");
+  expect(liveItem.persons![2].link, "https://example.com/artist/beckysmith");
+  expect(liveItem.persons![2].group, "visuals");
+  expect(liveItem.persons![2].role, "cover art designer");
+
+  expect(liveItem.alternateEnclosure, isNotNull);
+  expect(liveItem.alternateEnclosure!.type, "audio/mpeg");
+  expect(liveItem.alternateEnclosure!.length, 312);
+  expect(liveItem.alternateEnclosure!.isDefault, true);
+  // TODO: test the rest of the alernativeEnclosure when we finish modeling it (#43)
+
+  expect(liveItem.enclosure, isNotNull);
+  expect(liveItem.enclosure!.url, "https://example.com/pc20/livestream?format=.mp3");
+  expect(liveItem.enclosure!.type, "audio/mpeg");
+  expect(liveItem.enclosure!.length, 312);
+
+  expect(liveItem.contentLinks, isNotNull);
+  expect(liveItem.contentLinks!.length, 3);
+  expect(liveItem.contentLinks![0].href, "https://youtube.com/pc20/livestream");
+  expect(liveItem.contentLinks![0].value, "YouTube!");
+  expect(liveItem.contentLinks![1].href, "https://twitch.com/pc20/livestream");
+  expect(liveItem.contentLinks![1].value, "Twitch!");
+  expect(liveItem.contentLinks![2].href, "https://example.com/html/livestream");
+  expect(liveItem.contentLinks![2].value, "Listen Live!");
+}
+
+void _verifyLiveItem2(RssPodcastIndexLiveItem liveItem) {
+  expect(liveItem.status, "ended");
+  expect(liveItem.start, "2020-08-26T13:00:00.000-0800");
+  expect(liveItem.end, "2020-08-26T15:00:00.000-0800");
+  expect(liveItem.title, "A Completed Show");
+  expect(liveItem.description, "This entry represents a show that was recorded in the past.");
+  expect(liveItem.link, "https://example.com/podcast/live");
+  expect(liveItem.guid!.isPermalink, true);
+  expect(liveItem.guid!.value, "https://example.com/live");
+  expect(liveItem.author, "John Doe (john@example.com)");
+  expect(liveItem.images, isNotNull);
+  // TODO: check image parsing and find out why it doesn't support our situation
+  // expect(
+  //   liveItem.images!.urls,
+  //   "https://example.com/images/live/pci_avatar-massive.jpg 1500w, https://example.com/images/live/pci_avatar-middle.jpg 600w, https://example.com/images/live/pci_avatar-small.jpg 300w, https://example.com/images/live/pci_avatar-tiny.jpg 150w",
+  // );
+
+  // <podcast:images srcset="https://example.com/images/live/pci_avatar-massive.jpg 1500w,
+  // https://example.com/images/live/pci_avatar-middle.jpg 600w,
+  // https://example.com/images/live/pci_avatar-small.jpg 300w,
+  // https://example.com/images/live/pci_avatar-tiny.jpg 150w"
+  // />
+  expect(liveItem.persons!.length, 3);
+  expect(liveItem.persons![0].name, "Adam Curry");
+  expect(liveItem.persons![0].link, "https://www.podchaser.com/creators/adam-curry-107ZzmWE5f");
+  expect(liveItem.persons![0].image, "https://example.com/images/adamcurry.jpg");
+
+  expect(liveItem.persons![1].name, "Dave Jones");
+  expect(liveItem.persons![1].link, "https://github.com/daveajones/");
+  expect(liveItem.persons![1].image, "https://example.com/images/davejones.jpg");
+  expect(liveItem.persons![1].role, "guest");
+
+  expect(liveItem.persons![2].name, "Becky Smith");
+  expect(liveItem.persons![2].link, "https://example.com/artist/beckysmith");
+  expect(liveItem.persons![2].group, "visuals");
+  expect(liveItem.persons![2].role, "cover art designer");
+
+  expect(liveItem.alternateEnclosure, isNotNull);
+  expect(liveItem.alternateEnclosure!.type, "audio/mpeg");
+  expect(liveItem.alternateEnclosure!.length, 312);
+  expect(liveItem.alternateEnclosure!.isDefault, true);
+  // TODO: test the rest of the alernativeEnclosure when we finish modeling it (#43)
+
+  expect(liveItem.enclosure, isNotNull);
+  expect(liveItem.enclosure!.url, "https://example.com/pc20/livestream?format=.mp3");
+  expect(liveItem.enclosure!.type, "audio/mpeg");
+  expect(liveItem.enclosure!.length, 312);
+
+  expect(liveItem.contentLinks, isNotNull);
+  expect(liveItem.contentLinks!.length, 3);
+  expect(liveItem.contentLinks![0].href, "https://youtube.com/pc20/livestream");
+  expect(liveItem.contentLinks![0].value, "YouTube!");
+  expect(liveItem.contentLinks![1].href, "https://twitch.com/pc20/livestream");
+  expect(liveItem.contentLinks![1].value, "Twitch!");
+  expect(liveItem.contentLinks![2].href, "https://example.com/html/livestream");
+  expect(liveItem.contentLinks![2].value, "Listen Live!");
 }

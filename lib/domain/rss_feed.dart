@@ -105,5 +105,9 @@ class RssFeed {
   final int ttl;
   final DublinCore? dc;
   final RssItunes? itunes;
+
+  // TODO: Rework the model for RssPodcastIndex. This looks like an artificial construct that was
+  //       introduced to hold podcast extensions, even though some/all of those extensions are
+  //       supposed to be able to apply directly to a channel.
   final RssPodcastIndex? podcastIndex;
 }
