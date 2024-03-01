@@ -1,4 +1,10 @@
 # Changelog
+## [3.0.2] - Feb, 2024
+ * Upgrade `http` dependency to `1.1.2`
+ * Upgrade `intl` dependency to `0.19.0`
+ * Fix - parsing dates with trailing spaces.
+ * Added support for parsing live items within podcasts.
+
 ## [3.0.1] - July, 2023
  * Upgrade `xml` dependency to `6.3.0`
  * Upgrade `intl` dependency to `0.18.0`
