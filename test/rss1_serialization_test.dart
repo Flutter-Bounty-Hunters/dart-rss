@@ -11,6 +11,7 @@ void main() {
       );
 
       final xml = feed.toXmlDocument();
+      // ignore: avoid_print
       print(xml.toXmlString(pretty: true));
     });
   });

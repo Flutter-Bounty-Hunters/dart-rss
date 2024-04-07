@@ -5,7 +5,6 @@ import 'package:dart_rss/dart_rss.dart';
 import 'package:dart_rss/domain/rss_itunes_episode_type.dart';
 import 'package:dart_rss/domain/rss_itunes_type.dart';
 import 'package:test/test.dart';
-import 'package:xml/xpath.dart';
 
 void main() {
   test('parse Invalid.xml', () {
