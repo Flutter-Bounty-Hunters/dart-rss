@@ -69,6 +69,7 @@ class RssFeed {
     this.categories = const <RssCategory>[],
     this.skipDays = const <String>[],
     this.skipHours = const <int>[],
+    this.pubDate,
     this.lastBuildDate,
     this.language,
     this.generator,
@@ -92,6 +93,29 @@ class RssFeed {
   final List<RssCategory> categories;
   final List<String> skipDays;
   final List<int> skipHours;
+
+  /// The most recent date when any content within the channel changed.
+  ///
+  /// A content change might refer to the addition of an `item`, or
+  /// it might refer to a change to the channel title, description, etc.
+  ///
+  /// In typical cases, [pubDate] matches [lastBuildDate] because a
+  /// recreation of the RSS feed typically happens for the purpose of
+  /// updating content. However, there may be cases where the feed is
+  /// recreated without a content change, in which case [pubDate] will
+  /// be behind [lastBuildDate].
+  final String? pubDate;
+
+  /// The most recent date when the RSS feed was recreated/regenerated.
+  ///
+  /// Typically, an RSS feed is recreated for the purpose of adding or
+  /// altering content, in which case [lastBuildDate] should match
+  /// [pubDate]. However, it's possible that the value is recreated
+  /// for some other purpose, in which case [pubDate] will be behind
+  /// [lastBuildDate].
+  ///
+  /// Think of the RSS feed file as cached data, and think of [lastBuildDate]
+  /// as the date in which the cache was most recently updated.
   final String? lastBuildDate;
   final String? language;
   final String? generator;
@@ -111,4 +135,49 @@ class RssFeed {
   //       introduced to hold podcast extensions, even though some/all of those extensions are
   //       supposed to be able to apply directly to a channel.
   final RssPodcastIndex? podcastIndex;
+
+  XmlDocument toXmlDocument() {
+    final builder = XmlBuilder();
+    builder.element("rss", attributes: {
+      "version": "2.0",
+    }, nest: () {
+      builder.element("channel", nest: () {
+        if (title != null) {
+          builder.element("title", nest: title!);
+        }
+
+        if (description != null) {
+          builder.element("description", nest: description!);
+        }
+
+        if (link != null) {
+          builder.element("link", nest: link!);
+        }
+
+        if (language != null) {
+          builder.element("language", nest: language!);
+        }
+
+        if (pubDate != null) {
+          builder.element("pubDate", nest: pubDate!);
+        }
+
+        if (lastBuildDate != null) {
+          builder.element("lastBuildDate", nest: lastBuildDate!);
+        }
+
+        if (docs != null) {
+          builder.element("docs", nest: docs);
+        }
+
+        for (final item in items) {
+          item.buildXml(builder);
+        }
+      });
+
+      // TODO: add all remaining properties.
+    });
+
+    return builder.buildDocument();
+  }
 }

@@ -28,4 +28,28 @@ class Rss1Item {
   final String? link;
   final DublinCore? dc;
   final RssContent? content;
+
+  void buildXml(XmlBuilder builder) {
+    builder.element("item", attributes: {
+      "rdf:about": "http://example/org/item/",
+    }, nest: () {
+      if (title != null) {
+        builder.element("title", nest: title);
+      }
+
+      if (description != null) {
+        builder.element("description", nest: description);
+      }
+
+      if (link != null) {
+        builder.element("link", nest: link);
+      }
+
+      if (content != null) {
+        content!.buildXml(builder);
+      }
+
+      // TODO: dc
+    });
+  }
 }

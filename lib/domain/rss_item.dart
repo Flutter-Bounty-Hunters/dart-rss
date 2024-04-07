@@ -67,9 +67,7 @@ class RssItem {
   final RssItemPodcastIndex? podcastIndex;
 
   void buildXml(XmlBuilder builder) {
-    builder.element("item", attributes: {
-      "rdf:about": "http://xml.com/pub/2000/08/09/xslt/xslt.html",
-    }, nest: () {
+    builder.element("item", nest: () {
       if (title != null) {
         builder.element("title", nest: title!);
       }
@@ -80,6 +78,18 @@ class RssItem {
 
       if (description != null) {
         builder.element("description", nest: description!);
+      }
+
+      if (pubDate != null) {
+        builder.element("pubDate", nest: pubDate);
+      }
+
+      if (guid != null) {
+        builder.element("guid", nest: guid);
+      }
+
+      if (author != null) {
+        builder.element("author", nest: author);
       }
     });
   }

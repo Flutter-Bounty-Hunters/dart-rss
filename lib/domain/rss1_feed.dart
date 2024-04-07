@@ -96,7 +96,8 @@ class Rss1Feed {
           }
         });
 
-        image?.buildXml(builder);
+        // TODO: image serialization
+        // image?.buildXml(builder);
 
         for (final item in items) {
           item.buildXml(builder);

@@ -25,6 +25,10 @@ class RssContent {
   final String value;
   final Iterable<String> images;
 
+  void buildXml(XmlBuilder builder) {
+    builder.element("content:encoded", nest: value);
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
