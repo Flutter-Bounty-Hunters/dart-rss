@@ -1,8 +1,8 @@
 import 'package:dart_rss/dart_rss.dart';
-import 'package:dart_rss/domain/rss1_feed.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
+import 'package:xml/xml.dart';
 
 class WebFeed {
   static WebFeed fromXmlString(String xmlString) {
@@ -26,6 +26,7 @@ class WebFeed {
 
   static WebFeed fromRss1(Rss1Feed rss1feed) {
     return WebFeed(
+      rssVersion: RssVersion.rss1,
       title: rss1feed.title ?? rss1feed.dc?.title ?? '',
       description: rss1feed.description ?? rss1feed.dc?.description ?? '',
       links: [rss1feed.link],
@@ -44,6 +45,7 @@ class WebFeed {
 
   static WebFeed fromRss2(RssFeed rssFeed) {
     return WebFeed(
+      rssVersion: RssVersion.rss2,
       title: rssFeed.title ?? rssFeed.dc?.title ?? '',
       description: rssFeed.description ?? rssFeed.dc?.description ?? '',
       links: [rssFeed.link],
@@ -62,6 +64,7 @@ class WebFeed {
 
   static WebFeed fromAtom(AtomFeed atomFeed) {
     return WebFeed(
+      rssVersion: RssVersion.atom,
       title: atomFeed.title ?? '',
       description: atomFeed.subtitle ?? '',
       links: atomFeed.links.map((atomLink) => atomLink.href).toList(),
@@ -105,16 +108,55 @@ class WebFeed {
   }
 
   const WebFeed({
+    required this.rssVersion,
     required this.title,
     required this.description,
     required this.links,
     required this.items,
   });
 
+  final RssVersion rssVersion;
   final String title;
   final String description;
   final List<String?> links;
   final List<WebFeedItem> items;
+
+  XmlElement toXml() {
+    switch (rssVersion) {
+      case RssVersion.rss1:
+        return _toRss1Xml();
+      case RssVersion.rss2:
+        return _toRss2Xml();
+      case RssVersion.atom:
+        return _toAtomXml();
+      case RssVersion.unknown:
+        throw Exception("Can't serialize RSS to XML because the RSS version is unknown.");
+    }
+  }
+
+  XmlElement _toRss1Xml() {
+    final rss = xml.XmlElement(
+      xml.XmlName("channel"),
+    );
+
+    return rss;
+  }
+
+  XmlElement _toRss2Xml() {
+    final rss = xml.XmlElement(
+      xml.XmlName("channel"),
+    );
+
+    return rss;
+  }
+
+  XmlElement _toAtomXml() {
+    final rss = xml.XmlElement(
+      xml.XmlName("channel"),
+    );
+
+    return rss;
+  }
 }
 
 class WebFeedItem {

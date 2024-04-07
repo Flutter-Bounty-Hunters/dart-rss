@@ -421,6 +421,61 @@ void main() {
     expect(soundbite2[0]!.startTime, 45.4);
     expect(soundbite2[0]!.duration, 56.0);
   });
+
+  group("serializes RSS 2 >", () {
+    test("smoke test", () {
+      const feed = RssFeed(
+        title: "Blog | Flutter Bounty Hunters",
+        description: "The Flutter Bounty Hunters blog.",
+        language: "en-us",
+        pubDate: "22 Nov 2022",
+        docs: "http://blogs.law.harvard.edu/tech/rss",
+        items: [
+          RssItem(
+            title: "We launched a new blog!",
+            link: "https://blog.flutterbountyhunters.com/we-launched-a-new-blog",
+            description: "The Flutter Bounty Hunters just launched a new blog. Check it out.",
+            pubDate: "22 Nov 2022",
+            guid: "/we-launched-a-new-blog",
+          ),
+          RssItem(
+            title: "10 Things the Flutter Team Should do in 2023",
+            link: "https://blog.flutterbountyhunters.com/ten-things-the-flutter-team-should-do-in-2023",
+            description: "Here's our selection of the top 10 things that we think the Flutter team should do in 2023.",
+            pubDate: "20 Dec 2022",
+            guid: "/ten-things-the-flutter-team-should-do-in-2023",
+          ),
+        ],
+      );
+
+      expect(
+        feed.toXmlDocument().toXmlString(pretty: true, indent: "  "),
+        '''<rss version="2.0">
+  <channel>
+    <title>Blog | Flutter Bounty Hunters</title>
+    <description>The Flutter Bounty Hunters blog.</description>
+    <language>en-us</language>
+    <pubDate>22 Nov 2022</pubDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <item>
+      <title>We launched a new blog!</title>
+      <link>https://blog.flutterbountyhunters.com/we-launched-a-new-blog</link>
+      <description>The Flutter Bounty Hunters just launched a new blog. Check it out.</description>
+      <pubDate>22 Nov 2022</pubDate>
+      <guid>/we-launched-a-new-blog</guid>
+    </item>
+    <item>
+      <title>10 Things the Flutter Team Should do in 2023</title>
+      <link>https://blog.flutterbountyhunters.com/ten-things-the-flutter-team-should-do-in-2023</link>
+      <description>Here's our selection of the top 10 things that we think the Flutter team should do in 2023.</description>
+      <pubDate>20 Dec 2022</pubDate>
+      <guid>/ten-things-the-flutter-team-should-do-in-2023</guid>
+    </item>
+  </channel>
+</rss>''',
+      );
+    });
+  });
 }
 
 void _verifyLiveItem0(RssPodcastIndexLiveItem liveItem) {

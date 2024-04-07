@@ -13,6 +13,9 @@ export 'domain/rss_image.dart';
 export 'domain/rss_item.dart';
 export 'domain/rss_source.dart';
 
+// RSS 1
+export 'domain/rss1_feed.dart';
+
 // Podcasts
 export 'domain/podcast_index/rss_podcast_index.dart';
 export 'domain/podcast_index/rss_podcast_index_alternate_enclosure.dart';

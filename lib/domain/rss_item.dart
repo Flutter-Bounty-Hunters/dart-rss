@@ -65,4 +65,68 @@ class RssItem {
   final DublinCore? dc;
   final RssItemItunes? itunes;
   final RssItemPodcastIndex? podcastIndex;
+
+  RssItem copyWith({
+    String? title,
+    String? description,
+    String? link,
+    List<RssCategory>? categories,
+    String? guid,
+    String? pubDate,
+    String? author,
+    String? comments,
+    RssSource? source,
+    RssContent? content,
+    Media? media,
+    RssEnclosure? enclosure,
+    DublinCore? dc,
+    RssItemItunes? itunes,
+    RssItemPodcastIndex? podcastIndex,
+  }) {
+    return RssItem(
+      title: title ?? this.title,
+      description: description ?? this.description,
+      link: link ?? this.link,
+      categories: categories ?? this.categories,
+      guid: guid ?? this.guid,
+      pubDate: pubDate ?? this.pubDate,
+      author: author ?? this.author,
+      comments: comments ?? this.comments,
+      source: source ?? this.source,
+      content: content ?? this.content,
+      media: media ?? this.media,
+      enclosure: enclosure ?? this.enclosure,
+      dc: dc ?? this.dc,
+      itunes: itunes ?? this.itunes,
+      podcastIndex: podcastIndex ?? this.podcastIndex,
+    );
+  }
+
+  void buildXml(XmlBuilder builder) {
+    builder.element("item", nest: () {
+      if (title != null) {
+        builder.element("title", nest: title!);
+      }
+
+      if (link != null) {
+        builder.element("link", nest: link!);
+      }
+
+      if (description != null) {
+        builder.element("description", nest: description!);
+      }
+
+      if (pubDate != null) {
+        builder.element("pubDate", nest: pubDate);
+      }
+
+      if (guid != null) {
+        builder.element("guid", nest: guid);
+      }
+
+      if (author != null) {
+        builder.element("author", nest: author);
+      }
+    });
+  }
 }

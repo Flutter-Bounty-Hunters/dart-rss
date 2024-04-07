@@ -17,6 +17,22 @@ class RssImage {
   const RssImage(this.title, this.url, this.link);
 
   final String? title;
-  final String? url;
   final String? link;
+  final String? url;
+
+  void buildXml(XmlBuilder builder) {
+    builder.element("image", nest: () {
+      if (title != null) {
+        builder.element("title", nest: title!);
+      }
+
+      if (link != null) {
+        builder.element("link", nest: link!);
+      }
+
+      if (url != null) {
+        builder.element("url", nest: url!);
+      }
+    });
+  }
 }
