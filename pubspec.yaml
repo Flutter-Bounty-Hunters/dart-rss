@@ -1,5 +1,5 @@
 name: dart_rss
-version: 3.0.2
+version: 3.0.3
 description: Dart parser for RSS1.0, RSS2.0, Atom feeds.
 homepage: https://github.com/Flutter-Bounty-Hunters/dart-rss
 repository: https://github.com/Flutter-Bounty-Hunters/dart-rss

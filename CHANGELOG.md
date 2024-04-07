@@ -1,4 +1,7 @@
 # Changelog
+## [3.0.3] - April, 2024
+ * Added partial serialization support for RSS 1.0 and RSS 2.0 feeds. We'll fill out the rest of the serialization over time.
+
 ## [3.0.2] - Feb, 2024
  * Upgrade `http` dependency to `1.1.2`
  * Upgrade `intl` dependency to `0.19.0`
