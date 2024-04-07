@@ -14,7 +14,7 @@ class RssImage {
     return RssImage(title, url, link);
   }
 
-  const RssImage(this.title, this.link, this.url);
+  const RssImage(this.title, this.url, this.link);
 
   final String? title;
   final String? link;
@@ -31,7 +31,7 @@ class RssImage {
       }
 
       if (url != null) {
-        builder.element("link", nest: url!);
+        builder.element("url", nest: url!);
       }
     });
   }
