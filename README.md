@@ -1,4 +1,14 @@
-# Dart RSS
+<p align="center">
+  <img src="https://github.com/Flutter-Bounty-Hunters/dart-rss/assets/7259036/22439f2a-669c-48ae-a0ca-2705500a9cc2" alt="Dart RSS - RSS parser and serializer for Dart">
+</p>
+
+<p align="center">
+  <a href="https://flutterbountyhunters.com" target="_blank">
+    <img src="https://github.com/Flutter-Bounty-Hunters/flutter_test_robots/assets/7259036/1b19720d-3dad-4ade-ac76-74313b67a898" alt="Built by the Flutter Bounty Hunters">
+  </a>
+</p>
+
+---
 A dart package for parsing and generating RSS1.0, RSS2.0, and Atom feeds.
 
 ### Example
