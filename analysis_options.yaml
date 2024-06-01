@@ -1,6 +1,8 @@
 include: package:lints/recommended.yaml
 
 linter:
+  exclude:
+    - doc/**
   rules:
     - always_use_package_imports
     - avoid_print
