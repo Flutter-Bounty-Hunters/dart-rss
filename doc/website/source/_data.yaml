@@ -1,0 +1,21 @@
+homepage_url: https://flutter-bounty-hunters.github.io/dart-rss/
+
+# Configuration for the package that this website documents.
+package:
+  name: dart_rss
+  title: Dart RSS
+  description: RSS parser and serializer for Dart
+  type: dart
+  is_on_pub: true
+  github:
+    url: https://github.com/flutter-bounty-Hunters/dart-rss
+    organization: flutter-bounty-hunters
+    name: dart-rss
+  discord: https://discord.gg/8hna2VD32s
+  sponsorship: https://flutterbountyhunters.com
+
+# Configuration of the GitHub plugin for loading info about GitHub repositories.
+github:
+  contributors:
+    repositories:
+      - { organization: flutter-bounty-hunters, name: dart-rss }

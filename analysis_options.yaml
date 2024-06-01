@@ -1,5 +1,9 @@
 include: package:lints/recommended.yaml
 
+analyzer:
+  exclude:
+    - doc/**
+
 linter:
   rules:
     - always_use_package_imports
