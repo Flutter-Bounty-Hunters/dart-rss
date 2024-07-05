@@ -112,6 +112,12 @@ void main() {
     expect(item.media!.group!.category!.value, 'music/artist name/album/song');
     expect(item.media!.group!.rating!.value, 'nonadult');
 
+    final mediaGroupThumbnail = item.media!.group!.thumbnails.first;
+    expect(mediaGroupThumbnail.url, 'http://www.foo.com/keyframe1.jpg');
+    expect(mediaGroupThumbnail.width, '75');
+    expect(mediaGroupThumbnail.height, '50');
+    expect(mediaGroupThumbnail.time, '12:05:01.123');
+
     expect(item.media!.contents.length, 2);
     final mediaContent = item.media!.contents.first;
     expect(mediaContent.url, 'http://www.foo.com/video.mov');
