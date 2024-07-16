@@ -1,4 +1,5 @@
 homepage_url: https://flutter-bounty-hunters.github.io/dart-rss/
+show_logo: false
 
 # Configuration for the package that this website documents.
 package:

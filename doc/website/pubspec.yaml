@@ -7,7 +7,7 @@ environment:
   sdk: ^3.0.0
 
 dependencies:
-  static_shock: any
+  static_shock: ^0.0.9
 
 dev_dependencies:
   lints: ^2.0.0
