@@ -146,12 +146,22 @@ void main() {
 
     expect(item.media!.keywords, 'kitty, cat, big dog, yarn, fluffy');
 
-    expect(item.media!.thumbnails.length, 2);
-    final mediaThumbnail = item.media!.thumbnails.first;
-    expect(mediaThumbnail.url, 'http://www.foo.com/keyframe1.jpg');
-    expect(mediaThumbnail.width, '75');
-    expect(mediaThumbnail.height, '50');
-    expect(mediaThumbnail.time, '12:05:01.123');
+    expect(item.media!.thumbnails.length, 3);
+    final mediaThumbnail0 = item.media!.thumbnails.first;
+    expect(mediaThumbnail0.url, 'http://www.foo.com/keyframe0.jpg');
+    expect(mediaThumbnail0.width, '50');
+    expect(mediaThumbnail0.height, '25');
+    expect(mediaThumbnail0.time, null);
+    final mediaThumbnail1 = item.media!.thumbnails[1];
+    expect(mediaThumbnail1.url, 'http://www.foo.com/keyframe1.jpg');
+    expect(mediaThumbnail1.width, '75');
+    expect(mediaThumbnail1.height, '50');
+    expect(mediaThumbnail1.time, '12:05:01.123');
+    final mediaThumbnail2 = item.media!.thumbnails[2];
+    expect(mediaThumbnail2.url, 'http://www.foo.com/keyframe2.jpg');
+    expect(mediaThumbnail2.width, '150');
+    expect(mediaThumbnail2.height, '100');
+    expect(mediaThumbnail2.time, '12:05:01.125');
 
     expect(item.media!.hash!.algo, 'md5');
     expect(item.media!.hash!.value, 'dfdec888b72151965a34b4b59031290a');
