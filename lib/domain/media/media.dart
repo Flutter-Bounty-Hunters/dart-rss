@@ -33,7 +33,10 @@ class Media {
       title: Title.parse(findElementOrNull(element, 'media:title')),
       description: Description.parse(findElementOrNull(element, 'media:description')),
       keywords: findElementOrNull(element, 'media:keywords')?.innerText,
-      thumbnails: element.findElements('media:thumbnail').map((e) => Thumbnail.parse(e)).toList(),
+      thumbnails: element
+          .findAllElements('media:thumbnail')
+          .map((e) => Thumbnail.parse(e))
+          .toList(),
       hash: Hash.parse(findElementOrNull(element, 'media:hash')),
       player: Player.parse(findElementOrNull(element, 'media:player')),
       copyright: Copyright.parse(findElementOrNull(element, 'media:copyright')),
