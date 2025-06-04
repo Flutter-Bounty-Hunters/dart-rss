@@ -127,6 +127,15 @@ class RssItem {
       if (author != null) {
         builder.element("author", nest: author);
       }
+
+      if (enclosure != null) {
+        builder.element("enclosure", attributes: {
+          'url': enclosure!.url ?? '',
+          'type': enclosure!.type ?? '',
+          'length': enclosure!.length!.toString(),
+        });
+      }
+
     });
   }
 }
